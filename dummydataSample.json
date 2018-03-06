@@ -1,0 +1,23 @@
+
+[
+  {
+    "Full Name": "Madie Conn",
+    "Country": "Nigeria",
+    "Created At": "1992-07-03T01:20:25.218Z",
+    "Id": 0,
+    "location":"-54;56",
+    "price":"126",
+    "amenities":["blabla","not","shower","parking","wifi","otherstuff"],
+    "Email": "Max@velva.io"
+  },
+  {
+    "Full Name": "Madie Conn",
+    "Country": "Nigeria",
+    "Created At": "1992-07-03T01:20:25.218Z",
+    "Id": 0,
+    "location":"-54;56",
+    "price":"126",
+    "amenities":["blabla","not","shower","parking","wifi","otherstuff"],
+    "Email": "Max@velva.io"
+  }
+]

@@ -23,6 +23,9 @@ Smá devdetails.
   }
   ```
 
+## Password fyrir MYSQL
+krusty
+
 ## Hvernig maður setur upp shittið?
 #### Front-end:
   0. Ná í git folder.
