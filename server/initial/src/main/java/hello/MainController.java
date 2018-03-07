@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hello.User;
 import hello.UserRepository;
+
+import hello.Hotel;
+import hello.HotelRepository;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
@@ -35,17 +40,23 @@ public class MainController {
 
 	@GetMapping(path="/addHotel")
 		public @ResponseBody String addNewHotel (
-				@RequestParam String hotelName,
-				@RequestParam String hotelEmail,
-				@RequestParam Double latitude,
+				@RequestParam String name,
+				@RequestParam String email,
+				@RequestParam double latitude,
 				@RequestParam Double longtitude,
-				@RequestParam String[] amenities,
+				@RequestParam ArrayList<String> amenities,
 				@RequestParam Integer numRooms
 				) {
-			Hotel n = new Hotel();
-			n.setName(hotelName);
-			hotelRepository.save(n);
-			return "Saved a hotel";
+			Hotel h = new Hotel();
+			h.setNumRooms(numRooms);
+			h.setName(name);
+			h.setEmail(email);
+			h.setLongtitude(longtitude);
+			h.setLatitude(latitude);
+			h.setAmenities(amenities);
+			String s = "something" + h.getLatitude() + " is maybe the same as "  + latitude;
+			hotelRepository.save(h);
+			return s; 
 				}
 
 

@@ -1,31 +1,25 @@
 
 package hello;
 
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Hotel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-
 	private Integer numRooms;
-
-	private Double latitude;
-
+	private double latitude;
 	private Double longtitude;		
-
-	private String hotelName;
-
-	private String hotelEmail;
-
+	private String name;
+	private String email;
+	private ArrayList<String> amenities;
   //private Date[] closedDates; 
-
-	private String[] amenities;
 
 	public Integer getId() {
 		return id;
@@ -35,47 +29,48 @@ public class Hotel {
 		this.id = id;
 	}
 
-	public Integer getBLABL() {
-		return id;
-	}
-
-	public void setblabla(Integer id) {
-		this.id = id;
-	}
-	
 	public Integer getNumRooms() {
 		return numRooms;
 	}
 
 	public void setNumRooms(Integer numRooms) {
+		System.out.println("numrooms set to " + numRooms);
 		this.numRooms = numRooms;
 	}
 
-	public Double getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Double numRooms) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 	
+	public Double getLongtitude() {
+		return longtitude;
+	}
+
+	public void setLongtitude(Double longtitude) {
+		this.longtitude = longtitude;
+	}
+
 	public String getName() {
-		return hotelName;
+		return name;
 	}
 
 	public void setName(String name) {
-		this.hotelName = hotelName;
+		this.name = name;
 	}
 
 	public String getEmail() {
-		return hotelEmail;
+		return email;
 	}
 
-	public void setAmenities(String[] amenityList) {
-		this.amenities = amenityList;
+	public void setAmenities(ArrayList<String> amenities) {
+		this.amenities = amenities;
 	}
 
 	public void setEmail(String email) {
-		this.hotelEmail = hotelEmail;
+		this.email = email;
 	}
 }
