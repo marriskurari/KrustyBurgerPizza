@@ -13,14 +13,14 @@ import java.util.HashMap;
 
 public class Request {
 
-private static final String dburl = "http://localhost:8080/database/";
+	private static final String dburl = "http://localhost:8080/database/";
 
 	private String requestString;
 	private HttpURLConnection con;
 
 	private class Parameters extends HashMap<String, String> {
 		public Parameters(HashMap<String, String> parameters) {
-		 	for(Entry<String,String> entry : parameters.entrySet()) {
+			for(Entry<String,String> entry : parameters.entrySet()) {
 				this.put(entry.getKey(), entry.getValue());
 			}
 		}
@@ -93,7 +93,7 @@ private static final String dburl = "http://localhost:8080/database/";
 	}
 
 	public Request(String string) throws IOException {
-	    initRequest(string);
+		initRequest(string);
 	}
 
 	public Request(String string, HashMap<String, String> params) throws IOException {

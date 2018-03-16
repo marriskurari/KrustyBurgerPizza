@@ -5,8 +5,8 @@ import java.io.IOException;
 
 
 public class HotelRepo {
-    private void parseJSON(JSONObject json) {
-    	System.out.println("HAHAHAHA");
+	private void parseJSON(JSONObject json) {
+		System.out.println("HAHAHAHA");
 	}
 
 	public Hotel makeHotel(int id, int numrooms, double latitude, double longtitude, String name, String email) {
@@ -21,9 +21,9 @@ public class HotelRepo {
 	}
 
 	public String uploadHotel(Hotel hotel) throws IOException {
-    	Request r = new Request("addHotel", hotel.getParameters());
-    	r.resolve();
-    	return "Success";
+		Request r = new Request("addHotel", hotel.getParameters());
+		r.resolve();
+		return "Success";
 	}
 
 

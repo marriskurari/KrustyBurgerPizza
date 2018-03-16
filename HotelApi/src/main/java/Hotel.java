@@ -14,22 +14,22 @@ public class Hotel {
 	private List<String> amenities;
 	//private Date[] closedDates;
 
-	public Integer getId()           { return id;     } 
+	public Integer getId()           { return id;     }
 	public void    setId(Integer id) { this.id = id;  }
-  
-	public Integer getNumRooms()                 { return numRooms;          } 
+
+	public Integer getNumRooms()                 { return numRooms;          }
 	public void    setNumRooms(Integer numRooms) { this.numRooms = numRooms; }
 
-	public double getLatitude()                 { return latitude;         } 
+	public double getLatitude()                 { return latitude;         }
 	public void   setLatitude(double latitude) { this.latitude = latitude; }
 
-	public Double getLongtitude()                   { return longtitude;            } 
+	public Double getLongtitude()                   { return longtitude;            }
 	public void   setLongtitude(Double longtitude)  { this.longtitude = longtitude; }
 
-	public String getName()             { return name;     } 
+	public String getName()             { return name;     }
 	public void   setName(String name) { this.name = name; }
 
-	public String getEmail()             { return email;       } 
+	public String getEmail()             { return email;       }
 	public void   setEmail(String email) { this.email = email; }
 
 	public void setAmenities(List<String> amenities) { this.amenities = amenities; }
