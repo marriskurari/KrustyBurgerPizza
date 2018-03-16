@@ -21,8 +21,9 @@ public class HotelRepo {
 	}
 
 	public String uploadHotel(Hotel hotel) throws IOException {
-    	Request r = new Request("addHotel");
-    	r.addParameters(hotel.getParameters());
+    	Request r = new Request("addHotel", hotel.getParameters());
+    	r.resolve();
+    	return "Success";
 	}
 
 

@@ -19,6 +19,12 @@ private static final String dburl = "http://localhost:8080/database/";
 	private HttpURLConnection con;
 
 	private class Parameters extends HashMap<String, String> {
+		public Parameters(HashMap<String, String> parameters) {
+		 	for(Entry<String,String> entry : parameters.entrySet()) {
+				this.put(entry.getKey(), entry.getValue());
+			}
+		}
+
 		public void addParameter(String param, String value) {
 			this.put(param, value);
 		}
@@ -49,7 +55,7 @@ private static final String dburl = "http://localhost:8080/database/";
 	}
 
 	public void addParameters(HashMap<String, String>  parameters) throws IOException {
-		Parameters params = (Parameters) parameters;
+		Parameters params = new Parameters(parameters);
 		con.setDoOutput(true);
 		DataOutputStream out = new DataOutputStream(con.getOutputStream());
 		out.writeBytes(params.toString());
@@ -70,10 +76,14 @@ private static final String dburl = "http://localhost:8080/database/";
 		return responsetext.toString();
 	}
 
-
 	private JSONArray getParsedJSONbyStringRequest() throws IOException {
 		String json = extractJSONstringFromRequest();
-		JSONArray obj = new JSONArray(json);
+		JSONArray obj;
+		try {
+			obj = new JSONArray(json);
+		} catch (JSONException e) {
+			return new JSONArray("[\"" + json + "\"]");
+		}
 		return obj;
 	}
 

@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Hotel {
 	private Integer id;
@@ -10,7 +11,7 @@ public class Hotel {
 	private String  name;
 	private String  email;
 
-	private ArrayList<String> amenities;
+	private List<String> amenities;
 	//private Date[] closedDates;
 
 	public Integer getId()           { return id;     } 
@@ -31,15 +32,15 @@ public class Hotel {
 	public String getEmail()             { return email;       } 
 	public void   setEmail(String email) { this.email = email; }
 
-	public void setAmenities(ArrayList<String> amenities) { this.amenities = amenities; }
+	public void setAmenities(List<String> amenities) { this.amenities = amenities; }
 
 	public HashMap<String,String> getParameters() {
 		HashMap<String,String> params = new HashMap<>();
-		params.put("id", this.id.toString());
 		params.put("latitude", ""  + this.latitude);
 		params.put("longtitude", ""  + this.longtitude);
 		params.put("name", name);
 		params.put("email	", email);
 		params.put("numRooms",numRooms.toString());
+		return params;
 	}
 }
