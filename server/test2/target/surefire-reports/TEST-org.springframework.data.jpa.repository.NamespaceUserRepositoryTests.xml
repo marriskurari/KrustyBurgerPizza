@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="179" failures="0" name="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" time="6.057" errors="0" skipped="1">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.151-b12"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/pimp-of-pimps/projects/search/server/test2"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/pimp-of-pimps/projects/search/server/test2"/>
+    <property name="java.runtime.version" value="1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="4.13.0-36-generic"/>
+    <property name="user.home" value="/home/pimp-of-pimps"/>
+    <property name="user.timezone" value="Atlantic/Reykjavik"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="pimp-of-pimps"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_151"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="registersPostProcessors" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesCombinedSpecificationsCorrectly" time="0.721"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="bindsSortingToOuterJoinCorrectly" time="0.057"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executeNativeQueryWithPage" time="0.077"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="dynamicProjectionReturningStream" time="0.049"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testCascadesPersisting" time="0.046"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deletesAUserById" time="0.053"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesPagedSpecificationSettingAnOrder" time="0.045"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteByShouldReturnListOfDeletedElementsWhenRetunTypeIsCollectionLike" time="0.04"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="find3YoungestUsersPageableWithPageSize2" time="0.053"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findByEmptyArrayOfIntegers" time="0.04"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithAfterKeywordCorrectly" time="0.042"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="sortByAssociationPropertyInPageableShouldUseLeftOuterJoin" time="0.047"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="find3YoungestUsersPageableWithPageSize2Sliced" time="0.041"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersInNativeQueryWithPagination" time="0.108"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesPagedSpecificationsWithSortCorrectly" time="0.04"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldfindUsersByFirstnameForSpELExpressionWithParameterNameVariableReference" time="0.041"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="throwsExceptionForUnderSpecifiedSingleEntitySpecification" time="0.042"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findBinaryDataByIdJpaQl" time="0.043">
+    <skipped/>
+  </testcase>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="invokesQueryWithVarargsParametersCorrectly" time="0.041"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteByShouldReturnZeroInCaseNoEntityHasBeenRemovedAndReturnTypeIsNumber" time="0.036"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findByAgeWithEmptyArrayOfIntegersOrFirstName" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="sortByAssociationPropertyShouldUseLeftOuterJoin" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testCreation" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="duplicateSpelsWorkAsIntended" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesPagedSpecificationsCorrectly" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersByFirstnameAsStringAndUserLastnameAsSpELExpressionInStringBasedQuery" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindCurrentUserWithCustomQueryDependingOnSecurityContext" time="0.036"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="existReturnsWhetherAnEntityCanBeLoaded" time="0.034"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithEmptyProbe" time="0.054"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="readsPageWithGroupByClauseCorrectly" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="doesNotDropNullValuesOnPagedSpecificationExecution" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldGenerateLeftOuterJoinInfindAllWithPaginationAndSortOnNestedPropertyPath" time="0.048"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testReadByIdReturnsNullForNotFoundEntities" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="allowsExecutingPageableMethodWithUnpagedArgument" time="0.044"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesAnnotatedCollectionMethodCorrectly" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByNullExample" time="0.014"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="sortByNestedAssociationPropertyWithSortOrderIgnoreCaseInPageable" time="0.044"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteColletionOfEntities" time="0.044"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesDerivedCountQueryToInt" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithSort" time="0.04"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testUsesQueryAnnotation" time="0.015"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByUntypedExampleShouldReturnSubTypesOfRepositoryEntity" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteByShouldRemoveElementsMatchingDerivedQuery" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithTrueKeywordCorrectly" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="pageableQueryReportsTotalFromResult" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testFindByLastname" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testRead" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testOverwritingFinder" time="0.014"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesLessThatOrEqualQueriesCorrectly" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findBinaryDataByIdNative" time="0.073"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithEndingWithCorrectly" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesManualQueryWithNamedLikeExpressionCorrectly" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testExecutionOfProjectingMethod" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findOneByExampleWithExcludedAttributes" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithStringMatcherAndIgnoreCase" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersByAgeForSpELExpression" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testFindByEmailAddress" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executeNativeQueryWithPageWorkaround" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesNotLikeCorrectly" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesSingleEntitySpecificationCorrectly" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesNativeQueryCorrectly" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersByUserFirstnameAsSpELExpressionAndLastnameAsFakeSpELExpressionInStringBasedQuery" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="dynamicProjectionReturningList" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithBeforeKeywordCorrectly" time="0.034"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesManuallyDefinedQueryWithFieldProjection" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithOrderClauseOnly" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithAssociation" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesLikeAndOrderByCorrectly" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleShouldNotAllowCyclesOverSeveralInstances" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="invokesQueryWithWrapperType" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="customFindByQueryWithPositionalVarargsParameters" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUserByLastnameWithSpelExpressionInStringBasedQuery" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesPagedSpecificationWithSortCorrectly2" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesMethodWithAnnotatedNamedParametersCorrectly" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByTypedSpecialUserExampleShouldReturnSubTypesOfRepositoryEntity" time="0.038"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findsAllByGivenIds" time="0.04"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="pageableQueryReportsTotalFromCount" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesCombinedSpecificationsWithPageableCorrectly" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldSupportModifyingQueryWithVarArgs" time="0.042"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="sortByEmbeddedProperty" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesSpecificationCorrectly" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteAll" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="find2OldestUsers" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithIncludeNull" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="handlesIterableOfIdsCorrectly" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testMergingCascadesCollegueas" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFindByColleaguesLastnameCorrectly" time="0.034"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithContainingCorrectly" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesMethodWithNamedParametersCorrectlyOnMethodsWithQueryCreation" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesDerivedCountQueryToLong" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="handlesCountQueriesWithLessParametersMoreThanOne" time="0.015"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldfindUsersBySpELExpressionParametersWithSpelTemplateExpression" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findByEmptyCollectionOfIntegers" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersByFirstnameWithLeadingPageableParameter" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldSupportJava8StreamsForRepositoryFinderMethods" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsSamePageIfNoSpecGiven" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findYoungestUser" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="find2YoungestUsers" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findsUserByBinaryDataReference" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindByFirstnameAndCurrentUserWithCustomQuery" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByTypedUserExampleShouldReturnSubTypesOfRepositoryEntity" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesManualQueryWithPositionLikeExpressionCorrectly" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesNativeQueryForNonEntitiesCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testInvocationOfCustomImplementation" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithEndingStringMatcher" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="saveAndFlushShouldSupportReturningSubTypesOfRepositoryEntity" time="0.014"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="looksUpEntityReference" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFindByNotNullLastnameCorrectly" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithIgnoreCase" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findPaginatedExplicitQueryWithCountQueryProjection" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findsUsersBySpringDataNamedQuery" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findsSortedByLastname" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesSimpleNotCorrectly" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="batchDeleteColletionOfEntities" time="0.036"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="find2YoungestUsersPageableWithPageSize3" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="handlesColonsFollowedByIntegerInStringLiteral" time="0.018"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithStartingWithCorrectly" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindBySpELExpressionWithoutArgumentsWithColon" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsAllSortedCorrectly" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFindByNullLastnameCorrectly" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="handlesCountQueriesWithLessParametersMoreThanOneIndexed" time="0.015"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersByFirstnameAsFakeSpELExpressionAndUserLastnameAsSpELExpressionInStringBasedQuery" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="handlesCountQueriesWithLessParametersSingleParam" time="0.016"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithExcludedAttributes" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testReadAll" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsAllAsPageIfNoPageableIsGiven" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteByShouldReturnEmptyListInCaseNoEntityHasBeenRemovedAndReturnTypeIsCollectionLike" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesQueryMethodWithDeepTraversalCorrectly" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExample" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllReturnsEmptyIterableIfNoIdsGiven" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="customFindByQueryWithNamedVarargsParameters" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesManipulatingQuery" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="queryProvidesCorrectNumberOfParametersForNativeQuery" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldSupportJava8StreamsForRepositoryDerivedFinderMethods" time="0.036"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithPropertySpecifier" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="find2YoungestUsersPageableWithPageSize3Sliced" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesDerivedExistsQuery" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="ordersByReferencedEntityCorrectly" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="supportsProjectionsWithNativeQueriesAndCamelCaseProperty" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsSameListIfNoSpecGiven" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleShouldNotAllowCycles" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="existsByExampleWithExcludedAttributes" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsNullIfNoEntityFoundForSingleEntitySpecification" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesNegatingSpecificationCorrectly" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesGreaterThatOrEqualQueriesCorrectly" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="savingEmptyCollectionIsNoOp" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="bindsNativeQueryResultsToProjectionByName" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteByShouldReturnNumberOfEntitiesRemovedIfReturnTypeIsLong" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="removeDetachedObject" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testDelete" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindBySpELExpressionWithoutArgumentsWithQuestionmark" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="savesCollectionCorrectly" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="sortByNestedAssociationPropertyWithSortInPageable" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithRegexStringMatcher" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testCountsCorrectly" time="0.015"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUserByFirstnameAndLastnameWithSpelExpressionInStringBasedQuery" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithEmbedded" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithPageable" time="0.088"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="exceptionsDuringParameterSettingGetThrown" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsAllIgnoreCaseSortedCorrectly" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldfindUsersByFirstnameForSpELExpressionOnlyWithParameterIndexReference" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="countByExampleWithExcludedAttributes" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testUpdate" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteAllInBatch" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldfindUsersByFirstnameForSpELExpressionOnlyWithParameterNameVariableReference" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="deleteEmptyCollectionDoesNotDeleteAnything" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="returnsSameListIfNoSortIsGiven" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="supportsProjectionsWithNativeQueries" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findByElementCollectionAttribute" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testPreventsCascadingRolePersisting" time="0.018"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findAllByExampleWithStartingStringMatcher" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="shouldFindUsersByUserFirstnameAsSpELExpressionAndLastnameAsStringInStringBasedQuery" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="testFinderInvocationWithNullParameter" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findOldestUser" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findPaginatedNamedQueryWithCountQueryProjection" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="executesFinderWithFalseKeywordCorrectly" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="findByEmptyCollectionOfStrings" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.NamespaceUserRepositoryTests" name="supportsJava8StreamForPageableMethod" time="0.023"/>
+</testsuite>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="179" failures="0" name="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" time="5.013" errors="0" skipped="4">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.151-b12"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/pimp-of-pimps/projects/search/server/test2"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/pimp-of-pimps/projects/search/server/test2"/>
+    <property name="java.runtime.version" value="1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="4.13.0-36-generic"/>
+    <property name="user.home" value="/home/pimp-of-pimps"/>
+    <property name="user.timezone" value="Atlantic/Reykjavik"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="pimp-of-pimps"/>
+    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_151"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/usr/share/maven"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="queryProvidesCorrectNumberOfParametersForNativeQuery" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="supportsProjectionsWithNativeQueriesAndCamelCaseProperty" time="0.02">
+    <skipped/>
+  </testcase>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="bindsNativeQueryResultsToProjectionByName" time="0.021">
+    <skipped/>
+  </testcase>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="supportsProjectionsWithNativeQueries" time="0.022">
+    <skipped/>
+  </testcase>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="registersPostProcessors" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesCombinedSpecificationsCorrectly" time="0.07"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="bindsSortingToOuterJoinCorrectly" time="0.083"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executeNativeQueryWithPage" time="0.078"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="dynamicProjectionReturningStream" time="0.067"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testCascadesPersisting" time="0.063"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deletesAUserById" time="0.042"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesPagedSpecificationSettingAnOrder" time="0.058"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteByShouldReturnListOfDeletedElementsWhenRetunTypeIsCollectionLike" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="find3YoungestUsersPageableWithPageSize2" time="0.048"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findByEmptyArrayOfIntegers" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithAfterKeywordCorrectly" time="0.038"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="sortByAssociationPropertyInPageableShouldUseLeftOuterJoin" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="find3YoungestUsersPageableWithPageSize2Sliced" time="0.039"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersInNativeQueryWithPagination" time="0.086"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesPagedSpecificationsWithSortCorrectly" time="0.034"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldfindUsersByFirstnameForSpELExpressionWithParameterNameVariableReference" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="throwsExceptionForUnderSpecifiedSingleEntitySpecification" time="0.038"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findBinaryDataByIdJpaQl" time="0.038">
+    <skipped/>
+  </testcase>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="invokesQueryWithVarargsParametersCorrectly" time="0.012"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteByShouldReturnZeroInCaseNoEntityHasBeenRemovedAndReturnTypeIsNumber" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findByAgeWithEmptyArrayOfIntegersOrFirstName" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="sortByAssociationPropertyShouldUseLeftOuterJoin" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testCreation" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="duplicateSpelsWorkAsIntended" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesPagedSpecificationsCorrectly" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersByFirstnameAsStringAndUserLastnameAsSpELExpressionInStringBasedQuery" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindCurrentUserWithCustomQueryDependingOnSecurityContext" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="existReturnsWhetherAnEntityCanBeLoaded" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithEmptyProbe" time="0.048"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="readsPageWithGroupByClauseCorrectly" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="doesNotDropNullValuesOnPagedSpecificationExecution" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldGenerateLeftOuterJoinInfindAllWithPaginationAndSortOnNestedPropertyPath" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testReadByIdReturnsNullForNotFoundEntities" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="allowsExecutingPageableMethodWithUnpagedArgument" time="0.036"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesAnnotatedCollectionMethodCorrectly" time="0.034"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByNullExample" time="0.014"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="sortByNestedAssociationPropertyWithSortOrderIgnoreCaseInPageable" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteColletionOfEntities" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesDerivedCountQueryToInt" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithSort" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testUsesQueryAnnotation" time="0.016"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByUntypedExampleShouldReturnSubTypesOfRepositoryEntity" time="0.038"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteByShouldRemoveElementsMatchingDerivedQuery" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithTrueKeywordCorrectly" time="0.031"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="pageableQueryReportsTotalFromResult" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testFindByLastname" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testRead" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testOverwritingFinder" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesLessThatOrEqualQueriesCorrectly" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findBinaryDataByIdNative" time="0.042"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithEndingWithCorrectly" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesManualQueryWithNamedLikeExpressionCorrectly" time="0.05"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testExecutionOfProjectingMethod" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findOneByExampleWithExcludedAttributes" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithStringMatcherAndIgnoreCase" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersByAgeForSpELExpression" time="0.034"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testFindByEmailAddress" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executeNativeQueryWithPageWorkaround" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesNotLikeCorrectly" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesSingleEntitySpecificationCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesNativeQueryCorrectly" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersByUserFirstnameAsSpELExpressionAndLastnameAsFakeSpELExpressionInStringBasedQuery" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="dynamicProjectionReturningList" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithBeforeKeywordCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesManuallyDefinedQueryWithFieldProjection" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithOrderClauseOnly" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithAssociation" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesLikeAndOrderByCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleShouldNotAllowCyclesOverSeveralInstances" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="invokesQueryWithWrapperType" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="customFindByQueryWithPositionalVarargsParameters" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUserByLastnameWithSpelExpressionInStringBasedQuery" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesPagedSpecificationWithSortCorrectly2" time="0.032"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesMethodWithAnnotatedNamedParametersCorrectly" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByTypedSpecialUserExampleShouldReturnSubTypesOfRepositoryEntity" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findsAllByGivenIds" time="0.014"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="pageableQueryReportsTotalFromCount" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesCombinedSpecificationsWithPageableCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldSupportModifyingQueryWithVarArgs" time="0.033"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="sortByEmbeddedProperty" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesSpecificationCorrectly" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteAll" time="0.037"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="find2OldestUsers" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithIncludeNull" time="0.027"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="handlesIterableOfIdsCorrectly" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testMergingCascadesCollegueas" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFindByColleaguesLastnameCorrectly" time="0.03"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithContainingCorrectly" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesMethodWithNamedParametersCorrectlyOnMethodsWithQueryCreation" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesDerivedCountQueryToLong" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="handlesCountQueriesWithLessParametersMoreThanOne" time="0.039"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldfindUsersBySpELExpressionParametersWithSpelTemplateExpression" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findByEmptyCollectionOfIntegers" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersByFirstnameWithLeadingPageableParameter" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldSupportJava8StreamsForRepositoryFinderMethods" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsSamePageIfNoSpecGiven" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findYoungestUser" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="find2YoungestUsers" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findsUserByBinaryDataReference" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindByFirstnameAndCurrentUserWithCustomQuery" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByTypedUserExampleShouldReturnSubTypesOfRepositoryEntity" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesManualQueryWithPositionLikeExpressionCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesNativeQueryForNonEntitiesCorrectly" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testInvocationOfCustomImplementation" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithEndingStringMatcher" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="saveAndFlushShouldSupportReturningSubTypesOfRepositoryEntity" time="0.017"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="looksUpEntityReference" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFindByNotNullLastnameCorrectly" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithIgnoreCase" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findPaginatedExplicitQueryWithCountQueryProjection" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findsUsersBySpringDataNamedQuery" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findsSortedByLastname" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesSimpleNotCorrectly" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="batchDeleteColletionOfEntities" time="0.036"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="find2YoungestUsersPageableWithPageSize3" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="handlesColonsFollowedByIntegerInStringLiteral" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithStartingWithCorrectly" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindBySpELExpressionWithoutArgumentsWithColon" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsAllSortedCorrectly" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFindByNullLastnameCorrectly" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="handlesCountQueriesWithLessParametersMoreThanOneIndexed" time="0.017"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersByFirstnameAsFakeSpELExpressionAndUserLastnameAsSpELExpressionInStringBasedQuery" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="handlesCountQueriesWithLessParametersSingleParam" time="0.016"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithExcludedAttributes" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testReadAll" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsAllAsPageIfNoPageableIsGiven" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteByShouldReturnEmptyListInCaseNoEntityHasBeenRemovedAndReturnTypeIsCollectionLike" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesQueryMethodWithDeepTraversalCorrectly" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExample" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllReturnsEmptyIterableIfNoIdsGiven" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="customFindByQueryWithNamedVarargsParameters" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesManipulatingQuery" time="0.035"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldSupportJava8StreamsForRepositoryDerivedFinderMethods" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithPropertySpecifier" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="find2YoungestUsersPageableWithPageSize3Sliced" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesDerivedExistsQuery" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="ordersByReferencedEntityCorrectly" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsSameListIfNoSpecGiven" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleShouldNotAllowCycles" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="existsByExampleWithExcludedAttributes" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsNullIfNoEntityFoundForSingleEntitySpecification" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesNegatingSpecificationCorrectly" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesGreaterThatOrEqualQueriesCorrectly" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="savingEmptyCollectionIsNoOp" time="0.014"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteByShouldReturnNumberOfEntitiesRemovedIfReturnTypeIsLong" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="removeDetachedObject" time="0.029"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testDelete" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindBySpELExpressionWithoutArgumentsWithQuestionmark" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="savesCollectionCorrectly" time="0.015"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="sortByNestedAssociationPropertyWithSortInPageable" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithRegexStringMatcher" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testCountsCorrectly" time="0.017"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUserByFirstnameAndLastnameWithSpelExpressionInStringBasedQuery" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithEmbedded" time="0.028"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithPageable" time="0.098"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="exceptionsDuringParameterSettingGetThrown" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsAllIgnoreCaseSortedCorrectly" time="0.024"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldfindUsersByFirstnameForSpELExpressionOnlyWithParameterIndexReference" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="countByExampleWithExcludedAttributes" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testUpdate" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteAllInBatch" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldfindUsersByFirstnameForSpELExpressionOnlyWithParameterNameVariableReference" time="0.019"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="deleteEmptyCollectionDoesNotDeleteAnything" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="returnsSameListIfNoSortIsGiven" time="0.025"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findByElementCollectionAttribute" time="0.013"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testPreventsCascadingRolePersisting" time="0.017"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findAllByExampleWithStartingStringMatcher" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="shouldFindUsersByUserFirstnameAsSpELExpressionAndLastnameAsStringInStringBasedQuery" time="0.022"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="testFinderInvocationWithNullParameter" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findOldestUser" time="0.023"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findPaginatedNamedQueryWithCountQueryProjection" time="0.02"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="executesFinderWithFalseKeywordCorrectly" time="0.026"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="findByEmptyCollectionOfStrings" time="0.021"/>
+  <testcase classname="org.springframework.data.jpa.repository.EclipseLinkNamespaceUserRepositoryTests" name="supportsJava8StreamForPageableMethod" time="0.021"/>
+</testsuite>
