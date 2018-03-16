@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class Request {
@@ -18,35 +19,6 @@ public class Request {
 	private String requestString;
 	private HttpURLConnection con;
 
-	private class Parameters extends HashMap<String, String> {
-		public Parameters(HashMap<String, String> parameters) {
-			for(Entry<String,String> entry : parameters.entrySet()) {
-				this.put(entry.getKey(), entry.getValue());
-			}
-		}
-
-		public void addParameter(String param, String value) {
-			this.put(param, value);
-		}
-
-		@Override
-		public String toString() {
-			String s = "";
-			for(Entry<String,String> entry : this.entrySet()) {
-				s += entry.getKey();
-				s += "=";
-				s += entry.getValue();
-				s += "&";
-			}
-			try {
-				s = URLEncoder.encode(s, "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			return s.length() > 0 ?  s.substring(0,s.length()-2) : s;
-		}
-	}
-
 	private HttpURLConnection makeRequest() throws IOException {
 		URL url = new URL(requestString);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -54,13 +26,17 @@ public class Request {
 		return con;
 	}
 
-	public void addParameters(HashMap<String, String>  parameters) throws IOException {
-		Parameters params = new Parameters(parameters);
-		con.setDoOutput(true);
-		DataOutputStream out = new DataOutputStream(con.getOutputStream());
-		out.writeBytes(params.toString());
-		out.flush();
-		out.close();
+	public void addParameters(String[][] parameters) throws IOException {
+	    String s = "?";
+	    for(String[] keyAndValue : parameters) {
+	    	s += keyAndValue[0];
+	    	s += "=";
+	    	s += keyAndValue[1];
+	    	s += "&";
+		}
+		s = s.substring(0, s.length() - 1);
+
+		requestString += s;
 	}
 
 	private String extractJSONstringFromRequest() throws IOException {
@@ -89,16 +65,17 @@ public class Request {
 
 	private void initRequest(String string) throws IOException {
 		this.requestString = dburl + string;
-		this.con = makeRequest();
 	}
 
 	public Request(String string) throws IOException {
 		initRequest(string);
+		con = makeRequest();
 	}
 
-	public Request(String string, HashMap<String, String> params) throws IOException {
+	public Request(String string, String[][] params) throws IOException {
 		initRequest(string);
 		addParameters(params);
+		con = makeRequest();
 	}
 
 	public JSONArray resolve() throws IOException {

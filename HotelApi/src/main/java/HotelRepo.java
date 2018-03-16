@@ -22,6 +22,7 @@ public class HotelRepo {
 
 	public String uploadHotel(Hotel hotel) throws IOException {
 		Request r = new Request("addHotel", hotel.getParameters());
+		System.out.println(hotel.getParameters());
 		r.resolve();
 		return "Success";
 	}
@@ -30,6 +31,8 @@ public class HotelRepo {
 	public Hotel[] getAll() throws IOException {
 		Request r = new Request("allHotels");
 		JSONArray json = r.resolve();
+		String s = json.toString();
+		System.out.println(s);
 		Hotel[] hotels = new Hotel[2];
 		return hotels;
 	}

@@ -26,6 +26,8 @@ public class API {
 			api.hotelRepo.uploadHotel(h);
 		}
 		Hotel[] hotelsFromDB = api.getAllHotels();
+		for(Hotel h : hotelsFromDB)
+			System.out.println(h.getEmail());
 		System.out.println("Hello world");
 	}
 }

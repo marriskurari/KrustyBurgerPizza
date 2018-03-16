@@ -34,13 +34,16 @@ public class Hotel {
 
 	public void setAmenities(List<String> amenities) { this.amenities = amenities; }
 
-	public HashMap<String,String> getParameters() {
-		HashMap<String,String> params = new HashMap<>();
-		params.put("latitude", ""  + this.latitude);
-		params.put("longtitude", ""  + this.longtitude);
-		params.put("name", name);
-		params.put("email	", email);
-		params.put("numRooms",numRooms.toString());
-		return params;
+	public String[][] getParameters() {
+	    List<String[]> params = new ArrayList<>();
+		params.add(new String[]{"latitude", "" + this.latitude});
+		params.add(new String[]{"longtitude", "" + this.longtitude});
+		params.add(new String[]{"name", "" + this.name});
+		params.add(new String[]{"email", "" + this.email});
+		params.add(new String[]{"numRooms", "" + this.numRooms});
+		for(String am : amenities)
+			params.add(new String[]{"amenities", am});
+		System.out.println(params.size());
+		return params.toArray(new String[params.size()][2]);
 	}
 }
