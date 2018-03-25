@@ -1,1 +1,14 @@
+#viljum ekki node_modules obviously
 node_modules
+
+#Engin java build
+*.class
+*.jar
+*.war
+*.ear
+
+#engin gradle build drasl
+server/build/
+
+#Undo fyrir gradle wrapper
+!*/gradle-wrapper.jar
