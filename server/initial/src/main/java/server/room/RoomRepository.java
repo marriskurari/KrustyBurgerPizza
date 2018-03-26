@@ -9,4 +9,4 @@ package server.room;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface RoomRepository extends CrudRepository{ }
+public interface RoomRepository extends CrudRepository<RoomEntity, Long>{ }

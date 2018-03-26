@@ -10,19 +10,19 @@ package server.availability;
 
 
 
-	 import javax.persistence.Entity;
-	 import javax.persistence.GeneratedValue;
-	 import javax.persistence.GenerationType;
-	 import javax.persistence.Id;
+	 import javax.persistence.*;
 	 import java.util.Date;
 	 import java.util.HashMap;
+	 import java.util.Map;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Availability {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	private HashMap<Date, Integer> days;
+	//long == date og integer == fjoldi herbergja
+	@ElementCollection
+	private Map<Long, Integer> days = new HashMap<>();
 
 	private static final int dayInMs = 86400000;
 
@@ -37,14 +37,13 @@ public class Availability {
 		return (date / dayInMs) * dayInMs;
 	}
 
-	public void setAvailabilityForDate(long date, int numberOfRooms) {
+	public void setAvailabilityForDate(Long date, int numberOfRooms) {
 		long d = formatToMidnight(date);
-		days.put(new Date(d), numberOfRooms);
+		days.put(date, numberOfRooms);
 	}
 
 	public int getAvailabilityForDate(long date, int numberOfRooms) {
-		long d = formatToMidnight(date);
-		return days.get(new Date(d));
+		return days.get(date);
 	}
 
 }

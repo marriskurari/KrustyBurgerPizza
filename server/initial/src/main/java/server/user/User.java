@@ -1,42 +1,29 @@
+/**
+ * Author: Olafur Palsson
+ * HImail: olp6@gmail.com
+ * Actual: olafur.palsson
+ * Heiti verkefnis: server.user
+ */
+
 package server.user;
 
 import server.booking.Booking;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class User extends UserEntity {
+	private Map<Long, Booking> bookings = new HashMap<>();
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
-	private String name;
-	private String email;
-	private ArrayList<Booking> bookings;
-
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
+	public User(Long id, String name, String email, Map<Integer, Long> bookings) {
+		super(id, name, email, bookings);
 	}
 
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public Map<Long, Booking> getBookings() {
+		return bookings;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setBookings(Map<Long, Booking> bookings) {
+		this.bookings = bookings;
 	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 }

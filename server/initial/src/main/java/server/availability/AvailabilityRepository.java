@@ -8,6 +8,5 @@
 package server.availability;
 
 import org.springframework.data.repository.CrudRepository;
-import server.user.User;
 
-public interface AvailabilityRepository extends CrudRepository<User, Long> { }
+public interface AvailabilityRepository extends CrudRepository<Availability, Long> { }

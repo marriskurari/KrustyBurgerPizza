@@ -1,6 +1,8 @@
 package server;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import server.hotel.Hotel;
+import server.hotel.HotelEntity;
 import server.hotel.HotelRepository;
-import server.user.User;
+import server.user.UserEntity;
 import server.user.UserRepository;
 
 @Controller    // This means that this class is a Controller
@@ -27,12 +29,10 @@ public class MainController {
 			// @ResponseBody means the returned String is the response, not a view name
 			// @RequestParam means it is a parameter from the GET or POST request
 
-			User n = new User();
-			n.setName(name);
-			n.setEmail(email);
+			UserEntity n = new UserEntity(name, email);
 			userRepository.save(n);
 			return "Saved";
-				}
+		}
 
 	@Autowired
 		private HotelRepository hotelRepository;
@@ -46,20 +46,23 @@ public class MainController {
 				@RequestParam ArrayList<String> amenities,
 				@RequestParam Integer numRooms
 				) {
-			Hotel h = new Hotel(numRooms, name, email, longtitude, latitude, amenities);
+			Map<Integer, String> amenityMap = new HashMap<>();
+			for(int i = 0; i < amenities.size(); i++)
+				amenityMap.put(i, amenities.get(i));
+			HotelEntity h = new HotelEntity(numRooms, name, email, longtitude, latitude, amenityMap);
 			String s = "something" + h.getLatitude() + " is maybe the same as "  + latitude;
 			hotelRepository.save(h);
 			return s; 
 				}
 
 	@GetMapping(path="/allHotels")
-	public @ResponseBody Iterable<Hotel> getAllHotels() {
+	public @ResponseBody Iterable<HotelEntity> getAllHotels() {
 		// This returns a JSON or XML with the users
 		return hotelRepository.findAll();
 	}
 
 	@GetMapping(path="/all")
-	public @ResponseBody Iterable<User> getAllUsers() {
+	public @ResponseBody Iterable<UserEntity> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}

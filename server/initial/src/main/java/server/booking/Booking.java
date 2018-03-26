@@ -20,9 +20,9 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Integer id;
-	private int hotelId;
+	private Integer hotelId;
 	private String roomType;
-	private boolean isPaid;
+	private Boolean isPaid;
 	private Date from;
 	private Date to;
 

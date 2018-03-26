@@ -2,62 +2,22 @@
  * Author: Olafur Palsson
  * HImail: olp6@gmail.com
  * Actual: olafur.palsson
- * Heiti verkefnis: server
+ * Heiti verkefnis: server.room
  */
 
 package server.room;
 
-
 import server.availability.Availability;
+import server.availability.AvailabilityRepository;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class Room {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
-	private int numberOfBeds;
-	private String roomType;
-	private boolean extraBed;
+public class Room extends RoomEntity {
 	private Availability availability;
 
-	public Room() {
-
-	}
-
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getRoomType() {
-		return roomType;
-	}
-
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
-	}
-
-	public int getNumberOfBeds() {
-		return numberOfBeds;
-	}
-
-	public void setNumberOfBeds(int numberOfBeds) {
-		this.numberOfBeds = numberOfBeds;
-	}
-
-	public boolean isExtraBed() {
-		return extraBed;
-	}
-
-	public void setExtraBed(boolean extraBed) {
-		this.extraBed = extraBed;
+	public Room(Long id, String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
+		super(id, roomType, numberOfBeds, extraBed, availabilityId);
 	}
 
 	public Availability getAvailability() {
@@ -68,4 +28,3 @@ public class Room {
 		this.availability = availability;
 	}
 }
-
