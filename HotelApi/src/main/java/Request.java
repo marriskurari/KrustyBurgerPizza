@@ -1,4 +1,5 @@
 
+import javafx.util.Pair;
 import jdk.nashorn.api.scripting.JSObject;
 import org.json.*;
 
@@ -26,14 +27,15 @@ public class Request {
 		return con;
 	}
 
-	public void addParameters(String[][] parameters) throws IOException {
+	public void addParameters(List<Pair<String, String>> parameters) throws IOException {
 	    String s = "?";
-	    for(String[] keyAndValue : parameters) {
-	    	s += keyAndValue[0];
+	    for(Pair<String, String> keyAndValue : parameters) {
+	    	s += keyAndValue.getKey();
 	    	s += "=";
-	    	s += keyAndValue[1];
+	    	s += keyAndValue.getValue();
 	    	s += "&";
 		}
+		//cut off last character
 		s = s.substring(0, s.length() - 1);
 
 		requestString += s;
@@ -72,7 +74,7 @@ public class Request {
 		con = makeRequest();
 	}
 
-	public Request(String string, String[][] params) throws IOException {
+	public Request(String string, List<Pair<String, String>> params) throws IOException {
 		initRequest(string);
 		addParameters(params);
 		con = makeRequest();

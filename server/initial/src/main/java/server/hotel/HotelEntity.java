@@ -1,7 +1,6 @@
 
 package server.hotel;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ public class HotelEntity {
 	private Long id;
 	private Integer numRooms;
 	private Double  latitude;
-	private Double  longtitude;		
+	private Double longitude;
 	private String  name;
 	private String  email;
 	//roomType, ID
@@ -24,22 +23,24 @@ public class HotelEntity {
 	private Map<Integer, String> amenities;
 	//private Date[] closedDates;
 
-	public HotelEntity(Integer numRooms, String name, String email, Double longtitude, double latitude, Map<Integer, String> amenities) {
+	public HotelEntity() { }
+
+	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, Map<Integer, String> amenities) {
 		this.setNumRooms(numRooms);
 		this.setName(name);
 		this.setEmail(email);
-		this.setLongtitude(longtitude);
+		this.setLongitude(longitude);
 		this.setLatitude(latitude);
 		this.setAmenities(amenities);
 	}
 
-	public HotelEntity(long id, int numRooms, double latitude, double longtitude, String name, String email, Map<Integer, String> amenities) {
-		HotelEntity hotel = new HotelEntity(numRooms, name, email, longtitude, latitude, amenities);
+	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, Map<Integer, String> amenities) {
+		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, amenities);
 		hotel.setId(id);
 	}
 
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longtitude, name, email, amenities);
+		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
 	}
 
 	public Long getId()           { return id;     }
@@ -51,8 +52,8 @@ public class HotelEntity {
 	public double getLatitude()                 { return latitude;         } 
 	public void   setLatitude(double latitude) { this.latitude = latitude; }
 
-	public Double getLongtitude()                   { return longtitude;            } 
-	public void   setLongtitude(Double longtitude)  { this.longtitude = longtitude; }
+	public Double getLongitude()                   { return longitude;            }
+	public void setLongitude(Double longitude)  { this.longitude = longitude; }
 
 	public String getName()             { return name;     } 
 	public void   setName(String name) { this.name = name; }

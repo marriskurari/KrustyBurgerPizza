@@ -1,21 +1,13 @@
-import java.util.ArrayList;
+package generator;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class HotelGenerator {
-	private static String[] amenities = {
-			"wifi",
-			"shower",
-			"breakfast",
-			"private_bathroom",
-			"tea",
-			"coffee",
-			"linen"
-	};
+public class Factory {
 
-	private static List<String> getRandomAmenities() {
-		List<String> list = Arrays.asList(amenities);
+	static List<String> getRandomList(String[] array) {
+		List<String> list = Arrays.asList(array);
 		Collections.shuffle(list);
 		int a = list.size() - 1;
 		int randomAmount = (int) (a*Math.random());
@@ -24,32 +16,80 @@ public class HotelGenerator {
 		return l;
 	}
 
-	private static String getRandom(String[] array) {
+	static String getRandom(String[] array) {
 		int a = (int) (Math.random() * array.length);
 		return array[a];
 	}
 
-	private static double randomDouble(double seed) {
-		return seed + Math.random() * 3;
-	}
+	static boolean randomBoolean()                      { return Math.random() > 0.5; }
+	static double  randomDouble(double seed)            { return Math.random() * seed; }
+	static double  randomDouble(double seed, int width) { return seed + Math.random() * width; }
+	static int     randomInt(int seed)                  { return (int) (Math.random() * seed); }
 
-	private static int randomInt() {
-		return (int) (Math.random() * 70);
-	}
+	static String[] amenities = {
+		 "wifi",
+		 "shower",
+		 "breakfast",
+		 "private_bathroom",
+		 "tea",
+		 "coffee",
+		 "linen"
+	};
 
-	public static Hotel generateHotel() {
-		Hotel hotel = new Hotel();
-		hotel.setAmenities(getRandomAmenities());
-		hotel.setEmail(getRandom(email));
-		hotel.setName(getRandom(name));
-		hotel.setLatitude(randomDouble(60));
-		hotel.setLongtitude(randomDouble(-20));
-		hotel.setNumRooms(randomInt());
-		return hotel;
+	static String[] humanNames = {
+		 "Bernard_Hunt",
+		 "Jaime_Holloway",
+		 "Alfonso_Carpenter",
+		 "Clinton_Bowman",
+		 "Darryl_Cobb",
+		 "Tammy_Holland",
+		 "Erica_Zimmerman",
+		 "Jeannie_Conner",
+		 "Ethel_Hanson",
+		 "Antoinette_Joseph",
+		 "Elsie_Hubbard",
+		 "Terry_Pena",
+		 "Sonja_Carter",
+		 "Charles_Hughes",
+		 "James_Marshall",
+		 "Ernest_Jimenez",
+		 "Rebecca_Barber",
+		 "Alice_Perez",
+		 "Jenny_Owens",
+		 "Mercedes_Bradley",
+		 "Misty_Kelley",
+		 "Russell_Copeland",
+		 "Kendra_Waters",
+		 "Rene_Alvarado",
+		 "Geraldine_West",
+		 "Van_Perry",
+		 "Ricky_Perkins",
+		 "Loren_Moss",
+		 "Lorenzo_Massey",
+		 "Johnathan_Lewis",
+		 "Rafael_Washington",
+		 "Josephine_Carroll",
+		 "Alberta_Swanson",
+		 "Ruth_Dunn",
+		 "Clay_Warren",
+		 "Joyce_Hudson",
+		 "Nichole_Howell",
+		 "Rhonda_Gibson",
+		 "Annie_Clayton",
+		 "Courtney_Moore",
+		 "Elena_Jones",
+		 "Floyd_Page",
+		 "Jackie_Lloyd",
+		 "Homer_Fletcher",
+		 "Rachel_Rivera",
+		 "Lloyd_Cortez",
+		 "Jeannette_Matthews",
+		 "Leo_Payne",
+		 "Barbara_Phelps",
+		 "Marc_Hall"
+	};
 
-	}
-
-	private static String[] name = {
+	static String[] hotelNames = {
 			"Wet_Spring",
 			"Bree_Wonder",
 			"Hotel_Hotel",
@@ -114,7 +154,7 @@ public class HotelGenerator {
 			"Allo_Hotels"
 	};
 
-	private static String[] email = {
+	static String[] email = {
 			"amcnysche9k@webmd.com",
 			"sskilbeck9l@last.fm",
 			"zilchenko9m@ebay.com",
