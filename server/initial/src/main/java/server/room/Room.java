@@ -16,8 +16,8 @@ import java.util.List;
 public class Room extends RoomEntity {
 	private Availability availability;
 
-	public Room(Long id, String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
-		super(id, roomType, numberOfBeds, extraBed, availabilityId);
+	public Room(String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
+		super(roomType, numberOfBeds, extraBed, availabilityId);
 	}
 
 	public Availability getAvailability() {

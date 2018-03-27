@@ -20,8 +20,23 @@ public class RoomEntity {
 	
 	private Long availabilityId;
 
-	public RoomEntity(Long id, String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
+	public RoomEntity(String roomType, Integer numberOfBeds, Boolean extraBed) {
+		this.roomType = roomType;
+		this.numberOfBeds = numberOfBeds;
+		this.extraBed = extraBed;
+	}
+
+	public RoomEntity(String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
+		this.roomType = roomType;
+		this.numberOfBeds = numberOfBeds;
+		this.extraBed = extraBed;
+		this.availabilityId = availabilityId;
+	}
+
+	//private ut af godri astaedu, thessi er bara fyrir extract entity vegna thess ad madur naer id
+	private RoomEntity(Long id, String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
 		this.id = id;
+		this.numberOfBeds = numberOfBeds;
 		this.roomType = roomType;
 		this.extraBed = extraBed;
 		this.availabilityId = availabilityId;

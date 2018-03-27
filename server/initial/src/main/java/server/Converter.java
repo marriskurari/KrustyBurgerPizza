@@ -19,10 +19,9 @@ import server.user.User;
 import server.user.UserEntity;
 import server.user.UserRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.util.Arrays.*;
 
 public class Converter {
 	private static RoomRepository roomRepository;
@@ -30,6 +29,25 @@ public class Converter {
 	private static UserRepository userRepository;
 	private static BookingRepository bookingRepository;
 	private static HotelRepository hotelRepository;
+
+	public static Map<Integer, ?> arrayListToMap(ArrayList<?> arrayList) {
+		Map<Integer, Object> map = new HashMap<>();
+		for(int i = 0; i < arrayList.size(); i++)
+			map.put(i, arrayList.get(i));
+		return map;
+	}
+
+	//assume format yyyy-mm-dd as the input for simplcity of use
+	public static Long yyyymmdd_toLong(String dateString) {
+		String[] yearMonthDay = dateString.split("-");
+		Calendar c = new GregorianCalendar();
+		c.set(
+			 Integer.parseInt(yearMonthDay[0]),
+			 Integer.parseInt(yearMonthDay[1]) - 1,
+			 Integer.parseInt(yearMonthDay[2])
+		);
+		return c.getTime().getTime();
+	}
 
 	public static Room  toRoom(RoomEntity entity) { return (Room)  entity; }
 	public static Hotel toHotel(HotelEntity entity) { return (Hotel) entity; }

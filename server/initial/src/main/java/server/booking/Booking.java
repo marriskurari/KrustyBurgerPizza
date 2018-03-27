@@ -8,6 +8,9 @@
 package server.booking;
 
 
+import server.Converter;
+import server.ToolBox;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,15 +23,18 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Integer id;
-	private Integer hotelId;
+	private Long hotelId;
+	private Long userId;
 	private String roomType;
 	private Boolean isPaid;
-	private Date from;
-	private Date to;
+	private Long dateFrom;
+	private Long dateTo;
 
-	Booking(int hotelId, String roomType) {
+	public Booking(Long hotelId, String roomType, Long from, Long to) {
 		this.hotelId = hotelId;
 		this.roomType = roomType;
+		this.dateFrom = from;
+		this.dateTo = to;
 	}
 
 	public Integer getId() {
@@ -38,11 +44,11 @@ public class Booking {
 		this.id = id;
 	}
 
-	public int getHotelId() {
+	public Long getHotelId() {
 		return hotelId;
 	}
 
-	public void setHotelId(int hotelId) {
+	public void setHotelId(Long hotelId) {
 		this.hotelId = hotelId;
 	}
 
@@ -62,22 +68,30 @@ public class Booking {
 		isPaid = paid;
 	}
 
-	public Date getFrom() {
-		return from;
+	public Long getFrom() {
+		return dateFrom;
 	}
 
 	public void setFrom(Date from) {
-		assert to.getTime() / 86400000 == 0;
-		this.from = from;
+		assert from.getTime() / 86400000 == 0;
+		this.dateFrom = from.getTime();
 	}
 
-	public Date getTo() {
-		return to;
+	public Long getTo() {
+		return dateTo;
 	}
 
 	public void setTo(Date to) {
 		assert to.getTime() / 86400000 == 0;
-		this.to = to;
+		this.dateTo = to.getTime();
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 }
 

@@ -52,8 +52,8 @@ public class UserEntity {
 		this.email = email;
 	}
 
-	public void addBooking(Integer bookingNumber, Long booking) {
-		this.bookings.put(bookingNumber, booking);
+	public void addBooking(Long bookingId) {
+		int bookingNumber = bookings.size();
+		this.bookings.put(bookingNumber, bookingId);
 	}
-
 }
