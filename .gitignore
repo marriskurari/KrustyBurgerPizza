@@ -15,3 +15,7 @@ server/build/
 
 #Baeta vid .gradle
 server/.gradle
+
+#Oll intellij setup
+server/.idea/*
+HotelApi/.idea/*
