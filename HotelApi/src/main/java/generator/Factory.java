@@ -49,15 +49,24 @@ _________........----------""""""""""""------......_____  """""----NNNNNNN
                                                          """""----....___ """--
                                                                          """--- *
  */
+
+
 public abstract class Factory {
-	public String save(String url, Entity ent) throws IOException {
-		Request r = new Request(url, ent.getParameters());
+	//need to initialize these before using the "getAll" and "save" methods
+	protected String getAllURL = "getAllURL-not-initialized-properly-somehow";
+	protected String updateURL = "updateAllURL-not-Initialized";
+
+	/*******************************************
+	 *       REPO STYLE METHODS
+	 *******************************************/
+	public String save(Entity ent) throws IOException {
+		Request r = new Request(updateURL, ent.getParameters());
 		r.resolve();
 		return "Success";
 	}
 
 	public List<Entity> getAll() throws IOException {
-		Request r = new Request("allHotels");
+		Request r = new Request(getAllURL);
 		JSONArray json = r.resolve();
 		String s = json.toString();
 		List<Entity> entities = new ArrayList<>();
@@ -68,6 +77,9 @@ public abstract class Factory {
 
 	protected abstract Entity jsonToEntity(JSONObject json);
 
+	/*******************************************
+	 *       TOOLKIT STYLE METHODS
+	 *******************************************/
 	public static Map<Integer, String> arrayListToMap(ArrayList<String> arrayList) {
 		Map<Integer, String> map = new HashMap<>();
 		for(int i = 0; i < arrayList.size(); i++)
@@ -76,7 +88,8 @@ public abstract class Factory {
 	}
 
 	protected static List<String> getRandomList(String[] array) {
-		List<String> list = Arrays.asList(array);
+		List<String> list = new ArrayList<>();
+		list.addAll(Arrays.asList(array));
 		Collections.shuffle(list);
 		int a = list.size() - 1;
 		int randomAmount = (int) (a*Math.random());
@@ -86,8 +99,9 @@ public abstract class Factory {
 	}
 
 	public static Map<Integer, String> getRandomMap(String[] array) {
-		List<String> list = getRandomList(array);
-		return arrayListToMap((ArrayList<String>) list);
+		ArrayList<String> list = new ArrayList<>();
+		list.addAll(getRandomList(array));
+		return arrayListToMap(list);
 	}
 
 	protected static String getRandom(String[] array) {
@@ -100,6 +114,9 @@ public abstract class Factory {
 	protected static double  randomDouble(double seed, int width) { return seed + Math.random() * width; }
 	protected static int     randomInt(int seed)                  { return (int) (Math.random() * seed); }
 
+	/*******************************************
+	 *       DATA FOR RANDOMIZATION
+	 *******************************************/
 	protected static String[] amenities = {
 		 "wifi",
 		 "shower",

@@ -1,3 +1,4 @@
+import generator.Entity;
 import generator.hotel.Hotel;
 import generator.hotel.HotelFactory;
 
@@ -7,14 +8,14 @@ import java.util.List;
 
 public class API {
 
-	private static HotelRepo hotelRepo;
+	private static HotelFactory hotelFactory;
 
 	private static List<Hotel> hotels = new ArrayList<>();
 
-	public API() { hotelRepo = new HotelRepo(); }
+	public API() { hotelFactory = new HotelFactory(); }
 
-	public List<Hotel> getAllHotels() throws IOException {
-		return hotelRepo.getAll();
+	public List<Entity> getAllHotels() throws IOException {
+		return hotelFactory.getAll();
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -24,9 +25,9 @@ public class API {
 		for(int i = 0; i < 12; i++) {
 			Hotel h = HotelFactory.generateHotel();
 			hotels.add(h);
-			hotelRepo.uploadHotel(h);
+			hotelFactory.save(h);
 		}
-		List<Hotel> hotelsFromDB = api.getAllHotels();
+		List<Entity> hotelsFromDB = api.getAllHotels();
 		System.out.println(hotelsFromDB);
 		System.out.println("Hello world");
 	}

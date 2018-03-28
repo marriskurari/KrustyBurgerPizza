@@ -52,7 +52,8 @@ krusty
 	2. Ef 'gradle is not a command' tha installa gradle.
 
 	3. Execution failed for task ':compileJava'.
-			Ef thu ert med jdk-9 tha svekk. https://askubuntu.com/questions/84483/how-to-completely-uninstall-java  sidan installa jdk-8 virkadi hja mer, pottthett haegt ad gera thetta einfaldar med multiple jdk einhvernveginn
+			//Ef thu ert med jdk-9 tha svekk. https://askubuntu.com/questions/84483/how-to-completely-uninstall-java  sidan installa jdk-8 virkadi hja mer, pottthett haegt ad gera thetta einfaldar med multiple jdk einhvernveginn
+			Komst ad thvi ad keyra 'gradle wrapper --gradle-version <meira en 3.3>' tha skiptir ekki ekki mali hvada jdk madur er med
 
 	4. No database named 'krustybase' -> logga inn i mysql -> CREATE DATABASE 'krustybase'. 
 

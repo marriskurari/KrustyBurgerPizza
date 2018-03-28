@@ -1,6 +1,8 @@
-package generator.hotel;
+package generator.room;
 
 import generator.Factory;
+import generator.hotel.Hotel;
+import generator.hotel.HotelEntity;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -13,10 +15,10 @@ import java.util.Map;
  * Heiti verkefnis: PACKAGE_NAME
  */
 
-public class HotelFactory extends Factory {
-	public HotelFactory() {
-		this.updateURL = "addHotel";
-		this.getAllURL = "allHotels";
+public class RoomFactory extends Factory {
+	public RoomFactory() {
+		this.updateURL = "updateRoom";
+		this.getAllURL = "allRooms";
 	}
 
 	public static Hotel generateHotel() {
