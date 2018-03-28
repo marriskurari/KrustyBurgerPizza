@@ -20,7 +20,6 @@ import server.room.RoomEntity;
 import server.room.RoomRepository;
 import server.user.UserEntity;
 import server.user.UserRepository;
-import sun.misc.Request;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
