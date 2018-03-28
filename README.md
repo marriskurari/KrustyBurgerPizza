@@ -42,6 +42,7 @@ krusty
 	5. Madur tarf lika ad vera med mysql-server a tolvunni til ad geta installad thessu.
 
 **Listi af errorum**
+
 	0. 	...... SQLException access denied.
 			Laga med tvi ad logga sig inn og bua til account sem heitir spongebob og er "IDENTIFIED BY 'krusty' (i.e. passw er krusty). Sidan gefa honum priveleges.
 
