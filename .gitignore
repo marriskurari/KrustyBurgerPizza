@@ -17,5 +17,5 @@ server/build/
 server/.gradle
 
 #Oll intellij setup
-server/.idea/*
+server/initial/.idea
 HotelApi/.idea/*

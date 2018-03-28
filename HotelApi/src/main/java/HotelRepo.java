@@ -1,5 +1,5 @@
 
-import generator.Hotel;
+import generator.hotel.Hotel;
 import org.json.*;
 
 import java.io.IOException;

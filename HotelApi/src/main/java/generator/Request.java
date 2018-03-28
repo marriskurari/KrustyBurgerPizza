@@ -1,4 +1,6 @@
 
+package generator;
+
 import javafx.util.Pair;
 import jdk.nashorn.api.scripting.JSObject;
 import org.json.*;

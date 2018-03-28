@@ -1,10 +1,8 @@
-import generator.Factory;
-import generator.Hotel;
-import generator.HotelFactory;
+import generator.hotel.Hotel;
+import generator.hotel.HotelFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class API {

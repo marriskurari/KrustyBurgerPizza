@@ -42,13 +42,17 @@ krusty
 	5. Madur tarf lika ad vera med mysql-server a tolvunni til ad geta installad thessu.
 
 **Listi af errorum**
-	0. ...... SQLException access denied.
+	0. 	...... SQLException access denied.
 			Laga med tvi ad logga sig inn og bua til account sem heitir spongebob og er "IDENTIFIED BY 'krusty' (i.e. passw er krusty). Sidan gefa honum priveleges.
+
 	1. java.util.concurrent.ExecutionException: org.apache.catalina.LifecycleException:
 			Laga med tvi ad keyra 'gradle wrapper --gradle-version 2.13'
+
 	2. Ef 'gradle is not a command' tha installa gradle.
+
 	3. Execution failed for task ':compileJava'.
 			Ef thu ert med jdk-9 tha svekk. https://askubuntu.com/questions/84483/how-to-completely-uninstall-java  sidan installa jdk-8 virkadi hja mer, pottthett haegt ad gera thetta einfaldar med multiple jdk einhvernveginn
+
 	4. No database named 'krustybase' -> logga inn i mysql -> CREATE DATABASE 'krustybase'. 
 
 Eg lenti amk i thessum 4 thegar eg var ad installa i thessari viku.
