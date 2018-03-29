@@ -12,10 +12,7 @@ import generator.Entity;
 import generator.ToolBox;
 import javafx.util.Pair;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Availability extends Entity {
 	private Long id;
@@ -42,9 +39,11 @@ public class Availability extends Entity {
 
 	@Override
 	public List<Pair<String, String>> getParameters() {
-		return null;
+		List<Pair<String, String>> params = new ArrayList<>();
+		for(Map.Entry<Long, Integer> d : days.entrySet())
+			params.add(new Pair<>("" + d.getKey(), "" + d.getValue()));
+		return params;
 	}
-
 	public void setAvailabilityForDate(Long date, int numberOfRooms) {
 		long d = ToolBox.formatToMidnight(date);
 		days.put(date, numberOfRooms);

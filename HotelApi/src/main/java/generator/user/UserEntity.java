@@ -3,6 +3,7 @@ package generator.user;
 import generator.Entity;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ public class UserEntity extends Entity {
 	private Long id;
 	private String name;
 	private String email;
+	//bookingNumber and bookingId
 	private Map<Integer, Long> bookings = new HashMap<>();
 
 	public UserEntity(Long id, String name, String email, Map<Integer, Long> bookings) {
@@ -39,7 +41,13 @@ public class UserEntity extends Entity {
 
 	@Override
 	public List<Pair<String, String>> getParameters() {
-		return null;
+		List<Pair<String, String>> params = new ArrayList<>();
+		params.add(new Pair<>("id", "" + this.id));
+		params.add(new Pair<>("name", "" + this.name));
+		params.add(new Pair<>("email", "" + this.email));
+		if(bookings != null)
+			params.addAll(mapToListOfPairs("bookings", bookings));
+		return params;
 	}
 
 	public String getName() {

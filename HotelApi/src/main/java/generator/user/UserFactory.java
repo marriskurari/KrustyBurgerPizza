@@ -1,7 +1,7 @@
 package generator.user;
 
+import generator.Entity;
 import generator.Factory;
-import generator.hotel.Hotel;
 import generator.hotel.HotelEntity;
 import org.json.JSONObject;
 
@@ -21,26 +21,22 @@ public class UserFactory extends Factory {
 		this.getAllURL = "allUsers";
 	}
 
-	public static Hotel generateHotel() {
-		Hotel hotel = new Hotel(
-			 randomInt(72),
-			 getRandom(hotelNames),
-			 getRandom(email),
-			 randomDouble(60, 3),
-			 randomDouble(-20, 3),
-			 getRandomMap(amenities)
+	public User generate() {
+		User user = new User(
+			 getRandom(humanName),
+			 getRandom(email)
 		);
-		return hotel;
+		return user;
 	}
-	public HotelEntity jsonToEntity(JSONObject json) {
+
+	//muna ad checka a hvad gerist ef draslid er null
+	public UserEntity jsonToEntity(JSONObject json) {
 		Long id = Long.parseLong(json.get("id").toString());
-		int numRooms = (int) json.get("numRooms");
-		Double longitude = (Double) json.get("longitude");
-		Double latitude = (Double) json.get("latitude");
 		String name = (String) json.get("name");
 		String email = (String) json.get("email");
-		Map<Integer, String> amenities = new HashMap<>();
-		amenities.put(0, "nothing");
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
+		Map<Integer, Long> map = new HashMap<>();
+		map.put(0, (long) 0);
+		return new UserEntity(id, name, email, map);
 	}
+
 }

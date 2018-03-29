@@ -15,9 +15,8 @@ import java.util.Map;
 public class User extends UserEntity {
 	private Map<Long, Booking> bookings = new HashMap<>();
 
-	public User(Long id, String name, String email, Map<Integer, Long> bookings) {
-		super(id, name, email, bookings);
-	}
+	public User(Long id, String name, String email, Map<Integer, Long> bookings) { super(id, name, email, bookings); }
+	public User(String name, String email)                                       { super(name, email);               }
 
 	public Map<Long, Booking> getBookings() {
 		return bookings;

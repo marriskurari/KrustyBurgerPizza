@@ -4,10 +4,7 @@ package generator.hotel;
 import generator.Entity;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HotelEntity extends Entity {
 	private Integer numRooms;
@@ -15,8 +12,12 @@ public class HotelEntity extends Entity {
 	private Double longitude;
 	private String  name;
 	private String  email;
-	private Map<String, Long> roomIds;
+	private Map<Integer, Long> roomIds;
 	private Map<Integer, String> amenities;
+
+	public HotelEntity() {
+		super();
+	}
 
 	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, Map<Integer, String> amenities) {
 		this.setNumRooms(numRooms);
@@ -28,6 +29,8 @@ public class HotelEntity extends Entity {
 	}
 
 	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, Map<Integer, String> amenities) {
+		System.out.println(id + "" + numRooms + latitude + longitude + name + email);
+		System.out.println(email);
 		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, amenities);
 		hotel.setId(id);
 	}
@@ -39,13 +42,15 @@ public class HotelEntity extends Entity {
 	@Override
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
-		params.add(new Pair<> ("latitude", "" + this.latitude));
-		params.add(new Pair<>("longitude", "" + this.longitude));
-		params.add(new Pair<>("name", "" + this.name));
-		params.add(new Pair<>("email", "" + this.email));
-		params.add(new Pair<>("numRooms", "" + this.numRooms));
-		for(Map.Entry<Integer, String> am : amenities.entrySet())
-			params.add(new Pair<>("amenities", am.getValue()));
+		params.add(pair("latitude", this.latitude));
+		params.add(pair("longitude", this.longitude));
+		params.add(pair("name", this.name));
+		params.add(pair("email", this.email));
+		params.add(pair("numRooms", this.numRooms));
+		if(amenities != null)
+			params.addAll(mapToListOfPairs("amenities", amenities));
+		if(roomIds != null)
+			params.addAll(mapToListOfPairs("roomIds", roomIds));
 		return params;
 	}
 
@@ -68,17 +73,17 @@ public class HotelEntity extends Entity {
 		this.amenities = amenities;
 	}
 
-	public Map<String, Long> getRoomIds() { return roomIds; }
+	public Map<Integer, Long> getRoomIds() { return roomIds; }
 
-	public void setRoomIds(HashMap<String, Long> rooms) { this.roomIds = rooms; }
+	public void setRoomIds(HashMap<Integer, Long> rooms) { this.roomIds = rooms; }
 
-	public void addRoomId(String roomType, Long roomEntityId) {
-		roomIds.put(roomType, roomEntityId);
+	public void addRoomId(Long roomEntityId) {
+		roomIds.put(roomIds.size(), roomEntityId);
 	}
 
-	public void setRoomIds(Map<String, Long> roomEntityList) {
-		Map<String, Long> newRooms = new HashMap<>();
-		for(Map.Entry<String, Long> e : roomEntityList.entrySet())
+	public void setRoomIds(Map<Integer, Long> roomEntityList) {
+		Map<Integer, Long> newRooms = new HashMap<>();
+		for(Map.Entry<Integer, Long> e : roomEntityList.entrySet())
 			newRooms.put(e.getKey(), e.getValue());
 		this.roomIds = newRooms;
 	}

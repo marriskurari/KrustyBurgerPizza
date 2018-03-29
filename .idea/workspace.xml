@@ -3,26 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="0c09ad4d-e9c1-43a0-8f4e-92ee500b8818" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/HotelApi/.idea/workspace.xml" afterPath="$PROJECT_DIR$/HotelApi/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/cache.properties.lock" />
-      <change beforePath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/fileSnapshots.bin" />
-      <change beforePath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/server/initial/.gradle/2.13/taskArtifacts/taskArtifacts.bin" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/API.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/API.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/Entity.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/Entity.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/Factory.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/Factory.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/availability/Availability.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/availability/Availability.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/availability/AvailabilityFactory.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/availability/AvailabilityFactory.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/booking/Booking.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/booking/Booking.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/booking/BookingFactory.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/booking/BookingFactory.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/hotel/Hotel.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/hotel/Hotel.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/hotel/HotelEntity.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/hotel/HotelEntity.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/hotel/HotelFactory.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/hotel/HotelFactory.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/room/RoomEntity.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/room/RoomEntity.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/room/RoomFactory.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/room/RoomFactory.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/user/User.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/user/User.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/user/UserEntity.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/user/UserEntity.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/generator/user/UserFactory.java" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/generator/user/UserFactory.java" />
+      <change beforePath="$PROJECT_DIR$/HotelApi/src/main/java/serverPortal" afterPath="$PROJECT_DIR$/HotelApi/src/main/java/serverPortal" />
       <change beforePath="$PROJECT_DIR$/server/initial/.idea/workspace.xml" afterPath="$PROJECT_DIR$/server/initial/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/ApiController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/Application.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/Error.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/Greeting.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/GreetingController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/Hotel.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/HotelRepository.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/MainController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/TestController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/User.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/build/classes/main/hello/UserRepository.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/server/initial/gradle/wrapper/gradle-wrapper.jar" afterPath="$PROJECT_DIR$/server/initial/gradle/wrapper/gradle-wrapper.jar" />
-      <change beforePath="$PROJECT_DIR$/server/initial/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/server/initial/gradle/wrapper/gradle-wrapper.properties" />
-      <change beforePath="$PROJECT_DIR$/server/initial/gradlew" afterPath="$PROJECT_DIR$/server/initial/gradlew" />
-      <change beforePath="$PROJECT_DIR$/server/initial/gradlew.bat" afterPath="$PROJECT_DIR$/server/initial/gradlew.bat" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +33,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/initial/src/main/java/server/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+            <state relative-caret-position="551">
+              <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -67,9 +64,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="8" />
-    <option name="width" value="1177" />
-    <option name="height" value="1075" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -103,9 +99,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +145,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,11 +271,12 @@
       <workItem from="1522001795934" duration="188000" />
       <workItem from="1522002039200" duration="467000" />
       <workItem from="1522250298425" duration="32000" />
+      <workItem from="1522340415792" duration="546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="687000" />
+    <option name="totallyTimeSpent" value="1233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -326,6 +323,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server/initial/src/main/java/server/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/initial/src/main/java/server/Error.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -415,8 +420,8 @@
     <entry file="file://$PROJECT_DIR$/server/initial/src/main/java/server/GreetingController.java" />
     <entry file="file://$PROJECT_DIR$/server/initial/src/main/java/server/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        <state relative-caret-position="551">
+          <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
           <folding />
         </state>
       </provider>

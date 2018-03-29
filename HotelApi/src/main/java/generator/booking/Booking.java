@@ -11,8 +11,10 @@ package generator.booking;
 import generator.Entity;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class Booking extends Entity {
 	private Long hotelId;
@@ -31,7 +33,15 @@ public class Booking extends Entity {
 
 	@Override
 	public List<Pair<String, String>> getParameters() {
-		return null;
+		List<Pair<String, String>> params = new ArrayList<>();
+		params.add(pair("id", this.id));
+		params.add(pair("hotelId", this.userId));
+		params.add(pair("userId", this.userId));
+		params.add(pair("roomType", this.roomType));
+		params.add(pair("isPaid", this.isPaid));
+		params.add(pair("dateFrom", this.dateFrom));
+		params.add(pair("dateTo", this.dateTo));
+		return params;
 	}
 
 	public Long getHotelId() {

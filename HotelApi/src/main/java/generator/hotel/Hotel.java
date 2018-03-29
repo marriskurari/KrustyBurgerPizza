@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public  class Hotel extends HotelEntity {
-	public Hotel(Integer numRooms, String name, String email, Double longitude, double latitude, Map<Integer, String> amenities) {
+	public Hotel(Integer numRooms, String name, String email, Double longitude, Double latitude, Map<Integer, String> amenities) {
 		super(numRooms, name, email, longitude, latitude, amenities);
 	}
 }

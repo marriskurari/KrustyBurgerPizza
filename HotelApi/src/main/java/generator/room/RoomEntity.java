@@ -11,6 +11,7 @@ package generator.room;
 import generator.Entity;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoomEntity extends Entity {
@@ -56,7 +57,13 @@ public class RoomEntity extends Entity {
 
 	@Override
 	public List<Pair<String, String>> getParameters() {
-		return null;
+		List<Pair<String, String>> params = new ArrayList<>();
+		params.add(pair("id", this.id));
+		params.add(pair("latitude", this.numberOfBeds));
+		params.add(pair("roomType", this.roomType));
+		params.add(pair("extaBed", this.extraBed));
+		params.add(pair("availabilityId", this.availabilityId));
+		return params;
 	}
 
 	public String getRoomType() {

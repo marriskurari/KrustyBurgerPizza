@@ -21,10 +21,10 @@ public class RoomFactory extends Factory {
 		this.getAllURL = "allRooms";
 	}
 
-	public static Hotel generateHotel() {
+	public Hotel generate() {
 		Hotel hotel = new Hotel(
 			 randomInt(72),
-			 getRandom(hotelNames),
+			 getRandom(hotelName),
 			 getRandom(email),
 			 randomDouble(60, 3),
 			 randomDouble(-20, 3),
@@ -40,7 +40,7 @@ public class RoomFactory extends Factory {
 		String name = (String) json.get("name");
 		String email = (String) json.get("email");
 		Map<Integer, String> amenities = new HashMap<>();
-		amenities.put(0, "nothing");
+		amenities.put(0, "hnehne");
 		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
 	}
 }

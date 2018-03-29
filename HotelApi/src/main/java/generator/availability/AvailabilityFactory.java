@@ -21,10 +21,10 @@ public class AvailabilityFactory extends Factory {
 		this.getAllURL = "allAvailabilities";
 	}
 
-	public static Hotel generateHotel() {
+	public Hotel generate() {
 		Hotel hotel = new Hotel(
 			 randomInt(72),
-			 getRandom(hotelNames),
+			 getRandom(hotelName),
 			 getRandom(email),
 			 randomDouble(60, 3),
 			 randomDouble(-20, 3),
