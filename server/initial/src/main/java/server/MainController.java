@@ -25,18 +25,24 @@ import server.user.UserRepository;
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
 public class MainController {
 
-	@Autowired private UserRepository         userRepository;
-	@Autowired private HotelRepository        hotelRepository;
-	@Autowired private RoomRepository         roomRepository;
-	@Autowired private AvailabilityRepository availabilityRepository;
-	@Autowired private BookingRepository      bookingRepository;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private HotelRepository hotelRepository;
+	@Autowired
+	private RoomRepository roomRepository;
+	@Autowired
+	private AvailabilityRepository availabilityRepository;
+	@Autowired
+	private BookingRepository bookingRepository;
 
 	/*********************************
 	 *   USER METHODS
 	 ********************************/
-	@GetMapping(path="/addUser") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser (
-		 @RequestParam String name ,
+	@GetMapping(path = "/addUser") // Map ONLY GET Requests
+	public @ResponseBody
+	String addNewUser(
+		 @RequestParam String name,
 		 @RequestParam String email
 	) {
 		UserEntity n = new UserEntity(name, email);
@@ -44,14 +50,24 @@ public class MainController {
 		return "Saved";
 	}
 
-	@GetMapping(path="/allUsers")
-	public @ResponseBody Iterable<UserEntity> getAllUsers() {
+	@GetMapping(path = "/oneUser")
+	public @ResponseBody
+	UserEntity getOneUser(
+		 @RequestParam Long id
+	) {
+		return userRepository.findOne(id);
+	}
+
+	@GetMapping(path = "/allUsers")
+	public @ResponseBody
+	Iterable<UserEntity> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}
 
-	@GetMapping(path="addBookingToUser")
-	public @ResponseBody String addBookingToUser(
+	@GetMapping(path = "/addBookingToUser")
+	public @ResponseBody
+	String addBookingToUser(
 		 @RequestParam Long userId,
 		 @RequestParam Long bookingId
 	) {
@@ -63,8 +79,9 @@ public class MainController {
 	/*********************************
 	 *   HOTEL METHODS
 	 ********************************/
-	@GetMapping(path="/addHotel")
-	public @ResponseBody String addNewHotel (
+	@GetMapping(path = "/addHotel")
+	public @ResponseBody
+	String addNewHotel(
 		 @RequestParam String name,
 		 @RequestParam String email,
 		 @RequestParam double latitude,
@@ -78,17 +95,35 @@ public class MainController {
 		return "Saved the hotel";
 	}
 
-	@GetMapping(path="/allHotels")
-	public @ResponseBody Iterable<HotelEntity> getAllHotels() {
+	@GetMapping(path = "/oneHotel")
+	public @ResponseBody
+	HotelEntity getOneHotel(
+		 @RequestParam Long id
+	) {
+		return hotelRepository.findOne(id);
+	}
+
+	@GetMapping(path = "/allHotels")
+	public @ResponseBody
+	Iterable<HotelEntity> getAllHotels() {
 		// This returns a JSON or XML with the users
 		return hotelRepository.findAll();
+	}
+
+	@GetMapping(path = "/removeHotel")
+	public @ResponseBody String remove(
+		 @RequestParam Long id
+	) {
+		hotelRepository.delete(id);
+		return "Deleted";
 	}
 
 	/*********************************
 	 *   ROOM METHODS
 	 ********************************/
-	@GetMapping(path="/addRoom")
-	public @ResponseBody String addNewRoom (
+	@GetMapping(path = "/addRoom")
+	public @ResponseBody
+	String addNewRoom(
 		 @RequestParam String roomType,
 		 @RequestParam Integer numberOfBeds,
 		 @RequestParam Boolean extraBed
@@ -101,18 +136,34 @@ public class MainController {
 		return "Saved a new room";
 	}
 
+	@GetMapping(path = "/oneRoom")
+	public @ResponseBody
+	RoomEntity getOneRoom(
+		 @RequestParam Long id
+	) {
+		return roomRepository.findOne(id);
+	}
+
 	/*********************************
 	 *   BOOKING METHODS
 	 ********************************/
 	//all dateString: yyyy-mm-dd
 	private Booking makeBasicBooking(Long hotelId, String roomType, String dateFrom, String dateTo) {
 		Long from = Converter.yyyymmdd_toLong(dateFrom);
-		Long to   = Converter.yyyymmdd_toLong(dateTo);
+		Long to = Converter.yyyymmdd_toLong(dateTo);
 		return new Booking(hotelId, roomType, from, to);
 	}
 
+	@GetMapping(path = "/oneBooking")
+	public @ResponseBody
+	Booking getOneBooking(
+		 @RequestParam Long id
+	) {
+		return bookingRepository.findOne(id);
+	}
+
 	//return bookingID
-	@GetMapping(path="/addBooking")
+	@GetMapping(path = "/addBooking")
 	public @ResponseBody String addNewBooking(
 		 @RequestParam Long hotelId,
 		 @RequestParam String roomType,
@@ -124,8 +175,9 @@ public class MainController {
 		return booking.getId().toString();
 	}
 
-	@GetMapping(path="/addBookingWithUser")
-	public @ResponseBody String addNewBooking(
+	@GetMapping(path = "/addBookingWithUser")
+	public @ResponseBody
+	String addNewBooking(
 		 @RequestParam Long hotelId,
 		 @RequestParam Long userId,
 		 @RequestParam String roomType,
@@ -137,5 +189,15 @@ public class MainController {
 		booking = bookingRepository.save(booking);
 		return booking.getId().toString();
 	}
+	/*********************************
+	 *   BOOKING METHODS
+	 ********************************/
 
+	@GetMapping(path = "/oneAvailability")
+	public @ResponseBody
+	Availability getOneAvailability(
+		 @RequestParam Long id
+	) {
+		return availabilityRepository.findOne(id);
+	}
 }

@@ -5,12 +5,12 @@
  * Heiti verkefnis: generator
  */
 
-package generator;
 
 import generator.hotel.Hotel;
 
 public class Test {
 	public static void main(String[] args) {
+		API api = new API();
 
 	}
 }

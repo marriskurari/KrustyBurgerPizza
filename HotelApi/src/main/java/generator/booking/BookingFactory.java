@@ -1,8 +1,10 @@
 package generator.booking;
 
+import generator.Entity;
 import generator.Factory;
 import generator.hotel.Hotel;
 import generator.hotel.HotelEntity;
+import javafx.util.Pair;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -15,32 +17,29 @@ import java.util.Map;
  * Heiti verkefnis: PACKAGE_NAME
  */
 
-public class BookingFactory extends Factory {
+public class BookingFactory<Ent extends Entity> extends Factory {
 	public BookingFactory() {
 		this.updateURL = "addBooking";
 		this.getAllURL = "allBookings";
 	}
 
-	public Hotel generate() {
-		Hotel hotel = new Hotel(
-			 randomInt(72),
-			 getRandom(hotelName),
-			 getRandom(email),
-			 randomDouble(60, 3),
-			 randomDouble(-20, 3),
-			 getRandomMap(amenities)
+	public Booking generate() {
+		Pair<Long, Long> randomDates = randomTimeInterval();
+		Booking booking = new Booking(
+			 (long) randomInt(100),
+			 getRandom(roomTypes),
+			 randomDates.getKey(),
+			 randomDates.getValue()
 		);
-		return hotel;
+		return booking;
 	}
-	public HotelEntity jsonToEntity(JSONObject json) {
-		Long id = Long.parseLong(json.get("id").toString());
-		int numRooms = (int) json.get("numRooms");
-		Double longitude = (Double) json.get("longitude");
-		Double latitude = (Double) json.get("latitude");
-		String name = (String) json.get("name");
-		String email = (String) json.get("email");
-		Map<Integer, String> amenities = new HashMap<>();
-		amenities.put(0, "nothing");
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
+
+	public Booking jsonToEntity(JSONObject json) {
+		Long id = (Long) json.get("id");
+		Long hotelId = (Long) json.get("hotelId");
+		String roomType = (String) json.get("roomType");
+		Long dateFrom = (Long) json.get("dateFrom");
+		Long dateTo = (Long) json.get("dateTo");
+		return new Booking(id, hotelId, roomType, dateFrom, dateTo);
 	}
 }

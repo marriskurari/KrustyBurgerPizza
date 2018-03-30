@@ -1,5 +1,7 @@
 package generator;
 
+import generator.hotel.HotelEntity;
+import javafx.util.Pair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -55,6 +57,8 @@ public abstract class Factory<Ent extends Entity> {
 	//need to initialize these before using the "getAll" and "save" methods
 	protected String getAllURL = "getAllURL-not-initialized-properly-somehow";
 	protected String updateURL = "updateAllURL-not-Initialized";
+	protected String removeURL;
+	protected String getOneURL;
 
 	/*******************************************
 	 *       REPO STYLE METHODS
@@ -62,15 +66,31 @@ public abstract class Factory<Ent extends Entity> {
 
 	protected abstract Ent jsonToEntity(JSONObject json);
 	public abstract Ent generate();
+	public boolean remove(Long id) throws IOException {
+		Pair<String, String> pair = new Pair<>("id", "" + id);
+		Request r = new Request(removeURL, pair);
+		r.resolve();
+		return true;
+	}
 
 	public void save(Ent ent) throws IOException {
 		Request r = new Request(updateURL, ent.getParameters());
 		r.resolve();
 	}
 
+	public List getOne(Long id) throws IOException {
+		Pair<String, String> pair = new Pair("id", "" + id);
+		Request r = new Request(getOneURL, pair);
+		JSONArray json = r.resolve();
+		System.out.println(json.toString());
+		List<Ent> entity = new ArrayList<>();
+		entity.add(jsonToEntity((JSONObject) json.get(0)));
+		return entity;
+	}
+
 	public List getAll() throws IOException {
 		Request r = new Request(getAllURL);
-		JSONArray json = r.resolve();
+		JSONArray json =  r.resolve();
 		String s = json.toString();
 		System.out.println(s);
 		List<Ent> entities = new ArrayList<>();
@@ -81,8 +101,9 @@ public abstract class Factory<Ent extends Entity> {
 	}
 
 	/*******************************************
-	 *       TOOLKIT STYLE METHODS
+	 *       RANDOM STYLE METHODS
 	 *******************************************/
+	private static final int DAY_IN_MS = 86400000;
 
 	private static Map<Integer, String> arrayListToMap(ArrayList<String> arrayList) {
 		Map<Integer, String> map = new HashMap<>();
@@ -111,16 +132,45 @@ public abstract class Factory<Ent extends Entity> {
 		return array[a];
 	}
 
-	static boolean randomBoolean()                      { return Math.random() > 0.5; }
-	static double  randomDouble(double seed)            { return Math.random() * seed; }
+	protected static boolean randomBoolean()                      { return Math.random() > 0.5; }
+	protected static double  randomDouble(double seed)            { return Math.random() * seed; }
 	protected static double  randomDouble(double seed, int width) { return seed + Math.random() * width; }
 	protected static int     randomInt(int seed)                  { return (int) (Math.random() * seed); }
+	protected static Long    randomDate(Long seed, int width) {
+		Date date = new Date(seed);
+		Calendar cal = new GregorianCalendar();
+		System.out.println("MAKE SURE IS ROUNDED");
+		System.out.println(date.getTime());
+		cal.setTime(date);
+		System.out.println(cal.getTime().getTime());
+		return cal.getTime().getTime();
+	}
+
+	protected static Map<Long, Integer> getRandomAvailability() {
+		Map<Long, Integer> map = new HashMap<>();
+		Long today = randomDate(new Date().getTime(), 0);
+		for(int i = 0; i < 400; i++)
+			map.put(today + i * DAY_IN_MS, randomInt(30));
+		return map;
+	}
+
+	protected static Pair<Long, Long> randomTimeInterval() {
+		Long first = randomDate(new Date().getTime(), randomInt(200));
+		Long second = randomDate(first, 30);
+		return new Pair(first, second);
+	}
 
 	/*******************************************
 	 *       DATA FOR RANDOMIZATION
 	 *******************************************/
+	public static final String[] roomTypes = {
+		 "sgl",
+		 "dbl",
+		 "twin",
+		 "something-else"
+	};
 
-	public static String[] amenities = {
+	public static final String[] amenities = {
 		 "wifi",
 		 "shower",
 		 "breakfast",
@@ -130,7 +180,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "linen"
 	};
 
-	protected static String[] humanName = {
+	protected static final String[] humanName = {
 		 "Bernard_Hunt",
 		 "Jaime_Holloway",
 		 "Alfonso_Carpenter",
@@ -183,7 +233,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "Marc_Hall"
 	};
 
-	protected static String[] hotelName = {
+	protected static final String[] hotelName = {
 		 "Wet_Spring",
 		 "Bree_Wonder",
 		 "Hotel_Hotel",
@@ -248,7 +298,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "Allo_Hotels"
 	};
 
-	protected static String[] email = {
+	protected static final String[] email = {
 		 "amcnysche9k@webmd.com",
 		 "sskilbeck9l@last.fm",
 		 "zilchenko9m@ebay.com",

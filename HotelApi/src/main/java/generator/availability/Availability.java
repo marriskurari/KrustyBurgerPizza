@@ -19,6 +19,7 @@ public class Availability extends Entity {
 
 	//long == date og integer == fjoldi herbergja
 	private Map<Long, Integer> days = new HashMap<>();
+
 	private static Map<Long, Integer> zeroAvailabilityMap() {
 		Map<Long, Integer> zeroByDays = new HashMap<>();
 		Long today = new Date().getTime();

@@ -15,7 +15,7 @@ import java.util.Map;
  * Heiti verkefnis: PACKAGE_NAME
  */
 
-public class UserFactory extends Factory {
+public class UserFactory<Ent extends UserEntity> extends Factory {
 	public UserFactory() {
 		this.updateURL = "addUser";
 		this.getAllURL = "allUsers";
@@ -30,6 +30,7 @@ public class UserFactory extends Factory {
 	}
 
 	//muna ad checka a hvad gerist ef draslid er null
+	@Deprecated
 	public UserEntity jsonToEntity(JSONObject json) {
 		Long id = Long.parseLong(json.get("id").toString());
 		String name = (String) json.get("name");

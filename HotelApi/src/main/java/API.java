@@ -1,7 +1,16 @@
+
 import generator.Factory;
+import generator.availability.Availability;
+import generator.availability.AvailabilityFactory;
+import generator.booking.Booking;
+import generator.booking.BookingFactory;
 import generator.hotel.Hotel;
 import generator.hotel.HotelEntity;
 import generator.hotel.HotelFactory;
+import generator.room.RoomEntity;
+import generator.room.RoomFactory;
+import generator.user.UserEntity;
+import generator.user.UserFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +20,10 @@ import java.util.Map;
 public class API {
 
 	private static HotelFactory<HotelEntity> hotelFactory;
+	private static UserFactory<UserEntity> userFactory;
+	private static RoomFactory<RoomEntity> roomFactorym;
+	private static BookingFactory<Booking> bookingFactory;
+	private static AvailabilityFactory<Availability> availabilityFactory;
 
 	private static List<Hotel> hotels = new ArrayList<>();
 
@@ -18,6 +31,11 @@ public class API {
 
 	public List getAllHotels() throws IOException {
 		return hotelFactory.getAll();
+	}
+
+	public HotelEntity getOneHotel(Long id) throws IOException {
+		List<HotelEntity> listWithOnlyOneItem = hotelFactory.getOne(id);
+		return listWithOnlyOneItem.get(0);
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -43,5 +61,9 @@ public class API {
 			System.out.println(e.getName());
 		}
 		System.out.println("Hello world");
+
+		HotelEntity hotel = api.getOneHotel((long) 2);
+		String email = hotel.getEmail();
+		System.out.println(email);
 	}
 }

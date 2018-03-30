@@ -31,6 +31,14 @@ public class Booking extends Entity {
 		this.dateTo = to;
 	}
 
+	public Booking(Long id, Long hotelId, String roomType, Long from, Long to) {
+		this.id = id;
+		this.hotelId = hotelId;
+		this.roomType = roomType;
+		this.dateFrom = from;
+		this.dateTo = to;
+	}
+
 	@Override
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();

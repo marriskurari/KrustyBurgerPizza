@@ -2,16 +2,13 @@
 package generator;
 
 import javafx.util.Pair;
-import jdk.nashorn.api.scripting.JSObject;
 import org.json.*;
 
 import java.io.*;
 
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -62,7 +59,8 @@ public class Request {
 		try {
 			obj = new JSONArray(json);
 		} catch (JSONException e) {
-			return new JSONArray("[\"" + json + "\"]");
+			System.out.println(json);
+			return new JSONArray("[" + json + "]");
 		}
 		return obj;
 	}
@@ -74,6 +72,16 @@ public class Request {
 	public Request(String string) throws IOException {
 		initRequest(string);
 		con = makeRequest();
+	}
+
+	public static List<Pair<String, String>> itemAsList(Pair<String, String> p) {
+		List<Pair<String, String>> pairList = new ArrayList<>();
+		pairList.add(p);
+		return pairList;
+	}
+
+	public Request(String string, Pair<String, String> param) throws IOException {
+		this(string,  itemAsList(param));
 	}
 
 	public Request(String string, List<Pair<String, String>> params) throws IOException {

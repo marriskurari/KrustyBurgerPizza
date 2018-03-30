@@ -14,10 +14,12 @@ import java.util.Map;
  * Heiti verkefnis: PACKAGE_NAME
  */
 
-public class HotelFactory<H extends HotelEntity> extends Factory {
+public class HotelFactory<Ent extends HotelEntity> extends Factory {
 	public HotelFactory() {
 		this.updateURL = "addHotel";
 		this.getAllURL = "allHotels";
+		this.removeURL = "removeHotel";
+		this.getOneURL = "oneHotel";
 	}
 
 	public Hotel generate() {
@@ -32,17 +34,18 @@ public class HotelFactory<H extends HotelEntity> extends Factory {
 		return hotel;
 	}
 
-	public H jsonToEntity(JSONObject json) {
-		H h = (H) new HotelEntity();
-		h.setId(Long.parseLong(json.get("id").toString()));
-		h.setNumRooms((int) json.get("numRooms"));
-		h.setLongitude((Double) json.get("longitude"));
-		h.setLatitude((Double) json.get("latitude"));
-		h.setEmail((String) json.get("email"));
-		h.setName((String) json.get("name"));
+	@Deprecated
+	public Ent jsonToEntity(JSONObject json) {
+		Ent ent = (Ent) new HotelEntity();
+		ent.setId(Long.parseLong(json.get("id").toString()));
+		ent.setNumRooms((int) json.get("numRooms"));
+		ent.setLongitude((Double) json.get("longitude"));
+		ent.setLatitude((Double) json.get("latitude"));
+		ent.setEmail((String) json.get("email"));
+		ent.setName((String) json.get("name"));
 		Map<Integer, String> amenities = new HashMap<>();
 		amenities.put(0, "nothing");
-		System.out.println("H get name :) ;);); " + h.getName());
-		return h;
+		System.out.println("H get name :) ;);); " + ent.getName());
+		return ent;
 	}
 }

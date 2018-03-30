@@ -1,8 +1,10 @@
 package generator.room;
 
+import generator.Entity;
 import generator.Factory;
 import generator.hotel.Hotel;
 import generator.hotel.HotelEntity;
+import generator.user.User;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -15,32 +17,28 @@ import java.util.Map;
  * Heiti verkefnis: PACKAGE_NAME
  */
 
-public class RoomFactory extends Factory {
+public class RoomFactory<Ent extends RoomEntity> extends Factory {
 	public RoomFactory() {
 		this.updateURL = "updateRoom";
 		this.getAllURL = "allRooms";
 	}
 
-	public Hotel generate() {
-		Hotel hotel = new Hotel(
-			 randomInt(72),
-			 getRandom(hotelName),
-			 getRandom(email),
-			 randomDouble(60, 3),
-			 randomDouble(-20, 3),
-			 getRandomMap(amenities)
+	public Room generate() {
+		Room room = new Room(
+			 getRandom(roomTypes),
+			 randomInt(4),
+			 randomBoolean(),
+			 0
 		);
-		return hotel;
+
+		return room;
 	}
-	public HotelEntity jsonToEntity(JSONObject json) {
-		Long id = Long.parseLong(json.get("id").toString());
-		int numRooms = (int) json.get("numRooms");
-		Double longitude = (Double) json.get("longitude");
-		Double latitude = (Double) json.get("latitude");
-		String name = (String) json.get("name");
-		String email = (String) json.get("email");
-		Map<Integer, String> amenities = new HashMap<>();
-		amenities.put(0, "hnehne");
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
+
+	public RoomEntity jsonToEntity(JSONObject json) {
+		String roomType = (String) json.get("roomType");
+		Integer numberOfBeds = (Integer) json.get("numberOfBeds");
+		Boolean extraBed = (Boolean) json.get("extraBed");
+		Long availabilityId = (Long) json.get("availabilityId");
+		return new RoomEntity(roomType, numberOfBeds, extraBed, availabilityId);
 	}
 }
