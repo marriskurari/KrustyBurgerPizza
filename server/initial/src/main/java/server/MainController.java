@@ -18,7 +18,6 @@ import server.room.RoomRepository;
 import server.user.UserEntity;
 import server.user.UserRepository;
 
-@CrossOrigin
 @RestController    // This means that this class is a Controller
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
 public class MainController {
@@ -37,6 +36,7 @@ public class MainController {
 	/*********************************
 	 *   USER METHODS
 	 ********************************/
+	@CrossOrigin
 	@GetMapping(path = "/addUser") // Map ONLY GET Requests
 	public @ResponseBody
 	String addNewUser(
@@ -48,6 +48,7 @@ public class MainController {
 		return "Saved";
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/oneUser")
 	public @ResponseBody
 	UserEntity getOneUser(
@@ -56,6 +57,7 @@ public class MainController {
 		return userRepository.findOne(id);
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/allUsers")
 	public @ResponseBody
 	Iterable<UserEntity> getAllUsers() {
@@ -63,6 +65,7 @@ public class MainController {
 		return userRepository.findAll();
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/addBookingToUser")
 	public @ResponseBody
 	String addBookingToUser(
@@ -77,6 +80,7 @@ public class MainController {
 	/*********************************
 	 *   HOTEL METHODS
 	 ********************************/
+	@CrossOrigin
 	@GetMapping(path = "/addHotel")
 	public @ResponseBody
 	Long addNewHotel(
@@ -93,6 +97,7 @@ public class MainController {
 		return h.getId();
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/oneHotel")
 	public @ResponseBody
 	HotelEntity getOneHotel(
@@ -102,6 +107,7 @@ public class MainController {
 		return hotelRepository.findOne(id);
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/allHotels")
 	public @ResponseBody
 	Iterable<HotelEntity> getAllHotels() {
@@ -109,6 +115,7 @@ public class MainController {
 		return hotelRepository.findAll();
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/removeHotel")
 	public @ResponseBody String remove(
 		 @RequestParam Long id
@@ -120,6 +127,7 @@ public class MainController {
 	/*********************************
 	 *   ROOM METHODS
 	 ********************************/
+	@CrossOrigin
 	@GetMapping(path = "/addRoom")
 	public @ResponseBody
 	String addNewRoom(
@@ -136,6 +144,7 @@ public class MainController {
 		return "" + re.getId();
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/oneRoom")
 	public @ResponseBody
 	RoomEntity getOneRoom(
@@ -154,6 +163,7 @@ public class MainController {
 		return new Booking(hotelId, roomType, from, to);
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/oneBooking")
 	public @ResponseBody
 	Booking getOneBooking(
@@ -163,6 +173,7 @@ public class MainController {
 	}
 
 	//return bookingID
+	@CrossOrigin
 	@GetMapping(path = "/addBooking")
 	public @ResponseBody String addNewBooking(
 		 @RequestParam Long hotelId,
@@ -175,6 +186,7 @@ public class MainController {
 		return booking.getId().toString();
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/addBookingWithUser")
 	public @ResponseBody
 	String addNewBooking(
@@ -193,6 +205,7 @@ public class MainController {
 	 *   BOOKING METHODS
 	 ********************************/
 
+	@CrossOrigin
 	@GetMapping(path = "/oneAvailability")
 	public @ResponseBody
 	Availability getOneAvailability(
