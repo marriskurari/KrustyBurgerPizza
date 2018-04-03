@@ -18,6 +18,7 @@ import server.room.RoomRepository;
 import server.user.UserEntity;
 import server.user.UserRepository;
 
+@CrossOrigin
 @RestController    // This means that this class is a Controller
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
 public class MainController {

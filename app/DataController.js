@@ -1,7 +1,7 @@
 
 import Request from "./Request"
 
-const baseString = "localhost:8080/database/"
+const baseString = "http://165.227.41.109:8080/database/"
 
 const getById = (entityName, id) => {
 	const requestString = `${baseString}one${entityName}?id=${id}`
