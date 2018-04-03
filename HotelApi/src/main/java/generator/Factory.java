@@ -1,6 +1,5 @@
 package generator;
 
-import generator.hotel.HotelEntity;
 import javafx.util.Pair;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -73,9 +72,9 @@ public abstract class Factory<Ent extends Entity> {
 		return true;
 	}
 
-	public void save(Ent ent) throws IOException {
+	public JSONArray save(Ent ent) throws IOException {
 		Request r = new Request(updateURL, ent.getParameters());
-		r.resolve();
+		return r.resolve();
 	}
 
 	public List getOne(Long id) throws IOException {

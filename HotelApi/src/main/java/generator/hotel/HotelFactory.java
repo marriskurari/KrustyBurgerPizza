@@ -4,7 +4,9 @@ import generator.Entity;
 import generator.Factory;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +34,11 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 			 getRandomMap(amenities)
 		);
 		return hotel;
+	}
+
+	public Ent getOneHotel(Long id) throws IOException {
+		List<Ent> listOfOne =  super.getOne(id);
+		return listOfOne.get(0);
 	}
 
 	@Deprecated

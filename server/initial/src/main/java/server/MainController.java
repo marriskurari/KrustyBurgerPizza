@@ -5,10 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import server.availability.Availability;
 import server.availability.AvailabilityRepository;
@@ -21,7 +18,7 @@ import server.room.RoomRepository;
 import server.user.UserEntity;
 import server.user.UserRepository;
 
-@Controller    // This means that this class is a Controller
+@RestController    // This means that this class is a Controller
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
 public class MainController {
 
@@ -81,7 +78,7 @@ public class MainController {
 	 ********************************/
 	@GetMapping(path = "/addHotel")
 	public @ResponseBody
-	String addNewHotel(
+	Long addNewHotel(
 		 @RequestParam String name,
 		 @RequestParam String email,
 		 @RequestParam double latitude,
@@ -91,15 +88,16 @@ public class MainController {
 	) {
 		Map<Integer, String> amenityMap = (Map<Integer, String>) Converter.arrayListToMap(amenities);
 		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, amenityMap);
-		hotelRepository.save(h);
-		return "Saved the hotel";
+		h = hotelRepository.save(h);
+		return h.getId();
 	}
 
 	@GetMapping(path = "/oneHotel")
 	public @ResponseBody
 	HotelEntity getOneHotel(
 		 @RequestParam Long id
-	) {
+	)
+	 {
 		return hotelRepository.findOne(id);
 	}
 
@@ -133,7 +131,8 @@ public class MainController {
 		av.setAvailabilityToZero();
 		av = availabilityRepository.save(av);
 		re.setAvailabilityId(av.getId());
-		return "Saved a new room";
+		re = roomRepository.save(re);
+		return "" + re.getId();
 	}
 
 	@GetMapping(path = "/oneRoom")
