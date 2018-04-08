@@ -97,3 +97,7 @@ Tue Apr 03 20:56:36 GMT 2018 WARN: Establishing SSL connection without server's 
 2018-04-03 20:56:41.114  INFO 9621 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2018-04-03 20:56:41.426  INFO 9621 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-04-03 20:56:41.485  INFO 9621 --- [           main] server.Application                       : Started Application in 12.406 seconds (JVM running for 12.941)
+2018-04-03 21:58:27.797  INFO 9621 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-04-03 21:58:27.798  INFO 9621 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-04-03 21:58:27.826  INFO 9621 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 28 ms
+2018-04-03 22:26:52.908  INFO 9621 --- [nio-8080-exec-5] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory

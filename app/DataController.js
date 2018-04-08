@@ -1,4 +1,3 @@
-
 import Request from "./Request"
 
 const baseString = "http://165.227.41.109:8080/database/"
