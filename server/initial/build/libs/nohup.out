@@ -1,0 +1,95 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v1.5.10.RELEASE)
+
+2018-04-09 01:41:02.328  INFO 2036 --- [           main] server.Application                       : Starting Application on ubuntu-s-1vcpu-1gb-tor1-01 with PID 2036 (/var/www/html/server/initial/build/libs/gs-rest-service-0.1.0.jar started by root in /var/www/html/server/initial/build/libs)
+2018-04-09 01:41:02.366  INFO 2036 --- [           main] server.Application                       : No active profile set, falling back to default profiles: default
+2018-04-09 01:41:02.928  INFO 2036 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6659c656: startup date [Mon Apr 09 01:41:02 UTC 2018]; root of context hierarchy
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::       (v1.5.10.RELEASE)
+
+2018-04-09 01:41:15.578  INFO 2050 --- [           main] server.Application                       : Starting Application on ubuntu-s-1vcpu-1gb-tor1-01 with PID 2050 (/var/www/html/server/initial/build/libs/gs-rest-service-0.1.0.jar started by root in /var/www/html/server/initial/build/libs)
+2018-04-09 01:41:15.598  INFO 2050 --- [           main] server.Application                       : No active profile set, falling back to default profiles: default
+2018-04-09 01:41:16.133  INFO 2050 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6659c656: startup date [Mon Apr 09 01:41:16 UTC 2018]; root of context hierarchy
+2018-04-09 01:41:25.924  INFO 2050 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$93dbe9ca] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-04-09 01:41:29.337  INFO 2050 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2018-04-09 01:41:29.432  INFO 2050 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-04-09 01:41:29.445  INFO 2050 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.27
+2018-04-09 01:41:30.045  INFO 2050 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-04-09 01:41:30.046  INFO 2050 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 13926 ms
+2018-04-09 01:41:31.022  INFO 2050 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-04-09 01:41:31.055  INFO 2050 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-04-09 01:41:31.056  INFO 2050 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-04-09 01:41:31.056  INFO 2050 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-04-09 01:41:31.056  INFO 2050 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+Mon Apr 09 01:41:33 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Mon Apr 09 01:41:34 UTC 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+2018-04-09 01:41:34.886  INFO 2050 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-04-09 01:41:34.984  INFO 2050 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-04-09 01:41:35.530  INFO 2050 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-04-09 01:41:35.538  INFO 2050 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-04-09 01:41:35.548  INFO 2050 --- [           main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-04-09 01:41:35.869  INFO 2050 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-04-09 01:41:37.155  INFO 2050 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-04-09 01:41:39.223  INFO 2050 --- [           main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: server.user.UserEntity (class must be instantiated by Interceptor)
+2018-04-09 01:41:39.248  INFO 2050 --- [           main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: server.booking.Booking (class must be instantiated by Interceptor)
+2018-04-09 01:41:39.269  INFO 2050 --- [           main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: server.room.RoomEntity (class must be instantiated by Interceptor)
+2018-04-09 01:41:39.763  INFO 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2018-04-09 01:41:39.789 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table availability_days drop foreign key FKbvcc2onme1h02hqdm8lwfvj9r
+2018-04-09 01:41:39.790 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : Table 'krustybase.availability_days' doesn't exist
+2018-04-09 01:41:39.795 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table hotel_entity_amenities drop foreign key FK45ppdhunym1f2lsetw406yu3n
+2018-04-09 01:41:39.795 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : Table 'krustybase.hotel_entity_amenities' doesn't exist
+2018-04-09 01:41:39.800 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table hotel_entity_room_ids drop foreign key FKergig0ot6xdve213gmddso5df
+2018-04-09 01:41:39.807 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : Table 'krustybase.hotel_entity_room_ids' doesn't exist
+2018-04-09 01:41:39.808 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000389: Unsuccessful: alter table user_entity_bookings drop foreign key FK1ewtafx2au3oeqkbdvw443pea
+2018-04-09 01:41:39.809 ERROR 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : Table 'krustybase.user_entity_bookings' doesn't exist
+2018-04-09 01:41:40.255  INFO 2050 --- [           main] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2018-04-09 01:41:40.525  INFO 2050 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-04-09 01:41:44.161  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6659c656: startup date [Mon Apr 09 01:41:16 UTC 2018]; root of context hierarchy
+2018-04-09 01:41:44.759  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/oneUser],methods=[GET]}" onto public server.user.UserEntity server.MainController.getOneUser(java.lang.Long)
+2018-04-09 01:41:44.770  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/allUsers],methods=[GET]}" onto public java.lang.Iterable<server.user.UserEntity> server.MainController.getAllUsers()
+2018-04-09 01:41:44.770  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/addBookingToUser],methods=[GET]}" onto public java.lang.String server.MainController.addBookingToUser(java.lang.Long,java.lang.Long)
+2018-04-09 01:41:44.771  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/addHotel],methods=[GET]}" onto public java.lang.String server.MainController.addNewHotel(java.lang.String,java.lang.String,double,java.lang.Double,java.util.ArrayList<java.lang.String>,java.lang.Integer)
+2018-04-09 01:41:44.780  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/oneHotel],methods=[GET]}" onto public server.hotel.HotelEntity server.MainController.getOneHotel(java.lang.Long)
+2018-04-09 01:41:44.780  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/allHotels],methods=[GET]}" onto public java.lang.Iterable<server.hotel.HotelEntity> server.MainController.getAllHotels()
+2018-04-09 01:41:44.781  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/addRoom],methods=[GET]}" onto public java.lang.String server.MainController.addNewRoom(java.lang.String,java.lang.Integer,java.lang.Boolean)
+2018-04-09 01:41:44.782  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/oneRoom],methods=[GET]}" onto public server.room.RoomEntity server.MainController.getOneRoom(java.lang.Long)
+2018-04-09 01:41:44.782  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/oneBooking],methods=[GET]}" onto public server.booking.Booking server.MainController.getOneBooking(java.lang.Long)
+2018-04-09 01:41:44.783  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/addBookingWithUser],methods=[GET]}" onto public java.lang.String server.MainController.addNewBooking(java.lang.Long,java.lang.Long,java.lang.String,java.lang.String,java.lang.String)
+2018-04-09 01:41:44.791  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/addBooking],methods=[GET]}" onto public java.lang.String server.MainController.addNewBooking(java.lang.Long,java.lang.String,java.lang.String,java.lang.String)
+2018-04-09 01:41:44.792  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/oneAvailability],methods=[GET]}" onto public server.availability.Availability server.MainController.getOneAvailability(java.lang.Long)
+2018-04-09 01:41:44.792  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/addUser],methods=[GET]}" onto public java.lang.String server.MainController.addNewUser(java.lang.String,java.lang.String)
+2018-04-09 01:41:44.793  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/database/removeHotel],methods=[GET]}" onto public java.lang.String server.MainController.remove(java.lang.Long)
+2018-04-09 01:41:44.809  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-04-09 01:41:44.819  INFO 2050 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-04-09 01:41:45.094  INFO 2050 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-04-09 01:41:45.095  INFO 2050 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-04-09 01:41:45.342  INFO 2050 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-04-09 01:41:46.754  INFO 2050 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-04-09 01:41:47.095  INFO 2050 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2018-04-09 01:41:47.124  INFO 2050 --- [           main] server.Application                       : Started Application in 33.939 seconds (JVM running for 37.007)
+2018-04-09 01:44:03.496  INFO 2050 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-04-09 01:44:03.497  INFO 2050 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-04-09 01:44:03.625  INFO 2050 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 121 ms
+2018-04-09 01:44:05.671  INFO 2050 --- [nio-8080-exec-4] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
