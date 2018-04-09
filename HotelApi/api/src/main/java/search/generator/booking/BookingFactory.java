@@ -1,9 +1,9 @@
-package generator.booking;
+package search.generator.booking;
 
-import generator.Entity;
-import generator.Factory;
-import generator.hotel.Hotel;
-import generator.hotel.HotelEntity;
+import search.generator.Entity;
+import search.generator.Factory;
+import search.generator.hotel.Hotel;
+import search.generator.hotel.HotelEntity;
 import javafx.util.Pair;
 import org.json.JSONObject;
 

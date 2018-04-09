@@ -1,10 +1,10 @@
-package generator.room;
+package search.generator.room;
 
-import generator.Entity;
-import generator.Factory;
-import generator.hotel.Hotel;
-import generator.hotel.HotelEntity;
-import generator.user.User;
+import search.generator.Entity;
+import search.generator.Factory;
+import search.generator.hotel.Hotel;
+import search.generator.hotel.HotelEntity;
+import search.generator.user.User;
 import org.json.JSONObject;
 
 import java.util.HashMap;

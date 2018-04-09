@@ -1,7 +1,7 @@
-package generator.hotel;
+package search.generator.hotel;
 
-import generator.Entity;
-import generator.Factory;
+import search.generator.Entity;
+import search.generator.Factory;
 import org.json.JSONObject;
 
 import java.io.IOException;

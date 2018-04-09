@@ -1,7 +1,7 @@
-import generator.Factory;
-import generator.hotel.Hotel;
-import generator.hotel.HotelEntity;
-import generator.hotel.HotelFactory;
+import search.generator.Factory;
+import search.generator.hotel.Hotel;
+import search.generator.hotel.HotelEntity;
+import search.generator.hotel.HotelFactory;
 import org.json.JSONArray;
 import org.junit.After;
 import org.junit.Assert;

@@ -5,9 +5,9 @@
  * Heiti verkefnis: server.user
  */
 
-package generator.user;
+package search.generator.user;
 
-import generator.booking.Booking;
+import search.generator.booking.Booking;
 
 import java.util.HashMap;
 import java.util.Map;

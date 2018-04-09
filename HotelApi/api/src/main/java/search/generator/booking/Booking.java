@@ -5,10 +5,10 @@
  * Heiti verkefnis: server
  */
 
-package generator.booking;
+package search.generator.booking;
 
 
-import generator.Entity;
+import search.generator.Entity;
 import javafx.util.Pair;
 
 import java.util.ArrayList;

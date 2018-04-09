@@ -1,5 +1,5 @@
 
-package generator;
+package search.generator;
 
 import javafx.util.Pair;
 import org.json.*;

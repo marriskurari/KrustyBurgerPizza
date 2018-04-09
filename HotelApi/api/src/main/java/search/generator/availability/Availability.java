@@ -5,11 +5,11 @@
  * Heiti verkefnis: server
  */
 
-package generator.availability;
+package search.generator.availability;
 
 
-import generator.Entity;
-import generator.ToolBox;
+import search.generator.Entity;
+import search.generator.ToolBox;
 import javafx.util.Pair;
 
 import java.util.*;

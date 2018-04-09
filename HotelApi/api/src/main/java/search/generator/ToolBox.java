@@ -5,7 +5,7 @@
  * Heiti verkefnis: generator
  */
 
-package generator;
+package search.generator;
 
 public class ToolBox {
 	private static final int dayInMs = 86400000;

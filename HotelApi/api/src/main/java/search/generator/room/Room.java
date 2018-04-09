@@ -5,10 +5,10 @@
  * Heiti verkefnis: server.room
  */
 
-package generator.room;
+package search.generator.room;
 
 
-import generator.availability.Availability;
+import search.generator.availability.Availability;
 
 public class Room extends RoomEntity {
 	private Availability availability;

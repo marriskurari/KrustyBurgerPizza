@@ -1,9 +1,9 @@
-package generator.availability;
+package search.generator.availability;
 
-import generator.Entity;
-import generator.Factory;
-import generator.hotel.Hotel;
-import generator.hotel.HotelEntity;
+import search.generator.Entity;
+import search.generator.Factory;
+import search.generator.hotel.Hotel;
+import search.generator.hotel.HotelEntity;
 import org.json.JSONObject;
 
 import java.util.HashMap;

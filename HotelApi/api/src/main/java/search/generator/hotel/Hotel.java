@@ -1,6 +1,6 @@
-package generator.hotel;
+package search.generator.hotel;
 
-import generator.Entity;
+import search.generator.Entity;
 import javafx.util.Pair;
 
 import java.util.ArrayList;

@@ -1,16 +1,18 @@
 
-import generator.Factory;
-import generator.availability.Availability;
-import generator.availability.AvailabilityFactory;
-import generator.booking.Booking;
-import generator.booking.BookingFactory;
-import generator.hotel.Hotel;
-import generator.hotel.HotelEntity;
-import generator.hotel.HotelFactory;
-import generator.room.RoomEntity;
-import generator.room.RoomFactory;
-import generator.user.UserEntity;
-import generator.user.UserFactory;
+package search;
+
+import search.generator.Factory;
+import search.generator.availability.Availability;
+import search.generator.availability.AvailabilityFactory;
+import search.generator.booking.Booking;
+import search.generator.booking.BookingFactory;
+import search.generator.hotel.Hotel;
+import search.generator.hotel.HotelEntity;
+import search.generator.hotel.HotelFactory;
+import search.generator.room.RoomEntity;
+import search.generator.room.RoomFactory;
+import search.generator.user.UserEntity;
+import search.generator.user.UserFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;

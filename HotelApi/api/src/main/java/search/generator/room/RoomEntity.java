@@ -5,10 +5,10 @@
  * Heiti verkefnis: server
  */
 
-package generator.room;
+package search.generator.room;
 
 
-import generator.Entity;
+import search.generator.Entity;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
