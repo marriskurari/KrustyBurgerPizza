@@ -1,3 +1,5 @@
+
+import search.API;
 import search.generator.Factory;
 import search.generator.hotel.Hotel;
 import search.generator.hotel.HotelEntity;
