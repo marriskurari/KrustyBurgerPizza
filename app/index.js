@@ -1,4 +1,4 @@
-import "../styles.css"
+import "../styles.scss"
 import ReactDOM from "react-dom"
 import React from "react"
 import Body from "./Body"

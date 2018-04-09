@@ -1,0 +1,27 @@
+
+@import "./scss/variables.scss";
+@import "./scss/jumbotron.scss";
+@import "./scss/cardHolder.scss";
+@import "./scss/footer.scss";
+@import "./scss/navbar.scss";
+
+html {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10vw;
+  font-family: $fonts;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+body {
+  background: linear-gradient(lighten($green, 40%), lighten(gray, 40%));
+  background-size: cover;
+  margin: 5%;
+}
+
+
+.cardImage {
+  height: 150px;
+  width: 350px;
+}

@@ -51,4 +51,9 @@ input[type=checkbox] {
 
 }
 
+.cardImage {
+  height: 150px;
+  width: 350px;
+}
+
 /*# sourceMappingURL=styles.css.map*/
