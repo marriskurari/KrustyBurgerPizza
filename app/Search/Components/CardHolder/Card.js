@@ -4,7 +4,7 @@ export default class Card extends React.Component {
 	constructor() {
 		super()
 		this.imgUrl = "https://via.placeholder.com/350x150"
-		this.urlString = `url(${this.imgUrl})`
+		this.urlString = `url(${this.props.imgUrl})`
 	}
 
 	render() {

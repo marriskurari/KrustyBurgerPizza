@@ -20,6 +20,7 @@ export default class CardHolder extends React.Component {
         email={hotelObject.email}
         latitude={hotelObject.latitude}
         longitude={hotelObject.longitude}
+        imageUrl={hotelObject.imageUrl}
         numRooms={hotelObject.numRooms}
       />)
   }
