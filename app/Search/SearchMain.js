@@ -24,16 +24,7 @@ export default class SearchMain extends React.Component {
   }
 
   setHotels(data) {
-    this.setState(state => {
-      console.log("state is set")
-      state.hotels = data
-      state.showResults = true
-    })
-  }
-
-  async getAllAndPushToCardHolder() {
-    console.log("the correct one :)")
-    const data = await DCtrl.hotel.getAll()
+    console.log(data)
     this.setState(state => {
       console.log("state is set")
       state.hotels = data
@@ -42,10 +33,16 @@ export default class SearchMain extends React.Component {
     this.makeCardHolder()
   }
 
+  async getAllAndPushToCardHolder() {
+    console.log("the correct one :)")
+    const data = await DCtrl.hotel.getAll()
+    this.setHotels(data)
+  }
+
   async getHotelsByLocation(lat, lng) {
     console.log("blabla")
     const data = await DCtrl.hotel.getHotelsByLocation(lat, lng)
-    setHotels(data)
+    this.setHotels(data)
   }
 
   makeCardHolder() {
