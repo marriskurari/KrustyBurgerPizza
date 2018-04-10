@@ -15,11 +15,20 @@ export default class SearchMain extends React.Component {
     super(props)
     this.getAllAndPushToCardHolder = this.getAllAndPushToCardHolder.bind(this)
     this.makeCardHolder = this.makeCardHolder.bind(this)
+    this.getHotelsByLocation = this.getHotelsByLocation.bind(this)
     this.state = {
       showResults: false,
       hotels: [],
       cardHolder: null
     }
+  }
+
+  setHotels(data) {
+    this.setState(state => {
+      console.log("state is set")
+      state.hotels = data
+      state.showResults = true
+    })
   }
 
   async getAllAndPushToCardHolder() {
@@ -33,6 +42,14 @@ export default class SearchMain extends React.Component {
     this.makeCardHolder()
   }
 
+  async getHotelsByLocation(lat, lng) {
+    console.log("blabla")
+    const data = await DCtrl.hotel.getHotelsByLocation(lat, lng)
+    this.setState(state => {
+      console.log("state is set")
+    })
+  }
+
   makeCardHolder() {
     this.setState( this.state.cardHolder = (<CardHolder className="cardHolder" hotels={this.state.hotels} />))
   }
@@ -41,8 +58,11 @@ export default class SearchMain extends React.Component {
     console.log("rerender searchmain")
 		return(
       <React.Fragment>
-        <Jumbotron className="jumbotron" getAll={this.getAllAndPushToCardHolder}/>
-        <SearchForm />
+        <Jumbotron
+          className="jumbotron"
+          getHotels={this.getHotelsByLocation}
+          getAll={this.getAllAndPushToCardHolder}
+        />
         {this.state.cardHolder}
       </React.Fragment>
     )

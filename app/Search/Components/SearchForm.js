@@ -11,24 +11,23 @@ export default class SearchForm extends React.Component {
 		console.log(this.props)
 	}
 
-
-	componentWillMount() {
-		console.log("Component is mounting")
-		console.log("Component mounted")
+	getLatLong() {
+		googlemarker.then(a => {
+			const lat = a.position.lat()
+			const lng = a.position.lng()
+			this.props.getHotels(lat, lng)
+		})
 	}
 
 	render() {
 		return(
-			<form ref={c => this.form = c}  onSubmit={console.log("blablabla")}>
+			<form id="container" ref={c => this.form = c}  onSubmit={console.log("blablabla")}>
 				<label>
 					Location:
-					<input onChange={console.log("locationAPI goes here")} type="text" id="#address" placeholder="Location" />
-					<div ref={gglmap => this.map = gglmap} id="map"/>
+					<input onChange={console.log("locationAPI goes here")} type="text" id="address" placeholder="Location" />
 				</label>
-				<button onClick={(e) => {e.preventDefault();   this.props.send()}} />
-
-
-				<input />
+				<button id="submit" onClick={(e) => {e.preventDefault(); this.getLatLong()}} />
+				<div id="googlemap" />
 			</form>
 		)
 	}

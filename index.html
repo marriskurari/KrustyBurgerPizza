@@ -24,8 +24,6 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <div id=#address></div>
-    <input type="text" id="address"></input>
 		<header>
 			<nav>
 				<div></div>
@@ -51,42 +49,51 @@
   };
   firebase.initializeApp(config)
   </script>
-   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNJA2KB2RbMCNraR0HDrAf11sWgJcwi8k">
-    </script>
   <script type="text/javascript" src="build/webpack-bundle.js"></script>
-  <!-- <script type="text/javascript" src="junk.js"></script> -->
   <script>
-let form
-let map
 
-const geocodeAddress = (geocoder, gglMap) => {
-  const address = form.querySelector("#address").value
-  geocoder.geocode({'address': address}, (results, status) => {
-    if(status === 'OK') {
-      gglMap.setCenter(results[0].geometry.location)
-      const marker = new google.maps.Marker({
-        map: gglMap,
-        position: results[0].geometry.location
-      })
-    } else {
-      alert("Something went wrong: " + status)
-    }
-  })
-}
+    //setting up a couple of globals before webpack these will be put
+    //into our form
+      const googlemap = document.querySelector("#googlemap")
+      const googlebutton = document.querySelector("#submit")
+      const googleinput = document.querySelector("#address")
+      let googlemarker;
 
-//binds a google selection map to element
-const initMap = () => {
-  const gglMap = new google.map.Map(map , {
-    zoom: 8,
-    center: {lat: 64.128, lng: 21.827}
-  })
-  const geocoder = new google.maps.Geocoder()
-  element.querySelector('#submit').addEventListener('click', () => {
-    geocodeAddress(geocoder, map)
-  })
-}
+      function initMap() {
+        var map = new google.maps.Map(googlemap, {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
 
-  </script>
+        var geocoder = new google.maps.Geocoder();
+        googlebutton.addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
 
-</doctype>
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = googleinput.value;
+        console.log(googleinput)
+        console.log("address is " + address)
+        googlemarker = new Promise((resolve, reject) => {
+          geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+              resultsMap.setCenter(results[0].geometry.location);
+              marker = new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+              });
+              resolve(marker)
+            } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+              reject(status)
+            }
+          });
+        })
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2VNU44wvsDplC413rmXbxBYirkCbKU1A&callback=initMap"
+      async defer></script>
+      </script>
+
+      </doctype>

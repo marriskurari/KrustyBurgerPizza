@@ -2026,9 +2026,17 @@ const createUser = (name, email) => {
 	return (0, _Request2.default)(requestString);
 };
 
+const getHotelsByLocation = (lat, lng) => {
+	let requestString = `${baseString}getHotelsByLocation?`;
+	requestString += `latitude=${lat}&`;
+	requestString += `longitude=${lng}`;
+	return (0, _Request2.default)(requestString);
+};
+
 const hotel = {
 	getOne: id => getById("Hotel", id),
-	getAll: () => getAllByType("Hotels")
+	getAll: () => getAllByType("Hotels"),
+	getHotelsByLocation
 };
 
 const booking = {
@@ -2088,26 +2096,28 @@ class SearchForm extends _react2.default.Component {
 		console.log(this.props);
 	}
 
-	componentWillMount() {
-		console.log("Component is mounting");
-		console.log("Component mounted");
+	getLatLong() {
+		googlemarker.then(a => {
+			const lat = a.position.lat();
+			const lng = a.position.lng();
+			this.props.getHotels(lat, lng);
+		});
 	}
 
 	render() {
 		return _react2.default.createElement(
 			"form",
-			{ ref: c => this.form = c, onSubmit: console.log("blablabla") },
+			{ id: "container", ref: c => this.form = c, onSubmit: console.log("blablabla") },
 			_react2.default.createElement(
 				"label",
 				null,
 				"Location:",
-				_react2.default.createElement("input", { onChange: console.log("locationAPI goes here"), type: "text", id: "#address", placeholder: "Location" }),
-				_react2.default.createElement("div", { ref: gglmap => this.map = gglmap, id: "map" })
+				_react2.default.createElement("input", { onChange: console.log("locationAPI goes here"), type: "text", id: "address", placeholder: "Location" })
 			),
-			_react2.default.createElement("button", { onClick: e => {
-					e.preventDefault();this.props.send();
+			_react2.default.createElement("button", { id: "submit", onClick: e => {
+					e.preventDefault();this.getLatLong();
 				} }),
-			_react2.default.createElement("input", null)
+			_react2.default.createElement("div", { id: "googlemap" })
 		);
 	}
 }
@@ -2214,7 +2224,7 @@ exports = module.exports = __webpack_require__(34)(false);
 
 
 // module
-exports.push([module.i, ".cardHolder__card__cardImage {\n  height: 150px;\n  width: 350px; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  margin-left: 10vw;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 20px; }\n\nbody {\n  background: linear-gradient(#66ff99, #e6e6e6);\n  background-size: cover;\n  margin: 5%; }\n\n.cardImage {\n  height: 150px;\n  width: 350px; }\n", ""]);
+exports.push([module.i, ".cardHolder__card__cardImage {\n  height: 150px;\n  width: 350px; }\n\n#googlemap {\n  height: 100px;\n  width: 100px; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  margin-left: 10vw;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 20px; }\n\nbody {\n  background: linear-gradient(#66ff99, #e6e6e6);\n  background-size: cover;\n  margin: 5%; }\n\n.cardImage {\n  height: 150px;\n  width: 350px; }\n", ""]);
 
 // exports
 
@@ -23074,11 +23084,20 @@ class SearchMain extends _react2.default.Component {
     super(props);
     this.getAllAndPushToCardHolder = this.getAllAndPushToCardHolder.bind(this);
     this.makeCardHolder = this.makeCardHolder.bind(this);
+    this.getHotelsByLocation = this.getHotelsByLocation.bind(this);
     this.state = {
       showResults: false,
       hotels: [],
       cardHolder: null
     };
+  }
+
+  setHotels(data) {
+    this.setState(state => {
+      console.log("state is set");
+      state.hotels = data;
+      state.showResults = true;
+    });
   }
 
   async getAllAndPushToCardHolder() {
@@ -23092,6 +23111,14 @@ class SearchMain extends _react2.default.Component {
     this.makeCardHolder();
   }
 
+  async getHotelsByLocation(lat, lng) {
+    console.log("blabla");
+    const data = await _DataController2.default.hotel.getHotelsByLocation(lat, lng);
+    this.setState(state => {
+      console.log("state is set");
+    });
+  }
+
   makeCardHolder() {
     this.setState(this.state.cardHolder = _react2.default.createElement(_CardHolder2.default, { className: "cardHolder", hotels: this.state.hotels }));
   }
@@ -23101,8 +23128,11 @@ class SearchMain extends _react2.default.Component {
     return _react2.default.createElement(
       _react2.default.Fragment,
       null,
-      _react2.default.createElement(_Jumbotron2.default, { className: "jumbotron", getAll: this.getAllAndPushToCardHolder }),
-      _react2.default.createElement(_SearchForm2.default, null),
+      _react2.default.createElement(_Jumbotron2.default, {
+        className: "jumbotron",
+        getHotels: this.getHotelsByLocation,
+        getAll: this.getAllAndPushToCardHolder
+      }),
       this.state.cardHolder
     );
   }
@@ -23170,6 +23200,7 @@ class Jumbotron extends _react2.default.Component {
 
 	render() {
 		console.log(this.props.getAll);
+		console.log(this.props.getHotels);
 		return _react2.default.createElement(
 			_react2.default.Fragment,
 			null,
@@ -23178,7 +23209,11 @@ class Jumbotron extends _react2.default.Component {
 				null,
 				" Jumbotron "
 			),
-			_react2.default.createElement(_SearchForm2.default, { className: "jumbotron__form", send: this.formGetAll.bind(this) })
+			_react2.default.createElement(_SearchForm2.default, {
+				className: "jumbotron__form",
+				send: this.formGetAll.bind(this),
+				getHotels: this.props.getHotels
+			})
 		);
 	}
 }

@@ -35,9 +35,17 @@ const createUser = (name, email) => {
 	return Request(requestString)
 }
 
+const getHotelsByLocation = (lat, lng) => {
+	let requestString = `${baseString}getHotelsByLocation?`
+	requestString += `latitude=${lat}&`
+	requestString += `longitude=${lng}`
+	return Request(requestString)
+}
+
 const hotel = {
 	getOne: (id) => getById("Hotel", id),
-	getAll: () => getAllByType("Hotels")
+	getAll: () => getAllByType("Hotels"),
+	getHotelsByLocation
 }
 
 const booking = {

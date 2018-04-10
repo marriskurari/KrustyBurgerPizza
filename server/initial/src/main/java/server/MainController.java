@@ -1,6 +1,7 @@
 package server;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,22 @@ public class MainController {
 	)
 	 {
 		return hotelRepository.findOne(id);
+	}
+
+	@CrossOrigin
+	@GetMapping(path = "/getHotelsByLocation")
+	public @ResponseBody
+	Iterable<HotelEntity> getHotelsByLocation(
+		 @RequestParam Double latitude,
+		 @RequestParam Double longitude
+	) {
+		Iterable<HotelEntity> list = getAllHotels();
+		List<HotelEntity> closeHotels = new ArrayList<>();
+		for(HotelEntity he : list) {
+			if(ToolBox.isClose(latitude, he.getLatitude(), longitude, he.getLongitude()))
+				closeHotels.add(he);
+		}
+		return closeHotels;
 	}
 
 	@CrossOrigin
