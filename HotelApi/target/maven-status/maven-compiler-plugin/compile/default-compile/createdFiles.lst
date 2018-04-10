@@ -3,6 +3,7 @@ search/generator/user/User.class
 search/generator/availability/Availability.class
 search/generator/hotel/HotelEntity.class
 search/generator/room/Room.class
+search/API.class
 search/generator/hotel/Hotel.class
 search/generator/availability/AvailabilityFactory.class
 search/generator/Request.class
@@ -13,5 +14,6 @@ search/generator/booking/Booking.class
 search/App.class
 search/generator/user/UserEntity.class
 search/generator/user/UserFactory.class
+search/generator/room/RoomFactory.class
 search/generator/Entity.class
 search/generator/hotel/HotelFactory.class

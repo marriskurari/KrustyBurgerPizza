@@ -46,7 +46,7 @@ public class API {
 		Hotel a = hf.generate();
 		System.out.println(a.getEmail());
 		Map<Integer, String> am = Factory.getRandomMap(Factory.amenities);
-		Hotel hh = new Hotel(5, "nammi", "nomail", 3.15, 4.5, am);
+		Hotel hh = new Hotel(5, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", am);
 		hotels.add(hh);
 		hotelFactory.save(hh);
 		for(int i = 0; i < 12; i++) {

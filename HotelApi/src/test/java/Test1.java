@@ -30,7 +30,7 @@ public class Test1 {
 	public void setUp() throws IOException {
 		System.out.println("----------------Setting up");
 		Map<Integer, String> am = Factory.getRandomMap(Factory.amenities);
-		Hotel myHotel = new Hotel(numRooms, "nammi", "nomail", 3.15, 4.5, am);
+		Hotel myHotel = new Hotel(numRooms, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", am);
 		JSONArray a = hotelFac.save(myHotel);
 		myId = Long.parseLong(a.get(0).toString());
 	}

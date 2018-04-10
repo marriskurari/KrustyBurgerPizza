@@ -89,10 +89,11 @@ public class MainController {
 		 @RequestParam double latitude,
 		 @RequestParam Double longitude,
 		 @RequestParam ArrayList<String> amenities,
-		 @RequestParam Integer numRooms
+		 @RequestParam Integer numRooms,
+		 @RequestParam String imageUrl
 	) {
 		Map<Integer, String> amenityMap = (Map<Integer, String>) Converter.arrayListToMap(amenities);
-		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, amenityMap);
+		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap);
 		h = hotelRepository.save(h);
 		return h.getId();
 	}
