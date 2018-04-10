@@ -32,7 +32,7 @@ public class ToolBox {
 	}
 
 	public static boolean isClose(double lat1, double lat2, double lng1, double lng2) {
-		return distance(lat1, lat2, lng1, lng2) < 50;
+		return distance(lat1, lat2, lng1, lng2) < 100;
 	}
 
 
