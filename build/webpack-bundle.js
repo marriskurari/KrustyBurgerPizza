@@ -23004,6 +23004,10 @@ var _CardHolder = __webpack_require__(70);
 
 var _CardHolder2 = _interopRequireDefault(_CardHolder);
 
+var _SearchForm = __webpack_require__(69);
+
+var _SearchForm2 = _interopRequireDefault(_SearchForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //insert router here
@@ -23045,6 +23049,7 @@ class SearchMain extends _react2.default.Component {
       _react2.default.Fragment,
       null,
       _react2.default.createElement(_Jumbotron2.default, { className: "jumbotron", getAll: this.getAllAndPushToCardHolder }),
+      _react2.default.createElement(_SearchForm2.default, null),
       this.state.cardHolder
     );
   }
@@ -23131,18 +23136,41 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _LocationHelper = __webpack_require__(75);
+
+var _LocationHelper2 = _interopRequireDefault(_LocationHelper);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//ekki taka burt, function verdur ad vera til
+let locApi = () => console.log("locApi was not set in 'SearchForm'");
+
 class SearchForm extends _react2.default.Component {
-	handleClick() {
+
+	handleSubmit() {
 		this.props.getAll();
+		this.map = null;
+		this.form = null;
+	}
+
+	componentWillMount() {
+		console.log("Component is mounting");
+		locApi = (0, _LocationHelper2.default)(this.form, this.map);
+		console.log("Component mounted");
 	}
 
 	render() {
 		return _react2.default.createElement(
-			'button',
-			{ onClick: this.handleClick.bind(this) },
-			' Get All '
+			Form,
+			{ ref: c => this.form = c, onSubmit: this.handleSubmit.bind(this) },
+			_react2.default.createElement(
+				Label,
+				null,
+				'Location:',
+				_react2.default.createElement('input', { onChange: locApi(), type: 'text', id: '#address', placeholder: 'Location' }),
+				_react2.default.createElement('div', { ref: gglmap => this.map = gglmap, id: 'map' })
+			),
+			_react2.default.createElement('input', null)
 		);
 	}
 }
@@ -23348,6 +23376,66 @@ class Header extends _react2.default.Component {
 	}
 }
 exports.default = Header;
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/*
+
+@Stupid
+google maps api virkar ekki nema initMap er i globalScope
+thad tharf ad hafa eitthvad callback or sum
+
+*/
+let form;
+let map;
+
+const geocodeAddress = (geocoder, gglMap) => {
+  const address = form.querySelector("#address").value;
+  geocoder.geocode({ 'address': address }, (results, status) => {
+    if (status === 'OK') {
+      gglMap.setCenter(results[0].geometry.location);
+      const marker = new google.maps.Marker({
+        map: gglMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert("Something went wrong: " + status);
+    }
+  });
+};
+
+//binds a google selection map to element
+const initMap = () => {
+  const gglMap = new google.map.Map(map, {
+    zoom: 8,
+    center: { lat: 64.128, lng: 21.827 }
+  });
+
+  const geocoder = new google.maps.Geocoder();
+  element.querySelector('#submit').addEventListener('click', () => {
+    geocodeAddress(geocoder, map);
+  });
+};
+
+const LocationApi = (_form, _map) => {
+  form = _form;
+  map = _map;
+  initMap();
+  return {
+    initMap
+  };
+};
+
+exports.default = LocationApi;
 
 /***/ })
 /******/ ]);

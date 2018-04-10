@@ -3,6 +3,7 @@ import DCtrl from "../DataController"
 
 import Jumbotron from "./Components/Jumbotron"
 import CardHolder from "./Components/CardHolder/CardHolder"
+import SearchForm from "./Components/SearchForm"
 //insert router here
 //then make card and then make a the button execute the Search
 //get the data to the parent and make a render, plus needs
@@ -41,6 +42,7 @@ export default class SearchMain extends React.Component {
 		return(
       <React.Fragment>
         <Jumbotron className="jumbotron" getAll={this.getAllAndPushToCardHolder}/>
+        <SearchForm />
         {this.state.cardHolder}
       </React.Fragment>
     )

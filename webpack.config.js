@@ -17,20 +17,20 @@ module: {
       }]
     },
     {
-      test: /app\/.+\.js$/, use: {
+      test: /app\/.+\.js$/,
+      use: {
         loader: "babel-loader"
       }
     },
     {
-      test: /\.(png|jpg|gif)$/, use: [
-        {
+      test: /\.(png|jpg|gif)$/,
+      use: [{
           loader: "url-loader",
           options: {
             publicPath: "./",
             limit: 8192,
           }
-        }
-      ]
+        }]
     }
   ]
 },
