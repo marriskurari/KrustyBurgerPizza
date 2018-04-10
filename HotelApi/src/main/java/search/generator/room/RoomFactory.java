@@ -30,7 +30,6 @@ public class RoomFactory<Ent extends RoomEntity> extends Factory {
 			 randomBoolean(),
 			 0
 		);
-
 		return room;
 	}
 

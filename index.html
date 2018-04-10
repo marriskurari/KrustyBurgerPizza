@@ -24,6 +24,8 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
+    <div id=#address></div>
+    <input type="text" id="address"></input>
 		<header>
 			<nav>
 				<div></div>
@@ -54,5 +56,37 @@
     </script>
   <script type="text/javascript" src="build/webpack-bundle.js"></script>
   <!-- <script type="text/javascript" src="junk.js"></script> -->
+  <script>
+let form
+let map
+
+const geocodeAddress = (geocoder, gglMap) => {
+  const address = form.querySelector("#address").value
+  geocoder.geocode({'address': address}, (results, status) => {
+    if(status === 'OK') {
+      gglMap.setCenter(results[0].geometry.location)
+      const marker = new google.maps.Marker({
+        map: gglMap,
+        position: results[0].geometry.location
+      })
+    } else {
+      alert("Something went wrong: " + status)
+    }
+  })
+}
+
+//binds a google selection map to element
+const initMap = () => {
+  const gglMap = new google.map.Map(map , {
+    zoom: 8,
+    center: {lat: 64.128, lng: 21.827}
+  })
+  const geocoder = new google.maps.Geocoder()
+  element.querySelector('#submit').addEventListener('click', () => {
+    geocodeAddress(geocoder, map)
+  })
+}
+
+  </script>
 
 </doctype>

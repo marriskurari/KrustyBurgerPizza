@@ -50,7 +50,6 @@ public class HotelEntity extends Entity {
 		params.add(pair("email", this.email));
 		params.add(pair("numRooms", this.numRooms));
 		params.add(pair("imageUrl", this.imageUrl));
-
 		if(amenities != null)
 			params.addAll(mapToListOfPairs("amenities", amenities));
 		if(roomIds != null)
