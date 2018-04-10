@@ -187,6 +187,29 @@ public abstract class Factory<Ent extends Entity> {
 		 "linen"
 	};
 
+	public static final String[] imageUrl = {
+		 "https://i.imgur.com/6c76Tdn.jpg",
+		 "https://i.imgur.com/LFgN8Pd.jpg",
+		 "https://i.imgur.com/LDhMXCB.jpg",
+		 "https://i.imgur.com/ojjACfZ.jpg",
+		 "https://i.imgur.com/qLyomx3.jpg",
+		 "https://i.imgur.com/btJFPOL.jpg",
+		 "https://i.imgur.com/wbhxWSo.jpg",
+		 "https://i.imgur.com/TvLUBJp.jpg",
+		 "https://i.imgur.com/dS4WILC.jpg",
+		 "https://i.imgur.com/TJoqdrp.jpg",
+		 "https://i.imgur.com/7mwzU6P.jpg",
+		 "https://i.imgur.com/qUBiJNr.jpg",
+		 "https://i.imgur.com/rYgxnbE.jpg",
+		 "https://i.imgur.com/yFiLDSq.jpg",
+		 "https://i.imgur.com/3CU2kb0.jpg",
+		 "https://i.imgur.com/c7fkAPd.jpg",
+		 "https://i.imgur.com/rQxaSum.jpg",
+		 "https://i.imgur.com/R85lN5a.jpg",
+		 "https://i.imgur.com/3LTxbQj.jpg",
+		 "https://i.imgur.com/EjZ75rt.jpg"
+	}
+
 	protected static final String[] humanName = {
 		 "Bernard_Hunt",
 		 "Jaime_Holloway",

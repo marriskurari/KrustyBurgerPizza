@@ -30,15 +30,15 @@ public class HotelEntity extends Entity {
 		this.setImageUrl(imageUrl);
 	}
 
-	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, Map<Integer, String> amenities) {
+	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Map<Integer, String> amenities) {
 		System.out.println(id + "" + numRooms + latitude + longitude + name + email);
 		System.out.println(email);
-		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, amenities);
+		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenities);
 		hotel.setId(id);
 	}
 
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities, imageUrl);
+		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, amenities);
 	}
 
 	@Override
