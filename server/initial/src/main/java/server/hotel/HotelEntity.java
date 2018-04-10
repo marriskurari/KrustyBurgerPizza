@@ -16,6 +16,7 @@ public class HotelEntity {
 	private Double longitude;
 	private String  name;
 	private String  email;
+	private String imageUrl;
 	//roomType, ID
 	@ElementCollection
 	private Map<String, Long> roomIds;
@@ -25,22 +26,23 @@ public class HotelEntity {
 
 	public HotelEntity() { }
 
-	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, Map<Integer, String> amenities) {
+	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, String imageUrl, Map<Integer, String> amenities) {
 		this.setNumRooms(numRooms);
 		this.setName(name);
 		this.setEmail(email);
 		this.setLongitude(longitude);
 		this.setLatitude(latitude);
+		this.setImageUrl(imageUrl);
 		this.setAmenities(amenities);
 	}
 
-	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, Map<Integer, String> amenities) {
-		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, amenities);
+public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Map<Integer, String> amenities) {
+		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenities);
 		hotel.setId(id);
 	}
 
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
+		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, amenities);
 	}
 
 	public Long getId()           { return id;     }
@@ -78,6 +80,14 @@ public class HotelEntity {
 		for(Map.Entry<String, Long> e : roomEntityList.entrySet())
 			newRooms.put(e.getKey(), e.getValue());
 		this.roomIds = newRooms;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 }
 

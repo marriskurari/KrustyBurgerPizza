@@ -31,7 +31,8 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 			 getRandom(email),
 			 randomDouble(60, 3),
 			 randomDouble(-20, 3),
-			 getRandomMap(amenities)
+			 getRandomMap(amenities),
+			 getRandom(imageUrl)
 		);
 		return hotel;
 	}
@@ -50,6 +51,7 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 		ent.setLatitude((Double) json.get("latitude"));
 		ent.setEmail((String) json.get("email"));
 		ent.setName((String) json.get("name"));
+		ent.setImageUrl((String) json.get("imageUrl"))
 		Map<Integer, String> amenities = new HashMap<>();
 		amenities.put(0, "nothing");
 		System.out.println("H get name :) ;);); " + ent.getName());

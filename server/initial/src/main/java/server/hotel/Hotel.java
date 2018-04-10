@@ -21,8 +21,8 @@ public class Hotel extends HotelEntity {
 	private Map<String, Room> rooms = new HashMap<>();
 	private Map<String, RoomEntity> roomEntities = new HashMap<>();
 
-	public Hotel(Integer numRooms, String name, String email, Double longtitude, double latitude, Map<Integer, String> amenities) {
-		super(numRooms, name, email, longtitude, latitude, amenities);
+	public Hotel(Integer numRooms, String name, String email, Double longtitude, double latitude, String imageUrl, Map<Integer, String> amenities) {
+		super(numRooms, name, email, longtitude, latitude, imageUrl, amenities);
 	}
 
 	public Map<String, Room> getRooms() {

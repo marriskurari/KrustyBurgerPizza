@@ -14,18 +14,20 @@ public class HotelEntity extends Entity {
 	private String  email;
 	private Map<Integer, Long> roomIds;
 	private Map<Integer, String> amenities;
+	private String imageUrl = "https://via.placeholder.com/350x150";
 
 	public HotelEntity() {
 		super();
 	}
 
-	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, Map<Integer, String> amenities) {
+	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, String imageUrl, Map<Integer, String> amenities) {
 		this.setNumRooms(numRooms);
 		this.setName(name);
 		this.setEmail(email);
 		this.setLongitude(longitude);
 		this.setLatitude(latitude);
 		this.setAmenities(amenities);
+		this.setImageUrl(imageUrl);
 	}
 
 	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, Map<Integer, String> amenities) {
@@ -36,7 +38,7 @@ public class HotelEntity extends Entity {
 	}
 
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities);
+		return new HotelEntity(id, numRooms, latitude, longitude, name, email, amenities, imageUrl);
 	}
 
 	@Override
@@ -47,6 +49,8 @@ public class HotelEntity extends Entity {
 		params.add(pair("name", this.name));
 		params.add(pair("email", this.email));
 		params.add(pair("numRooms", this.numRooms));
+		params.add(pair("imageUrl", this.imageUrl));
+
 		if(amenities != null)
 			params.addAll(mapToListOfPairs("amenities", amenities));
 		if(roomIds != null)
@@ -65,6 +69,9 @@ public class HotelEntity extends Entity {
 
 	public String getName()             { return name;     }
 	public void   setName(String name) { this.name = name; }
+
+	public String getImageUrl()             { return imageUrl;     }
+	public void   setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
 	public String getEmail()             { return email;       }
 	public void   setEmail(String email) { this.email = email; }
