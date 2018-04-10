@@ -51,7 +51,6 @@ package search.generator;
  8        Lol              NNNNNNNN;         8                 NNNNNNN
  Y     o                   NNNNNNNN:         P                 NNNNNNN
  b   -|-                  NNNNNNNN;        d                  NNNNNNP
- 8   ¯Λ                    NNNNNNNN         8                 dNNNNNN
  ______8__........----------""""""""""""------...8..______         NNNNNNN
  _________........----------""""""""""""------......_____  """""----NNNNNNN
  """""----....___ """--
@@ -208,7 +207,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "https://i.imgur.com/R85lN5a.jpg",
 		 "https://i.imgur.com/3LTxbQj.jpg",
 		 "https://i.imgur.com/EjZ75rt.jpg"
-	}
+	};
 
 	protected static final String[] humanName = {
 		 "Bernard_Hunt",
