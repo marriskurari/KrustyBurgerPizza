@@ -23114,9 +23114,7 @@ class SearchMain extends _react2.default.Component {
   async getHotelsByLocation(lat, lng) {
     console.log("blabla");
     const data = await _DataController2.default.hotel.getHotelsByLocation(lat, lng);
-    this.setState(state => {
-      console.log("state is set");
-    });
+    setHotels(data);
   }
 
   makeCardHolder() {

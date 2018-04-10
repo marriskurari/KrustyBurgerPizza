@@ -45,9 +45,7 @@ export default class SearchMain extends React.Component {
   async getHotelsByLocation(lat, lng) {
     console.log("blabla")
     const data = await DCtrl.hotel.getHotelsByLocation(lat, lng)
-    this.setState(state => {
-      console.log("state is set")
-    })
+    setHotels(data)
   }
 
   makeCardHolder() {
