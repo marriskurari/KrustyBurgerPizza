@@ -29,8 +29,8 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 			 randomInt(72),
 			 getRandom(hotelName),
 			 getRandom(email),
-			 randomDouble(-20, 3),
-			 randomDouble(60, 3),
+			 randomDouble(-23.5, 10),
+			 randomDouble(64.88, 0.4),
 			 getRandom(imageUrl),
 			 getRandomMap(amenities)
 		);
