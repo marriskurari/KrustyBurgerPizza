@@ -140,7 +140,7 @@ public abstract class Factory<Ent extends Entity> {
 
 	protected static boolean randomBoolean()                      { return Math.random() > 0.5; }
 	protected static double  randomDouble(double seed)            { return Math.random() * seed; }
-	protected static double  randomDouble(double seed, int width) { return seed + Math.random() * width; }
+	protected static double  randomDouble(double seed, double width) { return seed + Math.random() * width; }
 	protected static int     randomInt(int seed)                  { return (int) (Math.random() * seed); }
 	protected static Long    randomDate(Long seed, int width) {
 		Date date = new Date(seed);
