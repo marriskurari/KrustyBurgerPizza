@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import { Link } from 'react-router'
 
 export default class CardHolder extends React.Component {
   constructor() {
@@ -13,16 +14,19 @@ export default class CardHolder extends React.Component {
   }
 
   makeCard(hotelObject) {
-      return (<Card
-        className="cardHolder__card"
-        key={hotelObject.id}
-        name={this.findAndReplace(hotelObject.name, "_", " ")}
-        email={hotelObject.email}
-        latitude={hotelObject.latitude}
-        longitude={hotelObject.longitude}
-        imageUrl={hotelObject.imageUrl}
-        numRooms={hotelObject.numRooms}
-      />)
+      return (
+      <Link to={`hotel?${hotelObject.id}`}>
+        <Card
+          className="cardHolder__card"
+          key={hotelObject.id}
+          name={this.findAndReplace(hotelObject.name, "_", " ")}
+          email={hotelObject.email}
+          latitude={hotelObject.latitude}
+          longitude={hotelObject.longitude}
+          imageUrl={hotelObject.imageUrl}
+          numRooms={hotelObject.numRooms}
+        />
+      </Link>)
   }
 
   renderHotelList() {
