@@ -19,3 +19,7 @@ server/.gradle
 #Oll intellij setup
 server/initial/.idea
 HotelApi/.idea/*
+
+#webpack-bundle sem er að valda conflicts
+build/webpack-bundle.js
+build/webpack-bundle.js.map
