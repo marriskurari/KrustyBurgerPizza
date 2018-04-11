@@ -23,20 +23,36 @@ public class Booking extends Entity {
 	private Boolean isPaid;
 	private Long dateFrom;
 	private Long dateTo;
+	private String cc;
 
-	public Booking(Long hotelId, String roomType, Long from, Long to) {
+	public Booking(
+		Long hotelId,
+		String roomType,
+		Long from,
+		Long to,
+		String cc
+	) {
 		this.hotelId = hotelId;
 		this.roomType = roomType;
 		this.dateFrom = from;
 		this.dateTo = to;
+		this.cc = cc;
 	}
 
-	public Booking(Long id, Long hotelId, String roomType, Long from, Long to) {
+	public Booking(
+		Long id,
+		Long hotelId,
+		String roomType,
+		Long from,
+		Long to,
+		String cc
+	) {
 		this.id = id;
 		this.hotelId = hotelId;
 		this.roomType = roomType;
 		this.dateFrom = from;
 		this.dateTo = to;
+		this.cc = cc;
 	}
 
 	@Override
@@ -50,6 +66,14 @@ public class Booking extends Entity {
 		params.add(pair("dateFrom", this.dateFrom));
 		params.add(pair("dateTo", this.dateTo));
 		return params;
+	}
+
+	public void setCC(String cc) {
+		this.cc = cc;
+	}
+
+	public String getCC() {
+		return cc;
 	}
 
 	public Long getHotelId() {
@@ -102,4 +126,3 @@ public class Booking extends Entity {
 		this.userId = userId;
 	}
 }
-

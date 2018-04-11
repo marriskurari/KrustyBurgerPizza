@@ -27,6 +27,12 @@ public class Availability extends Entity {
 		return zeroByDays;
 	}
 
+	public Availability(Map<Long, Integer> days) {
+		this.days = days;
+	}
+
+	public Availability() { }
+
 	public void setAvailabilityToZero() {
 		setDays(zeroAvailabilityMap());
 	}
@@ -45,6 +51,15 @@ public class Availability extends Entity {
 			params.add(new Pair<>("" + d.getKey(), "" + d.getValue()));
 		return params;
 	}
+
+	public Map<Long, Integer> getAvailability() {
+		return days;
+	}
+
+	public void setAvailability(Map<Long, Integer> days) {
+		this.days = days;
+	}
+
 	public void setAvailabilityForDate(Long date, int numberOfRooms) {
 		long d = ToolBox.formatToMidnight(date);
 		days.put(date, numberOfRooms);
@@ -53,7 +68,7 @@ public class Availability extends Entity {
 	public int getAvailabilityForDate(long date, int numberOfRooms) {
 		return days.get(date);
 	}
-	
+
 	public Map<Long, Integer> getDays() {
 		return days;
 	}

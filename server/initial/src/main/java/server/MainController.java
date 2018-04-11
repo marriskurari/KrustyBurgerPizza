@@ -1,6 +1,7 @@
 package server;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -90,11 +91,14 @@ public class MainController {
 		 @RequestParam double latitude,
 		 @RequestParam Double longitude,
 		 @RequestParam ArrayList<String> amenities,
+		 @RequestParam ArrayList<Long> roomIds,
 		 @RequestParam Integer numRooms,
 		 @RequestParam String imageUrl
 	) {
 		Map<Integer, String> amenityMap = (Map<Integer, String>) Converter.arrayListToMap(amenities);
-		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap);
+		Map<Integer, Long> roomIdMap = (Map<Integer, Long>) Converter.arrayListToMap(roomIds);
+
+		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap, roomIdMap);
 		h = hotelRepository.save(h);
 		return h.getId();
 	}
@@ -135,7 +139,7 @@ public class MainController {
 
 	@CrossOrigin
 	@GetMapping(path = "/removeHotel")
-	public @ResponseBody String remove(
+	public @ResponseBody String removeHotel(
 		 @RequestParam Long id
 	) {
 		hotelRepository.delete(id);
@@ -151,13 +155,11 @@ public class MainController {
 	String addNewRoom(
 		 @RequestParam String roomType,
 		 @RequestParam Integer numberOfBeds,
-		 @RequestParam Boolean extraBed
+		 @RequestParam Boolean extraBed,
+		 @RequestParam Long availabilityId
 	) {
 		RoomEntity re = new RoomEntity(roomType, numberOfBeds, extraBed);
-		Availability av = new Availability();
-		av.setAvailabilityToZero();
-		av = availabilityRepository.save(av);
-		re.setAvailabilityId(av.getId());
+		re.setAvailabilityId(availabilityId);
 		re = roomRepository.save(re);
 		return "" + re.getId();
 	}
@@ -171,14 +173,24 @@ public class MainController {
 		return roomRepository.findOne(id);
 	}
 
+	@CrossOrigin
+	@GetMapping(path = "/removeRoom")
+	public @ResponseBody String removeRoom(
+		 @RequestParam Long id
+	) {
+		roomRepository.delete(id);
+		return "Deleted";
+	}
+
 	/*********************************
 	 *   BOOKING METHODS
 	 ********************************/
 	//all dateString: yyyy-mm-dd
-	private Booking makeBasicBooking(Long hotelId, String roomType, String dateFrom, String dateTo) {
+	private Booking makeBasicBooking(Long hotelId, String roomType, String dateFrom, String dateTo, String cc) {
 		Long from = Converter.yyyymmdd_toLong(dateFrom);
 		Long to = Converter.yyyymmdd_toLong(dateTo);
-		return new Booking(hotelId, roomType, from, to);
+
+		return new Booking(hotelId, roomType, from, to, cc);
 	}
 
 	@CrossOrigin
@@ -197,9 +209,10 @@ public class MainController {
 		 @RequestParam Long hotelId,
 		 @RequestParam String roomType,
 		 @RequestParam String dateFrom, //yyyy-mm-dd
-		 @RequestParam String dateTo    //yyyy-mm-dd
+		 @RequestParam String dateTo,    //yyyy-mm-dd
+		 @RequestParam String cc
 	) {
-		Booking booking = makeBasicBooking(hotelId, roomType, dateFrom, dateTo);
+		Booking booking = makeBasicBooking(hotelId, roomType, dateFrom, dateTo, cc);
 		booking = bookingRepository.save(booking);
 		return booking.getId().toString();
 	}
@@ -212,16 +225,54 @@ public class MainController {
 		 @RequestParam Long userId,
 		 @RequestParam String roomType,
 		 @RequestParam String dateFrom, //yyyy-mm-dd
-		 @RequestParam String dateTo    //yyyy-mm-dd
+		 @RequestParam String dateTo,    //yyyy-mm-dd
+		 @RequestParam String cc
 	) {
-		Booking booking = makeBasicBooking(hotelId, roomType, dateFrom, dateTo);
+		Booking booking = makeBasicBooking(hotelId, roomType, dateFrom, dateTo, cc);
 		booking.setUserId(userId);
 		booking = bookingRepository.save(booking);
 		return booking.getId().toString();
 	}
+
+	@CrossOrigin
+	@GetMapping(path = "/removeBooking")
+	public @ResponseBody String removeBooking(
+		 @RequestParam Long id
+	) {
+		bookingRepository.delete(id);
+		return "Deleted";
+	}
+
 	/*********************************
-	 *   BOOKING METHODS
+	 *   AVAILABILITY METHODS
 	 ********************************/
+
+	@CrossOrigin
+	@GetMapping(path = "/addAvailability")
+	public @ResponseBody
+	Long addAvailability(
+		 @RequestParam Map<String, String> allParams
+	) {
+		Map<Long, Integer> days = new HashMap<>();
+		for(Map.Entry<String, String> e : allParams.entrySet()) {
+			days.put(Long.parseLong(e.getKey()), Integer.parseInt(e.getValue()));
+		}
+
+		Availability availability = new Availability();
+		availability.setDays(days);
+		Availability a =  availabilityRepository.save(availability);
+		System.out.println(a.getId());
+		return a.getId();
+	}
+
+	@CrossOrigin
+	@GetMapping(path = "/removeAvailability")
+	public @ResponseBody String removeAvailability(
+		 @RequestParam Long id
+	) {
+		availabilityRepository.delete(id);
+		return "Deleted";
+	}
 
 	@CrossOrigin
 	@GetMapping(path = "/oneAvailability")

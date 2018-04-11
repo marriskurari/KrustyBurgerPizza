@@ -75,17 +75,17 @@ public class Converter {
 	}
 
 	public static void setupRoomEntitiesForHotel(Hotel hotel) {
-		Map<String, RoomEntity> roomEntities = new HashMap<>();
-		Map<String, Long> roomIds = hotel.getRoomIds();
-		for(Map.Entry<String, Long> entry : roomIds.entrySet())
+		Map<Integer, RoomEntity> roomEntities = new HashMap<>();
+		Map<Integer, Long> roomIds = hotel.getRoomIds();
+		for(Map.Entry<Integer, Long> entry : roomIds.entrySet())
 			roomEntities.put(entry.getKey(), roomRepository.findOne(entry.getValue()));
 		hotel.setRoomEntities(roomEntities);
 	}
 
 	public static void roomEntitiesToRoomsForHotel(Hotel hotel) {
-		Map<String, Room> rooms = new HashMap<>();
-		Map<String, RoomEntity> entityMap =  hotel.getRoomEntities();
-		for(Map.Entry<String, RoomEntity> entry : entityMap.entrySet())
+		Map<Integer, Room> rooms = new HashMap<>();
+		Map<Integer, RoomEntity> entityMap =  hotel.getRoomEntities();
+		for(Map.Entry<Integer, RoomEntity> entry : entityMap.entrySet())
 			rooms.put(entry.getKey(), (Room) entry.getValue());
 		hotel.setRooms(rooms);
 	}

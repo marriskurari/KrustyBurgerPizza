@@ -20,16 +20,19 @@ public class AvailabilityFactory<Ent extends Entity> extends Factory {
 	public AvailabilityFactory() {
 		this.updateURL = "addAvailability";
 		this.getAllURL = "allAvailabilities";
+		this.getOneURL = "oneAvailability";
+		this.removeURL = "removeAvailability";
 	}
 
 	public Availability generate() {
-		Availability availability = new Availability();
-		availability.setDays(getRandomAvailability());
+		Availability availability = new Availability(getRandomAvailability());
 		return availability;
 	}
 
 	@Deprecated
 	public Availability jsonToEntity(JSONObject json) {
+		System.out.println("Fix this, availabilityfoctory jsonToEntity function");
+		System.out.println(json.toString());
 		return new Availability();
 	}
 }

@@ -21,6 +21,8 @@ public class BookingFactory<Ent extends Entity> extends Factory {
 	public BookingFactory() {
 		this.updateURL = "addBooking";
 		this.getAllURL = "allBookings";
+		this.getOneURL = "oneBooking";
+		this.removeURL = "removeBooking";
 	}
 
 	public Booking generate() {
@@ -29,7 +31,8 @@ public class BookingFactory<Ent extends Entity> extends Factory {
 			 (long) randomInt(100),
 			 getRandom(roomTypes),
 			 randomDates.getKey(),
-			 randomDates.getValue()
+			 randomDates.getValue(),
+			 randomCC()
 		);
 		return booking;
 	}
@@ -40,6 +43,7 @@ public class BookingFactory<Ent extends Entity> extends Factory {
 		String roomType = (String) json.get("roomType");
 		Long dateFrom = (Long) json.get("dateFrom");
 		Long dateTo = (Long) json.get("dateTo");
-		return new Booking(id, hotelId, roomType, dateFrom, dateTo);
+		String cc = (String) json.get("cc");
+		return new Booking(id, hotelId, roomType, dateFrom, dateTo, cc);
 	}
 }

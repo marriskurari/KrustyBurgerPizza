@@ -38,6 +38,7 @@ public class Request {
 		s = s.substring(0, s.length() - 1);
 
 		requestString += s;
+		System.out.println(requestString);
 	}
 
 	private String extractJSONstringFromRequest() throws IOException {
@@ -71,6 +72,8 @@ public class Request {
 
 	public Request(String string) throws IOException {
 		initRequest(string);
+		System.out.println("Printing out the string");
+		System.out.println(requestString);
 		con = makeRequest();
 	}
 

@@ -4,6 +4,21 @@ import search.generator.Factory;
 import search.generator.hotel.Hotel;
 import search.generator.hotel.HotelEntity;
 import search.generator.hotel.HotelFactory;
+
+import search.generator.availability.Availability;
+import search.generator.availability.AvailabilityFactory;
+
+import search.generator.booking.Booking;
+import search.generator.booking.BookingFactory;
+
+import search.generator.room.Room;
+import search.generator.room.RoomEntity;
+import search.generator.room.RoomFactory;
+
+import search.generator.user.User;
+import search.generator.user.UserEntity;
+import search.generator.user.UserFactory;
+
 import org.json.JSONArray;
 import org.junit.After;
 import org.junit.Assert;
@@ -21,34 +36,66 @@ public class Test1 {
 	private Hotel myHotel;
 	private ObjectOutputStream myOutStream;
 	private ObjectInputStream myInStream;
-	private int numRooms = 47;
-	private HotelFactory hotelFac = new HotelFactory();
-	private HotelEntity hotel;
-	private Long myId;
+
+	private HotelFactory hf = new HotelFactory();
+	private RoomFactory rf = new RoomFactory();
+	private AvailabilityFactory af = new AvailabilityFactory();
+	private BookingFactory bf = new BookingFactory();
+	private UserFactory uf = new UserFactory();
+
+	private Long hid;
+	private Long aid;
+	private Long rid;
+	private Long bid;
+	private Long uid;
 
 	@Before
 	public void setUp() throws IOException {
 		System.out.println("----------------Setting up");
-		Map<Integer, String> am = Factory.getRandomMap(Factory.amenities);
-		Hotel myHotel = new Hotel(numRooms, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", am);
-		JSONArray a = hotelFac.save(myHotel);
-		myId = Long.parseLong(a.get(0).toString());
+		//tools to make
+		Map<Integer, String> amenMap = Factory.getRandomMap(Factory.amenities);
+		Map<Long, Integer> availMap = Factory.getRandomAvailability();
+
+		Availability a = new Availability(availMap);
+		aid = af.save(a);
+		System.out.println("Av id" + aid);
+		Assert.assertNotNull(aid);
+
+		Room r = new Room("dbl", 2, false, aid);
+		rid = rf.save(r);
+		Assert.assertNotNull(rid);
+
+		Hotel h = new Hotel(47, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", amenMap);
+		h.addRoomId(rid);
+		hid = hf.save(h);
+		Assert.assertNotNull(hid);
+
+
 	}
 
 	@Test
-	public void testNormalEmail() throws IOException {
+	public void test() throws IOException {
 		System.out.println("----------------Starting test");
-		hotel = hotelFac.getOneHotel(myId);
-		Assert.assertEquals(myId, hotel.getId());
-		Assert.assertEquals("nammi", hotel.getName());
-		Assert.assertEquals("nomail", hotel.getEmail());
-		Assert.assertEquals(3.15, hotel.getLongitude(), 0.01);
-		Assert.assertEquals(4.5, hotel.getLatitude(), 0.01);
+		HotelEntity h = hf.getOneHotel(hid);
+		Assert.assertEquals(hid, h.getId());
+		Assert.assertEquals("nammi", h.getName());
+		Assert.assertEquals("nomail", h.getEmail());
+		Assert.assertEquals(3.15, h.getLongitude(), 0.01);
+		Assert.assertEquals(4.5, h.getLatitude(), 0.01);
+		Assert.assertEquals(rid, new Long(h.getRoomIds().get(0)));
+
+		RoomEntity r = rf.getOneRoom(rid);
+		Assert.assertEquals(false, r.isExtraBed());
+		Assert.assertEquals(2, r.getNumberOfBeds());
+		Assert.assertEquals("dbl", r.getRoomType());
+		Assert.assertEquals((Long) aid, (Long) r.getAvailabilityId());
 	}
 
 	@After
 	public void tearDown() throws IOException {
 		System.out.println("----------------Taking the thing out");
-		hotelFac.remove(myId);
+		hf.remove(hid);
+		rf.remove(rid);
+		af.remove(aid);
 	}
 }

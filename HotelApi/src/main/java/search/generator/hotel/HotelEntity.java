@@ -12,8 +12,8 @@ public class HotelEntity extends Entity {
 	private Double longitude;
 	private String  name;
 	private String  email;
-	private Map<Integer, Long> roomIds;
-	private Map<Integer, String> amenities;
+	private Map<Integer, Long> roomIds = new HashMap<>();
+	private Map<Integer, String> amenities = new HashMap<>();
 	private String imageUrl = "https://via.placeholder.com/350x150";
 
 	public HotelEntity() {
@@ -50,9 +50,9 @@ public class HotelEntity extends Entity {
 		params.add(pair("email", this.email));
 		params.add(pair("numRooms", this.numRooms));
 		params.add(pair("imageUrl", this.imageUrl));
-		if(amenities != null)
+		if(!amenities.isEmpty())
 			params.addAll(mapToListOfPairs("amenities", amenities));
-		if(roomIds != null)
+		if(!roomIds.isEmpty())
 			params.addAll(mapToListOfPairs("roomIds", roomIds));
 		return params;
 	}
@@ -85,6 +85,9 @@ public class HotelEntity extends Entity {
 
 	public void addRoomId(Long roomEntityId) {
 		roomIds.put(roomIds.size(), roomEntityId);
+		System.out.println("Printing all ids");
+		for(Map.Entry<Integer, Long> e : roomIds.entrySet())
+			System.out.println(e.getValue());
 	}
 
 	public void setRoomIds(Map<Integer, Long> roomEntityList) {
@@ -94,4 +97,3 @@ public class HotelEntity extends Entity {
 		this.roomIds = newRooms;
 	}
 }
-

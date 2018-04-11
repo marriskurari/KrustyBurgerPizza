@@ -2,7 +2,10 @@ package search.generator.hotel;
 
 import search.generator.Entity;
 import search.generator.Factory;
+import search.API;
 import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,12 +40,33 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 		return hotel;
 	}
 
+	public Long save(Ent ent) throws IOException {
+		API.setHotelListNeedsToBeUpdated(true);
+		return super.save(ent);
+	}
+
 	public Ent getOneHotel(Long id) throws IOException {
 		List<Ent> listOfOne =  super.getOne(id);
 		return listOfOne.get(0);
 	}
 
-	@Deprecated
+	public Map<Integer, String> getStringMapFromJSON(JSONObject o) {
+		Map<Integer, String> map = new HashMap<>();
+		Integer i = 0;
+		while(true) {
+			try { map.put(i, (String) o.get(i.toString()).toString()); i++; }
+			catch(JSONException e) { return map; }
+		}
+	}
+
+	public Map<Integer, Long> getLongMapFromJSON(JSONObject o) {
+		Map<Integer, String> stringMap = getStringMapFromJSON(o);
+		Map<Integer, Long> longMap = new HashMap<>();
+		for(Map.Entry<Integer, String> e : stringMap.entrySet())
+			longMap.put(e.getKey(), Long.parseLong(e.getValue()));
+		return longMap;
+	}
+
 	public Ent jsonToEntity(JSONObject json) {
 		Ent ent = (Ent) new HotelEntity();
 		ent.setId(Long.parseLong(json.get("id").toString()));
@@ -53,8 +77,13 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 		ent.setName((String) json.get("name"));
 		ent.setImageUrl((String) json.get("imageUrl"));
 		Map<Integer, String> amenities = new HashMap<>();
-		amenities.put(0, "nothing");
-		System.out.println("H get name :) ;);); " + ent.getName());
+		Map<Integer, Long> roomIds = new HashMap<>();
+		JSONObject amenitiesJSON = (JSONObject) json.get("amenities");
+		JSONObject roomIdsJSON = (JSONObject) json.get("roomIds");
+		amenities = getStringMapFromJSON(amenitiesJSON);
+		roomIds = getLongMapFromJSON(roomIdsJSON);
+		ent.setAmenities(amenities);
+		ent.setRoomIds(roomIds);
 		return ent;
 	}
 }

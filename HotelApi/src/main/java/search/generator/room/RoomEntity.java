@@ -19,7 +19,7 @@ public class RoomEntity extends Entity {
 	private int numberOfBeds;
 	private String roomType;
 	private boolean extraBed;
-	
+
 	private Long availabilityId;
 
 	public RoomEntity(String roomType, Integer numberOfBeds, Boolean extraBed) {
@@ -59,9 +59,9 @@ public class RoomEntity extends Entity {
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
 		params.add(pair("id", this.id));
-		params.add(pair("latitude", this.numberOfBeds));
+		params.add(pair("numberOfBeds", this.numberOfBeds));
 		params.add(pair("roomType", this.roomType));
-		params.add(pair("extaBed", this.extraBed));
+		params.add(pair("extraBed", this.extraBed));
 		params.add(pair("availabilityId", this.availabilityId));
 		return params;
 	}
@@ -98,4 +98,3 @@ public class RoomEntity extends Entity {
 		this.availabilityId = availabilityId;
 	}
 }
-

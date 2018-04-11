@@ -29,12 +29,14 @@ public class Booking {
 	private Boolean isPaid;
 	private Long dateFrom;
 	private Long dateTo;
+	private String cc;
 
-	public Booking(Long hotelId, String roomType, Long from, Long to) {
+	public Booking(Long hotelId, String roomType, Long from, Long to, String cc) {
 		this.hotelId = hotelId;
 		this.roomType = roomType;
 		this.dateFrom = from;
 		this.dateTo = to;
+		this.cc = cc;
 	}
 
 	public Integer getId() {
@@ -92,6 +94,14 @@ public class Booking {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
+	}
+
+	public String getCc() {
+		return cc;
+	}
+
+	public void setCc(String cc) {
+		this.cc = cc;
 	}
 }
 

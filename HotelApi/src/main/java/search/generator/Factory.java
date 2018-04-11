@@ -78,10 +78,20 @@ public abstract class Factory<Ent extends Entity> {
 		return true;
 	}
 
-	public JSONArray save(Ent ent) throws IOException {
+	public Long save(Ent ent) throws IOException {
 		JSONObject o = new JSONObject();
+		List<Pair<String, String>> params = ent.getParameters();
+		Pair<String, String> remove = null;
+		for(Pair<String, String> p : params) {
+			if(p.getKey().equals("id") && p.getValue().equals("null"))
+				remove = p;
+		}
+		if(remove != null)
+			params.remove(remove);
 		Request r = new Request(updateURL, ent.getParameters());
-		return r.resolve();
+		JSONArray a = r.resolve();
+		Long l = Long.parseLong(a.get(0).toString());
+		return l;
 	}
 
 	public List getOne(Long id) throws IOException {
@@ -152,7 +162,17 @@ public abstract class Factory<Ent extends Entity> {
 		return cal.getTime().getTime();
 	}
 
-	protected static Map<Long, Integer> getRandomAvailability() {
+
+
+	protected static String randomCC() {
+		String cc = "";
+		for(int i = 0; i < 23; i++) {
+			cc += Integer.toString(randomInt(10));
+		}
+		return cc;
+	}
+
+	public static Map<Long, Integer> getRandomAvailability() {
 		Map<Long, Integer> map = new HashMap<>();
 		Long today = randomDate(new Date().getTime(), 0);
 		for(int i = 0; i < 400; i++)

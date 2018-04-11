@@ -18,26 +18,26 @@ import java.util.Map;
 
 public class Hotel extends HotelEntity {
 
-	private Map<String, Room> rooms = new HashMap<>();
-	private Map<String, RoomEntity> roomEntities = new HashMap<>();
+	private Map<Integer, Room> rooms = new HashMap<>();
+	private Map<Integer, RoomEntity> roomEntities = new HashMap<>();
 
-	public Hotel(Integer numRooms, String name, String email, Double longtitude, double latitude, String imageUrl, Map<Integer, String> amenities) {
-		super(numRooms, name, email, longtitude, latitude, imageUrl, amenities);
+	public Hotel(Integer numRooms, String name, String email, Double longtitude, double latitude, String imageUrl, Map<Integer, String> amenities, Map<Integer, Long> roomIds) {
+		super(numRooms, name, email, longtitude, latitude, imageUrl, amenities, roomIds);
 	}
 
-	public Map<String, Room> getRooms() {
+	public Map<Integer, Room> getRooms() {
 		return rooms;
 	}
 
-	public void setRooms(Map<String, Room> rooms) {
+	public void setRooms(Map<Integer, Room> rooms) {
 		this.rooms = rooms;
 	}
 
-	public Map<String, RoomEntity> getRoomEntities() {
+	public Map<Integer, RoomEntity> getRoomEntities() {
 		return roomEntities;
 	}
 
-	public void setRoomEntities(Map<String, RoomEntity> roomEntities) {
+	public void setRoomEntities(Map<Integer, RoomEntity> roomEntities) {
 		this.roomEntities = roomEntities;
 	}
 }

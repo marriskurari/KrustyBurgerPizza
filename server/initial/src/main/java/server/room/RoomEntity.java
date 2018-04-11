@@ -20,6 +20,8 @@ public class RoomEntity {
 	
 	private Long availabilityId;
 
+	public RoomEntity() {}
+
 	public RoomEntity(String roomType, Integer numberOfBeds, Boolean extraBed) {
 		this.roomType = roomType;
 		this.numberOfBeds = numberOfBeds;
