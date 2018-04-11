@@ -263,18 +263,18 @@ public abstract class Factory<Ent extends Entity> {
 	};
 
 	protected static final String[] hotelName = {
-		 "Wet_Spring",
+		 "Wet_Spring_Hotel",
 		 "Bree_Wonder",
 		 "Hotel_Hotel",
 		 "Hotel_Fighters",
 		 "Hotel_Red_Day",
-		 "Bree_Eats_the_Hotel",
+		 "You're_Going_To_Want_To_Eat_this_Hotel",
 		 "Between_the_Hotels_and_Me",
 		 "Megahotel",
-		 "Hotel_Dream_and_a_Pinch_of_Hotel",
+		 "Hotel_Dream_and_a_Pinch_of_Salt",
 		 "My_Wet_Romance",
-		 "Brees_Wet_Hotel",
-		 "No_Hotel",
+		 "Brians_Wet_Hotel",
+		 "No_Hotel,_Only_Steak",
 		 "Of_Men_and_Humming_Birds",
 		 "Saving_Bree",
 		 "School_of_the_One_Zillion_Humming_Birds",
