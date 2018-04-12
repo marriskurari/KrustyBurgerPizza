@@ -70,9 +70,17 @@ public class Test1 {
 		hid = hf.save(h);
 		Assert.assertNotNull(hid);
 
+		User u = new User("olafur_palsson", "olp6@hi.is");
+		//swagline, a little server back and forth to get an ID
+		u = uf.getOne(uf.save(u));
 
+		Booking b = new Booking(hid, rid, u.getId(), 25000000, 28000000, Factory.randomCC());
+		bid = bf.save(b);
+		u.addBookingId(bid);
+		uf.save(u);
 	}
 	/**
+
 
 	TODO
 	1. Lata Rooms fa HotelID
@@ -80,6 +88,11 @@ public class Test1 {
 	3. Bookings i DB
 
 	*/
+
+	private boolean userHasBooking(User u, Booking b) {
+
+	}
+
 	@Test
 	public void test() throws IOException {
 		System.out.println("----------------Starting test");
@@ -96,6 +109,13 @@ public class Test1 {
 		Assert.assertEquals(2, r.getNumberOfBeds());
 		Assert.assertEquals("dbl", r.getRoomType());
 		Assert.assertEquals((Long) aid, (Long) r.getAvailabilityId());
+
+		Booking b = bf.getOneBooking(bid);
+		User u = uf.getOneUser(uid);
+		Assert.assertTrue(u.hasBooking(b));
+		Assert.assertEquals(b.getHotelId(), hid);
+		Assert.assertEquals(b.getRoomId(), rid);
+		Assert.assertEquals(b.getUserId(), uid);
 	}
 
 	@After

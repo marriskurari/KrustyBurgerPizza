@@ -25,15 +25,15 @@ public class Booking {
 	private Integer id;
 	private Long hotelId;
 	private Long userId;
-	private String roomType;
+	private Long roomId;
 	private Boolean isPaid;
 	private Long dateFrom;
 	private Long dateTo;
 	private String cc;
 
-	public Booking(Long hotelId, String roomType, Long from, Long to, String cc) {
+	public Booking(Long hotelId, Long roomId, Long from, Long to, Long aLong, String cc) {
 		this.hotelId = hotelId;
-		this.roomType = roomType;
+		this.roomId = roomId;
 		this.dateFrom = from;
 		this.dateTo = to;
 		this.cc = cc;
@@ -54,12 +54,12 @@ public class Booking {
 		this.hotelId = hotelId;
 	}
 
-	public String getRoomType() {
-		return roomType;
+	public Long getRoomType() {
+		return roomId;
 	}
 
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
+	public void setRoomType(Long roomId) {
+		this.roomId = roomId;
 	}
 
 	public boolean isPaid() {

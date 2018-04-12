@@ -25,11 +25,17 @@ public class BookingFactory<Ent extends Entity> extends Factory {
 		this.removeURL = "removeBooking";
 	}
 
+	//don't reccomend using this one lol,
+	//it can give you roomId from a different
+	//hotel than the hotelId is, but works for
+	//testing n shit, which is pretty much
+	//what these are good for anyway
 	public Booking generate() {
 		Pair<Long, Long> randomDates = randomTimeInterval();
 		Booking booking = new Booking(
 			 (long) randomInt(100),
-			 getRandom(roomType),
+			 (long) randomInt(100),
+			 (long) randomInt(100),
 			 randomDates.getKey(),
 			 randomDates.getValue(),
 			 randomCC()

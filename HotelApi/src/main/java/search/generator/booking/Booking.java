@@ -19,7 +19,7 @@ import java.util.Map;
 public class Booking extends Entity {
 	private Long hotelId;
 	private Long userId;
-	private String roomType;
+	private Long roomId;
 	private Boolean isPaid;
 	private Long dateFrom;
 	private Long dateTo;
@@ -27,13 +27,16 @@ public class Booking extends Entity {
 
 	public Booking(
 		Long hotelId,
-		String roomType,
+		Long roomId,
+		Long userId,
 		Long from,
 		Long to,
+		Boolean isPaid,
 		String cc
 	) {
 		this.hotelId = hotelId;
-		this.roomType = roomType;
+		this.roomId = roomId;
+		this.userId = userId;
 		this.dateFrom = from;
 		this.dateTo = to;
 		this.cc = cc;
@@ -42,16 +45,20 @@ public class Booking extends Entity {
 	public Booking(
 		Long id,
 		Long hotelId,
-		String roomType,
+		Long roomId,
+		Long userId,
 		Long from,
 		Long to,
+		Boolean isPaid,
 		String cc
 	) {
 		this.id = id;
 		this.hotelId = hotelId;
-		this.roomType = roomType;
+		this.roomId = roomId;
+		this.userId = userId;
 		this.dateFrom = from;
 		this.dateTo = to;
+		this.isPaid = isPaid;
 		this.cc = cc;
 	}
 
@@ -59,9 +66,9 @@ public class Booking extends Entity {
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
 		params.add(pair("id", this.id));
-		params.add(pair("hotelId", this.userId));
+		params.add(pair("hotelId", this.hotelId));
 		params.add(pair("userId", this.userId));
-		params.add(pair("roomType", this.roomType));
+		params.add(pair("roomId", this.roomId));
 		params.add(pair("isPaid", this.isPaid));
 		params.add(pair("dateFrom", this.dateFrom));
 		params.add(pair("dateTo", this.dateTo));
@@ -84,12 +91,12 @@ public class Booking extends Entity {
 		this.hotelId = hotelId;
 	}
 
-	public String getRoomType() {
-		return roomType;
+	public Long getRoomId() {
+		return roomId;
 	}
 
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
+	public void setRoomId(Long roomId) {
+		this.roomId = roomId;
 	}
 
 	public boolean isPaid() {

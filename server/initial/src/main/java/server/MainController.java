@@ -35,6 +35,9 @@ public class MainController {
 	@Autowired
 	private BookingRepository bookingRepository;
 
+	private Iterable<HotelEntity> cachedHotels = new ArrayList<>();
+	private boolean hotelsHaveBeenUpdated = true;
+
 	/*********************************
 	 *   USER METHODS
 	 ********************************/
@@ -100,6 +103,7 @@ public class MainController {
 
 		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap, roomIdMap);
 		h = hotelRepository.save(h);
+		hotelsHaveBeenUpdated = true;
 		return h.getId();
 	}
 
@@ -133,8 +137,11 @@ public class MainController {
 	@GetMapping(path = "/allHotels")
 	public @ResponseBody
 	Iterable<HotelEntity> getAllHotels() {
-		// This returns a JSON or XML with the users
-		return hotelRepository.findAll();
+		if(hotelsHaveBeenUpdated) {
+			cachedHotels = hotelRepository.findAll();
+			hotelsHaveBeenUpdated = false;
+		}
+		return cachedHotels;
 	}
 
 	@CrossOrigin
@@ -186,11 +193,10 @@ public class MainController {
 	 *   BOOKING METHODS
 	 ********************************/
 	//all dateString: yyyy-mm-dd
-	private Booking makeBasicBooking(Long hotelId, String roomType, String dateFrom, String dateTo, String cc) {
+	private Booking makeBasicBooking(Long hotelId, Long roomId, Long userId, String dateFrom, String dateTo, String cc) {
 		Long from = Converter.yyyymmdd_toLong(dateFrom);
 		Long to = Converter.yyyymmdd_toLong(dateTo);
-
-		return new Booking(hotelId, roomType, from, to, cc);
+		return new Booking(hotelId, roomId, userId, from, to, cc);
 	}
 
 	@CrossOrigin
@@ -205,31 +211,15 @@ public class MainController {
 	//return bookingID
 	@CrossOrigin
 	@GetMapping(path = "/addBooking")
-	public @ResponseBody String addNewBooking(
+	public @ResponseBody String addBooking(
 		 @RequestParam Long hotelId,
-		 @RequestParam String roomType,
-		 @RequestParam String dateFrom, //yyyy-mm-dd
-		 @RequestParam String dateTo,    //yyyy-mm-dd
-		 @RequestParam String cc
-	) {
-		Booking booking = makeBasicBooking(hotelId, roomType, dateFrom, dateTo, cc);
-		booking = bookingRepository.save(booking);
-		return booking.getId().toString();
-	}
-
-	@CrossOrigin
-	@GetMapping(path = "/addBookingWithUser")
-	public @ResponseBody
-	String addNewBooking(
-		 @RequestParam Long hotelId,
+		 @RequestParam Long roomId,
 		 @RequestParam Long userId,
-		 @RequestParam String roomType,
 		 @RequestParam String dateFrom, //yyyy-mm-dd
 		 @RequestParam String dateTo,    //yyyy-mm-dd
 		 @RequestParam String cc
 	) {
-		Booking booking = makeBasicBooking(hotelId, roomType, dateFrom, dateTo, cc);
-		booking.setUserId(userId);
+		Booking booking = makeBasicBooking(hotelId, roomId, userId, dateFrom, dateTo, cc);
 		booking = bookingRepository.save(booking);
 		return booking.getId().toString();
 	}

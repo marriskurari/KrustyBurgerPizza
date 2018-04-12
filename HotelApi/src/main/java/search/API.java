@@ -54,11 +54,12 @@ public class API {
 		String roomType,
 		String dateFrom,
 		String dateTo,
+		Boolean isPaid,
 		String cc
 	) throws IOException {
 		long from = ToolBox.formatStringDateToLong(dateFrom);
 		long to   = ToolBox.formatStringDateToLong(dateTo);
-		Booking booking = new Booking(hotelId, roomType, from, to, cc);
+		Booking booking = new Booking(hotelId, roomType, from, to, isPaid, cc);
 		Long id = bf.save(booking);
 		return id;
 	}
@@ -70,8 +71,7 @@ public class API {
 		Room r = new Room(
 			Factory.getRandom( Factory.roomType),
 			1 + Factory.randomInt(3),
-			Factory.randomBoolean(),
-			aId
+			Factory.randomBoolean()
 		);
 		return r;
 	}
@@ -90,7 +90,7 @@ public class API {
 		for(int i = 0; i < numberOfHotelsEachCountry; i++)
 			hotels.add(hf.generateUK());
 		for(int i = 0; i < numberOfHotelsEachCountry; i++)
-		hotels.add(hf.generateFrench());
+			hotels.add(hf.generateFrench());
 		for(Hotel hotel : hotels) {
 			int n = Factory.randomInt(6) + 1;
 			giveHotelRandomRooms(hotel);
@@ -114,7 +114,7 @@ public class API {
 
 	public static void main(String [] args) throws IOException {
 		API api = new API();
-		api.generateHotels(500);
+		api.generateHotels(50);
 		api.generateUsers(50);
 	}
 }

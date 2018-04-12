@@ -22,6 +22,14 @@ public class User extends UserEntity {
 		return bookings;
 	}
 
+	public void hasBooking(Booking b) {
+		Map<Integer, Long> bookings = getBookings();
+		for(int i = 0; i < bookings.size(); i++)
+			if(b.getId.equals(bookings.get(i)))
+				return true;
+		return false;
+	}
+
 	public void setBookings(Map<Long, Booking> bookings) {
 		this.bookings = bookings;
 	}
