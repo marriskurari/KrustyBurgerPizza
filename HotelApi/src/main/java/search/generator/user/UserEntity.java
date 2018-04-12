@@ -64,7 +64,7 @@ public class UserEntity extends Entity {
 		this.email = email;
 	}
 
-	public void addBooking(Long bookingId) {
+	public void addBookingId(Long bookingId) {
 		int bookingNumber = bookings.size();
 		this.bookings.put(bookingNumber, bookingId);
 	}

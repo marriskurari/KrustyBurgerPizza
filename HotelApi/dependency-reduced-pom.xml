@@ -21,7 +21,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>search.App</mainClass>
+              <mainClass>search.API</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -40,7 +40,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>search.App</mainClass>
+              <mainClass>search.API</mainClass>
               <addClasspath>true</addClasspath>
               <classpathPrefix>libs</classpathPrefix>
             </manifest>
@@ -62,7 +62,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>search.App</mainClass>
+                  <mainClass>search.API</mainClass>
                 </transformer>
               </transformers>
             </configuration>

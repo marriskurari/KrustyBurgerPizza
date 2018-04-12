@@ -72,7 +72,14 @@ public class Test1 {
 
 
 	}
+	/**
 
+	TODO
+	1. Lata Rooms fa HotelID
+	2. Users med Bookings i DB
+	3. Bookings i DB
+
+	*/
 	@Test
 	public void test() throws IOException {
 		System.out.println("----------------Starting test");

@@ -19,8 +19,8 @@ public class RoomEntity extends Entity {
 	private int numberOfBeds;
 	private String roomType;
 	private boolean extraBed;
-
 	private Long availabilityId;
+	private Long hotelId;
 
 	public RoomEntity(String roomType, Integer numberOfBeds, Boolean extraBed) {
 		this.roomType = roomType;
@@ -53,6 +53,10 @@ public class RoomEntity extends Entity {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void setHotelId(Long id) {
+		this.hotelId = id;
 	}
 
 	@Override

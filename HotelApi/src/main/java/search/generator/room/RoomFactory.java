@@ -29,7 +29,7 @@ public class RoomFactory<Ent extends RoomEntity> extends Factory {
 
 	public Room generate() {
 		Room room = new Room(
-			 getRandom(roomTypes),
+			 getRandom(roomType),
 			 randomInt(4),
 			 randomBoolean(),
 			 0

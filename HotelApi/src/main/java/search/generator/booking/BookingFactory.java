@@ -29,7 +29,7 @@ public class BookingFactory<Ent extends Entity> extends Factory {
 		Pair<Long, Long> randomDates = randomTimeInterval();
 		Booking booking = new Booking(
 			 (long) randomInt(100),
-			 getRandom(roomTypes),
+			 getRandom(roomType),
 			 randomDates.getKey(),
 			 randomDates.getValue(),
 			 randomCC()

@@ -27,17 +27,39 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 		this.getOneURL = "oneHotel";
 	}
 
+	@Override
 	public Hotel generate() {
-		Hotel hotel = new Hotel(
+		return generateIcelandic();
+	}
+
+	public Hotel generate(double latitude, double width, double longitude, double height) {
+		return new Hotel(
 			 randomInt(72),
 			 getRandom(hotelName),
 			 getRandom(email),
-			 randomDouble(-23.5, 10.0),
-			 randomDouble(63, 3),
+			 randomDouble(latitude, width),
+			 randomDouble(longitude, height),
 			 getRandom(imageUrl),
 			 getRandomMap(amenities)
 		);
-		return hotel;
+	}
+
+	public Hotel generateIcelandic() {
+		return generate(
+			-23.5, 10.0,
+			 63.0, 3.0 );
+	}
+
+	public Hotel generateUK() {
+		return generate(
+			-10.0, 11.6,
+			 50.0, 8.0 );
+	}
+
+	public Hotel generateFrench() {
+		return generate(
+			 42.6,  8.4,
+			  5.0, 12.4 );
 	}
 
 	public Long save(Ent ent) throws IOException {

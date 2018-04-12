@@ -38,7 +38,6 @@ public class Request {
 		s = s.substring(0, s.length() - 1);
 
 		requestString += s;
-		System.out.println(requestString);
 	}
 
 	private String extractJSONstringFromRequest() throws IOException {
@@ -60,7 +59,6 @@ public class Request {
 		try {
 			obj = new JSONArray(json);
 		} catch (JSONException e) {
-			System.out.println(json);
 			return new JSONArray("[" + json + "]");
 		}
 		return obj;
@@ -72,8 +70,6 @@ public class Request {
 
 	public Request(String string) throws IOException {
 		initRequest(string);
-		System.out.println("Printing out the string");
-		System.out.println(requestString);
 		con = makeRequest();
 	}
 
@@ -96,5 +92,4 @@ public class Request {
 	public JSONArray resolve() throws IOException {
 		return getParsedJSONbyStringRequest();
 	}
-
 }

@@ -47,7 +47,7 @@
         <configuration>
             <archive>
                 <manifest>
-                    <mainClass>search.App</mainClass>
+                    <mainClass>search.API</mainClass>
                 </manifest>
             </archive>
         </configuration>
@@ -68,7 +68,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>search.App</mainClass>
+              <mainClass>search.API</mainClass>
               <addClasspath>true</addClasspath>
               <classpathPrefix>libs</classpathPrefix>
             </manifest>
@@ -95,7 +95,7 @@
       			  <transformers>
         				<!-- add Main-Class to manifest file -->
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-        					<mainClass>search.App</mainClass>
+        					<mainClass>search.API</mainClass>
       				  </transformer>
       			  </transformers>
       			</configuration>

@@ -12,6 +12,7 @@ import search.generator.hotel.HotelFactory;
 import search.generator.room.Room;
 import search.generator.room.RoomEntity;
 import search.generator.room.RoomFactory;
+import search.generator.user.User;
 import search.generator.user.UserEntity;
 import search.generator.user.UserFactory;
 import search.generator.ToolBox;
@@ -23,72 +24,97 @@ import java.util.Map;
 
 public class API {
 
-	private static HotelFactory<HotelEntity> hotelFactory;
-	private static UserFactory<UserEntity> userFactory;
-	private static RoomFactory<RoomEntity> roomFactory;
-	private static BookingFactory<Booking> bookingFactory;
-	private static AvailabilityFactory<Availability> availabilityFactory;
+	private static HotelFactory<HotelEntity> hf = new HotelFactory<>();
+	private static UserFactory<UserEntity> uf = new UserFactory<>();
+	private static RoomFactory<RoomEntity> rf = new RoomFactory<>();
+	private static BookingFactory<Booking> bf = new BookingFactory<>();
+	private static AvailabilityFactory<Availability> af = new AvailabilityFactory<>();
 
-	private static List<Hotel> hotels = new ArrayList<>();
-	private List<Hotel> allHotels = new ArrayList<>();
+	private static List<Hotel> allHotels = new ArrayList<>();
 	private static boolean hotelListNeedsToBeUpdated = false;
 
 	public static void setHotelListNeedsToBeUpdated(boolean b) {
 		hotelListNeedsToBeUpdated = b;
 	}
 
-	public API() { hotelFactory = new HotelFactory<HotelEntity>(); }
-
 	public List getAllHotels() throws IOException {
 		if(!hotelListNeedsToBeUpdated) return allHotels;
-		allHotels = hotelFactory.getAll();
+		allHotels = hf.getAll();
 		hotelListNeedsToBeUpdated = false;
 		return allHotels;
 	}
 
 	public HotelEntity getOneHotel(Long id) throws IOException {
-		List<HotelEntity> listWithOnlyOneItem = hotelFactory.getOne(id);
+		List<HotelEntity> listWithOnlyOneItem = hf.getOne(id);
 		return listWithOnlyOneItem.get(0);
 	}
 
-	public Long makeBooking(Long hotelId, String roomType, String dateFrom, String dateTo, String cc)
-	throws IOException {
+	public Long makeBooking(
+		Long   hotelId,
+		String roomType,
+		String dateFrom,
+		String dateTo,
+		String cc
+	) throws IOException {
 		long from = ToolBox.formatStringDateToLong(dateFrom);
 		long to   = ToolBox.formatStringDateToLong(dateTo);
 		Booking booking = new Booking(hotelId, roomType, from, to, cc);
-		Long id = bookingFactory.save(booking);
+		Long id = bf.save(booking);
 		return id;
 	}
 
-	public static void testDatabase() throws IOException {
+	public Room generateRoomWithAvailability() throws IOException {
+		//availability is in DB but not room
+		Availability a = new Availability(Factory.getRandomAvailability());
+		Long aId = af.save(a);
+		Room r = new Room(
+			Factory.getRandom( Factory.roomType),
+			1 + Factory.randomInt(3),
+			Factory.randomBoolean(),
+			aId
+		);
+		return r;
+	}
+
+	public void giveHotelRandomRooms(Hotel hotel) throws IOException {
+		int n = Factory.randomInt(6) + 1;
+		for(int i = 0; i < n; i++)
+			hotel.addRoomId(rf.save(generateRoomWithAvailability()));
+	}
+
+	public void generateHotels(int numberOfHotels) throws IOException {
+		int numberOfHotelsEachCountry = numberOfHotels / 3;
+		List<Hotel> hotels = new ArrayList<>();
+		for(int i = 0; i < numberOfHotelsEachCountry; i++)
+			hotels.add(hf.generateIcelandic());
+		for(int i = 0; i < numberOfHotelsEachCountry; i++)
+			hotels.add(hf.generateUK());
+		for(int i = 0; i < numberOfHotelsEachCountry; i++)
+		hotels.add(hf.generateFrench());
+		for(Hotel hotel : hotels) {
+			int n = Factory.randomInt(6) + 1;
+			giveHotelRandomRooms(hotel);
+			hf.save(hotel);
+		}
+	}
+
+	public void giveUserRandomBookings(User user) throws IOException {
+		int n = Factory.randomInt(8) + 1;
+		for(int i = 0; i < n; i++)
+			user.addBookingId(bf.save(bf.generate()));
+	}
+
+	public void generateUsers(int numberOfUsers) throws IOException {
+		for(int i = 0; i < numberOfUsers; i++) {
+			User user = uf.generate();
+			giveUserRandomBookings(user);
+			uf.save(user);
+		}
+	}
+
+	public static void main(String [] args) throws IOException {
 		API api = new API();
-		hotelFactory = new HotelFactory<>();
-		Hotel a = hotelFactory.generate();
-		System.out.println(a.getEmail());
-		Map<Integer, String> am = Factory.getRandomMap(Factory.amenities);
-		Hotel hh = new Hotel(5, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", am);
-		hotels.add(hh);
-		hotelFactory.save(hh);
-		for(int i = 0; i < 2000; i++) {
-			Hotel h = hotelFactory.generate();
-			Room r = roomFactory.generate();
-			roomFactory.save(r);
-			h.addRoomId(new Long(0));
-			hotels.add(h);
-			hotelFactory.save(h);
-		}
-
-		List<HotelEntity> hotelsFromDB = new ArrayList<>(api.getAllHotels());
-		System.out.println(hotelsFromDB);
-		int i = 0;
-		for(HotelEntity e : hotelsFromDB) {
-			System.out.print(i++);
-			System.out.println(e.getName());
-		}
-		System.out.println("Hello world");
-
-		HotelEntity hotel = api.getOneHotel((long) 2);
-		String email = hotel.getEmail();
-		System.out.println(email);
+		api.generateHotels(500);
+		api.generateUsers(50);
 	}
 }

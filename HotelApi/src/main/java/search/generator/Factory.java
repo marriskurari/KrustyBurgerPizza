@@ -78,6 +78,7 @@ public abstract class Factory<Ent extends Entity> {
 		return true;
 	}
 
+	//returns the id
 	public Long save(Ent ent) throws IOException {
 		JSONObject o = new JSONObject();
 		List<Pair<String, String>> params = ent.getParameters();
@@ -98,7 +99,6 @@ public abstract class Factory<Ent extends Entity> {
 		Pair<String, String> pair = new Pair("id", "" + id);
 		Request r = new Request(getOneURL, pair);
 		JSONArray json = r.resolve();
-		System.out.println(json.toString());
 		List<Ent> entity = new ArrayList<>();
 		entity.add(jsonToEntity((JSONObject) json.get(0)));
 		return entity;
@@ -108,7 +108,6 @@ public abstract class Factory<Ent extends Entity> {
 		Request r = new Request(getAllURL);
 		JSONArray json =  r.resolve();
 		String s = json.toString();
-		System.out.println(s);
 		List<Ent> entities = new ArrayList<>();
 
 		for(int i = 0; i < json.length(); i++)
@@ -134,7 +133,6 @@ public abstract class Factory<Ent extends Entity> {
 		int a = list.size() - 1;
 		int randomAmount = (int) (a*Math.random());
 		List<String> l = list.subList(0, randomAmount + 1);
-		System.out.println(l.toString());
 		return l;
 	}
 
@@ -143,28 +141,25 @@ public abstract class Factory<Ent extends Entity> {
 		return arrayListToMap(list);
 	}
 
-	protected static String getRandom(String[] array) {
+	public static String getRandom(String[] array) {
 		int a = (int) (Math.random() * array.length);
 		return array[a];
 	}
 
-	protected static boolean randomBoolean()                      { return Math.random() > 0.5; }
-	protected static double  randomDouble(double seed)            { return Math.random() * seed; }
-	protected static double  randomDouble(double seed, double width) { return seed + Math.random() * width; }
-	protected static int     randomInt(int seed)                  { return (int) (Math.random() * seed); }
-	protected static Long    randomDate(Long seed, int width) {
+	public static boolean randomBoolean()                      { return Math.random() > 0.5; }
+	public static double  randomDouble(double seed)            { return Math.random() * seed; }
+	public static double  randomDouble(double seed, double width) { return seed + Math.random() * width; }
+	public static int     randomInt(int seed)                  { return (int) (Math.random() * seed); }
+	public static Long    randomDate(Long seed, int width) {
 		Date date = new Date(seed);
 		Calendar cal = new GregorianCalendar();
-		System.out.println("MAKE SURE IS ROUNDED");
-		System.out.println(date.getTime());
 		cal.setTime(date);
-		System.out.println(cal.getTime().getTime());
 		return cal.getTime().getTime();
 	}
 
 
 
-	protected static String randomCC() {
+	public static String randomCC() {
 		String cc = "";
 		for(int i = 0; i < 23; i++) {
 			cc += Integer.toString(randomInt(10));
@@ -180,7 +175,7 @@ public abstract class Factory<Ent extends Entity> {
 		return map;
 	}
 
-	protected static Pair<Long, Long> randomTimeInterval() {
+	public static Pair<Long, Long> randomTimeInterval() {
 		Long first = randomDate(new Date().getTime(), randomInt(200));
 		Long second = randomDate(first, 30);
 		return new Pair(first, second);
@@ -189,7 +184,7 @@ public abstract class Factory<Ent extends Entity> {
 	/*******************************************
 	 *       DATA FOR RANDOMIZATION
 	 *******************************************/
-	public static final String[] roomTypes = {
+	public static final String[] roomType = {
 		 "sgl",
 		 "dbl",
 		 "twin",
@@ -229,7 +224,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "https://i.imgur.com/EjZ75rt.jpg"
 	};
 
-	protected static final String[] humanName = {
+	public static final String[] humanName = {
 		 "Bernard_Hunt",
 		 "Jaime_Holloway",
 		 "Alfonso_Carpenter",
@@ -282,7 +277,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "Marc_Hall"
 	};
 
-	protected static final String[] hotelName = {
+	public static final String[] hotelName = {
 		 "Wet_Spring_Hotel",
 		 "Bree_Wonder",
 		 "Hotel_Hotel",
@@ -347,7 +342,7 @@ public abstract class Factory<Ent extends Entity> {
 		 "Allo_Hotels"
 	};
 
-	protected static final String[] email = {
+	public static final String[] email = {
 		 "amcnysche9k@webmd.com",
 		 "sskilbeck9l@last.fm",
 		 "zilchenko9m@ebay.com",

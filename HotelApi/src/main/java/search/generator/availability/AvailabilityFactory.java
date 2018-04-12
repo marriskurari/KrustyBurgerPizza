@@ -31,8 +31,6 @@ public class AvailabilityFactory<Ent extends Entity> extends Factory {
 
 	@Deprecated
 	public Availability jsonToEntity(JSONObject json) {
-		System.out.println("Fix this, availabilityfoctory jsonToEntity function");
-		System.out.println(json.toString());
 		return new Availability();
 	}
 }

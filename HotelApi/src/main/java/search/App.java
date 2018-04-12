@@ -10,6 +10,6 @@ import java.io.IOException;
 
 public class App {
     public static void main( String[] args ) throws IOException {
-      API.testDatabase();
+      System.out.println("App.main() ran, something is not right :)");
     }
 }
