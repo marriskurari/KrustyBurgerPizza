@@ -16,12 +16,13 @@ export default class SearchForm extends React.Component {
 			const lat = a.position.lat()
 			const lng = a.position.lng()
 			this.props.getHotels(lat, lng)
+			console.log(`Lat = ${lat} and long = ${lng}`)
 		})
 	}
 
 	render() {
 		return(
-			<form id="container" ref={c => this.form = c}  onSubmit={console.log("blablabla")}>
+			<form id="container" ref={c => this.form = c}  onSubmit={console.log("Submit")}>
 				<label>
 					Location:
 					<input onChange={console.log("locationAPI goes here")} type="text" id="address" placeholder="Location" />

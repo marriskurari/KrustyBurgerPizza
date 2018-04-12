@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -145,14 +146,11 @@ public class MainController {
 	}
 
 	@CrossOrigin
+	@Cacheable("hotelCache")
 	@GetMapping(path = "/allHotels")
 	public @ResponseBody
 	Iterable<HotelEntity> getAllHotels() {
-		if(hotelsHaveBeenUpdated) {
-			cachedHotels = hotelRepository.findAll();
-			hotelsHaveBeenUpdated = false;
-		}
-		return cachedHotels;
+		return hotelRepository.findAll();
 	}
 
 	@CrossOrigin

@@ -79,7 +79,9 @@ public class API {
 	}
 
 	public void giveHotelRandomRooms(Hotel hotel) throws IOException {
-		int n = Factory.randomInt(6) + 1;
+		//eg er bara ad gefa hoteli max 3 herbergistypur
+		//vegna thess ad generatorinn er grimmt lengi ad thessu
+		int n = Factory.randomInt(3) + 1;
 		for(int i = 0; i < n; i++)
 			hotel.addRoomId(rf.save(generateRoomWithAvailability()));
 		System.out.print("Gave " + n + " rooms to hotel ");
@@ -102,9 +104,8 @@ public class API {
 		}
 		int i = 0;
 		for(Hotel hotel : hotels) {
-			int n = Factory.randomInt(6) + 1;
 			giveHotelRandomRooms(hotel);
-			System.out.println(i);
+			System.out.println(i++);
 			hf.save(hotel);
 		}
 	}

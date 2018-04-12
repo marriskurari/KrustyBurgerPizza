@@ -1,10 +1,18 @@
 import React from 'react'
 
 
-export default class SelectedHotel extends React.Component {
+export default class SelectedHotel extends Card {
+  constructor(props) {
+    super(props)
+  }
+
+
   render() {
     return(
-      <h1> SelectedHotel {this.props.hotel.id}</h1>
+      {this.renderInfo()}
+      <input type="text" placeholder="First Name" />
+      <input type="text" placeholder="Last Name" />
+      <input type="text" placeholder="Last Name" />
     )
   }
 }

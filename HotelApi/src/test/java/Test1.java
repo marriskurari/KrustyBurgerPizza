@@ -35,10 +35,6 @@ import java.util.Map;
 //code for Hotels
 
 public class Test1 {
-	private Hotel myHotel;
-	private ObjectOutputStream myOutStream;
-	private ObjectInputStream myInStream;
-
 	private HotelFactory hf = new HotelFactory();
 	private RoomFactory rf = new RoomFactory();
 	private AvailabilityFactory af = new AvailabilityFactory();

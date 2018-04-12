@@ -1,12 +1,11 @@
 import React from 'react'
 import Card from './Card'
-import { Link } from 'react-router'
 
 export default class CardHolder extends React.Component {
   constructor() {
     super()
     this.renderHotelList = this.renderHotelList.bind(this)
-    this.state = { hotels: [] }
+    this.findAndReplace = this.findAndReplace.bind(this)
   }
 
   findAndReplace(string, replaceThis, withThis) {
@@ -15,7 +14,6 @@ export default class CardHolder extends React.Component {
 
   makeCard(hotelObject) {
       return (
-      <Link to={`hotel?${hotelObject.id}`}>
         <Card
           className="cardHolder__card"
           key={hotelObject.id}
@@ -25,19 +23,20 @@ export default class CardHolder extends React.Component {
           longitude={hotelObject.longitude}
           imageUrl={hotelObject.imageUrl}
           numRooms={hotelObject.numRooms}
-        />
-      </Link>)
+        />)
   }
 
   renderHotelList() {
+    console.log("Rendering")
     if(this.props.hotels == undefined) return (<React.Fragment/>)
     return this.props.hotels.map(hotel => this.makeCard(hotel))
   }
 
   render() {
+    console.log(this)
     return(
       <React.Fragment>
-        <p>{"shocker"}</p>
+        <p>{"not shocking bro"}</p>
         {this.renderHotelList()}
       </React.Fragment>
     )
