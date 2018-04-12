@@ -45,9 +45,7 @@ public class UserFactory<Ent extends UserEntity> extends Factory {
 		Long id = Long.parseLong(json.get("id").toString());
 		String name = (String) json.get("name");
 		String email = (String) json.get("email");
-		System.out.println(json.toString());
 		Map<Integer, Long> map = new HashMap<>();
-		System.out.println(json.toString());
 		try {
 			JSONObject bookingJSON = (JSONObject) json.get("bookingIds");
 			map = getLongMapFromJSON(bookingJSON);

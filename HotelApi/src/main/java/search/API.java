@@ -82,41 +82,53 @@ public class API {
 		int n = Factory.randomInt(6) + 1;
 		for(int i = 0; i < n; i++)
 			hotel.addRoomId(rf.save(generateRoomWithAvailability()));
+		System.out.print("Gave " + n + " rooms to hotel ");
 	}
 
 	public void generateHotels(int numberOfHotels) throws IOException {
 		int numberOfHotelsEachCountry = numberOfHotels / 3;
 		List<Hotel> hotels = new ArrayList<>();
-		for(int i = 0; i < numberOfHotelsEachCountry; i++)
+		for(int i = 0; i < numberOfHotelsEachCountry; i++) {
 			hotels.add(hf.generateIcelandic());
-		for(int i = 0; i < numberOfHotelsEachCountry; i++)
+			System.out.println("Generating Icelandic hotel... " + i);
+		}
+		for(int i = 0; i < numberOfHotelsEachCountry; i++) {
 			hotels.add(hf.generateUK());
-		for(int i = 0; i < numberOfHotelsEachCountry; i++)
+			System.out.println("Generating UK hotel... " + i);
+		}
+		for(int i = 0; i < numberOfHotelsEachCountry; i++) {
 			hotels.add(hf.generateFrench());
+			System.out.println("Generating French hotel... " + i);
+		}
+		int i = 0;
 		for(Hotel hotel : hotels) {
 			int n = Factory.randomInt(6) + 1;
 			giveHotelRandomRooms(hotel);
+			System.out.println(i);
 			hf.save(hotel);
 		}
 	}
 
 	public void giveUserRandomBookings(User user) throws IOException {
 		int n = Factory.randomInt(8) + 1;
-		for(int i = 0; i < n; i++)
+		for(int i = 0; i < n; i++) {
 			user.addBookingId(bf.save(bf.generate()));
+			System.out.println("Creating Booking... " + i);
+		}
 	}
 
 	public void generateUsers(int numberOfUsers) throws IOException {
 		for(int i = 0; i < numberOfUsers; i++) {
 			User user = uf.generate();
 			giveUserRandomBookings(user);
+			System.out.println("Creating User... " + i);
 			uf.save(user);
 		}
 	}
 
 	public static void main(String [] args) throws IOException {
 		API api = new API();
-		api.generateHotels(50);
-		api.generateUsers(50);
+		api.generateHotels(1500);
+		api.generateUsers(500);
 	}
 }

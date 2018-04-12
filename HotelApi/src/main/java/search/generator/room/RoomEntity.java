@@ -65,7 +65,6 @@ public class RoomEntity extends Entity {
 		if(this.id != null) {
 			params.add(pair("id", "" + this.id));
 			assert !((this.id + "").equals("null"));
-			System.out.println("This.id is " + this.id);
 		}
 		params.add(pair("numberOfBeds", this.numberOfBeds));
 		params.add(pair("roomType", this.roomType));

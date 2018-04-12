@@ -34,7 +34,6 @@ public class ToolBox {
 		yyyymmdd.add("" + (cal.MONTH + 1));
 		yyyymmdd.add("" + cal.DAY_OF_MONTH);
 		String date = String.join("-", yyyymmdd);
-		System.out.println(cal.toString());
 		return date;
 	}
 

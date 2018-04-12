@@ -52,7 +52,6 @@ public class BookingFactory<Ent extends Booking> extends Factory {
 	}
 
 	public Booking jsonToEntity(JSONObject json) {
-		System.out.println(json.toString());
 		Long id = getAsLong("id", json);
 		Long hotelId = getAsLong("hotelId", json);
 		Long roomId = getAsLong("roomId", json);
@@ -61,8 +60,6 @@ public class BookingFactory<Ent extends Booking> extends Factory {
 		Long dateTo = getAsLong("dateTo", json);
 		Boolean isPaid = (Boolean) json.get("isPaid");
 		String cc = (String) json.get("cc");
-		System.out.println("BOOKING ID");
-		System.out.println(id);
 		return new Booking(id, hotelId, roomId, userId, dateFrom, dateTo, isPaid, cc);
 	}
 }

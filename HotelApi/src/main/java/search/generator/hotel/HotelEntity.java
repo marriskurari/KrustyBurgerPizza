@@ -31,8 +31,6 @@ public class HotelEntity extends Entity {
 	}
 
 	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Map<Integer, String> amenities) {
-		System.out.println(id + "" + numRooms + latitude + longitude + name + email);
-		System.out.println(email);
 		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenities);
 		hotel.setId(id);
 	}
@@ -87,9 +85,6 @@ public class HotelEntity extends Entity {
 
 	public void addRoomId(Long roomEntityId) {
 		roomIds.put(roomIds.size(), roomEntityId);
-		System.out.println("Printing all ids");
-		for(Map.Entry<Integer, Long> e : roomIds.entrySet())
-			System.out.println(e.getValue());
 	}
 
 	public void setRoomIds(Map<Integer, Long> roomEntityList) {

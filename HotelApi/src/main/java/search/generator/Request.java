@@ -39,7 +39,7 @@ public class Request {
 
 		requestString += s;
 		// HERE WE DEBUG!!
-		System.out.println(requestString);
+		//System.out.println(requestString);
 	}
 
 	private String extractJSONstringFromRequest() throws IOException {

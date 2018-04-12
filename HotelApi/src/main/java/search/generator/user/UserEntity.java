@@ -32,11 +32,7 @@ public class UserEntity extends Entity {
 	public boolean hasBooking(Booking b) {
 		if(b.getId() == null) throw new IllegalArgumentException("Booking doesn't have an ID");
 		Map<Integer, Long> bookings = getBookings();
-		System.out.println("DEBUGGING HASBOOKING");
-		System.out.println(b.getId());
-		System.out.println(bookings.size());
 		for(int i = 0; i < bookings.size(); i++) {
-			System.out.println(bookings.get(i).toString());
 			if(b.getId().equals(bookings.get(i)))
 				return true;
 		}
@@ -62,7 +58,6 @@ public class UserEntity extends Entity {
 		params.add(new Pair<>("name", "" + this.name));
 		params.add(new Pair<>("email", "" + this.email));
 		if(bookings.size() != 0) {
-			System.out.println("Size is not 0");
 			params.addAll(mapToListOfPairs("bookingIds", bookings));
 		}
 		return params;

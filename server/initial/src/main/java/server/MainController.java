@@ -102,12 +102,14 @@ public class MainController {
 		 @RequestParam double latitude,
 		 @RequestParam Double longitude,
 		 @RequestParam ArrayList<String> amenities,
-		 @RequestParam ArrayList<Long> roomIds,
+		 @RequestParam(required = false) ArrayList<Long> roomIds,
 		 @RequestParam Integer numRooms,
 		 @RequestParam String imageUrl
 	) {
 		Map<Integer, String> amenityMap = (Map<Integer, String>) Converter.arrayListToMap(amenities);
-		Map<Integer, Long> roomIdMap = (Map<Integer, Long>) Converter.arrayListToMap(roomIds);
+		Map<Integer, Long> roomIdMap = new HashMap<>();
+		if(roomIds != null)
+			 roomIdMap = (Map<Integer, Long>) Converter.arrayListToMap(roomIds);
 
 		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap, roomIdMap);
 		if(id != null) h.setId(id);

@@ -37,7 +37,6 @@ public class Booking extends Entity {
 		Boolean isPaid,
 		String cc
 	) {
-		System.out.println("BC A");
 		this.id = id;
 		this.hotelId = hotelId;
 		this.roomId = roomId;
@@ -57,7 +56,6 @@ public class Booking extends Entity {
 		Boolean isPaid,
 		String cc
 	) {
-		System.out.println("BC B");
 		this.hotelId = hotelId;
 		this.roomId = roomId;
 		this.userId = userId;
@@ -76,7 +74,6 @@ public class Booking extends Entity {
 		Boolean isPaid,
 		String cc
 	) {
-		System.out.println("BC C");
 		this.hotelId = hotelId;
 		this.roomId = roomId;
 		this.userId = userId;
@@ -96,7 +93,6 @@ public class Booking extends Entity {
 		Boolean isPaid,
 		String cc
 	) {
-		System.out.println("BC D");
 		this.id = id;
 		this.hotelId = hotelId;
 		this.roomId = roomId;
