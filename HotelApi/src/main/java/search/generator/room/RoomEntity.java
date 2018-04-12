@@ -62,7 +62,11 @@ public class RoomEntity extends Entity {
 	@Override
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
-		params.add(pair("id", this.id));
+		if(this.id != null) {
+			params.add(pair("id", "" + this.id));
+			assert !((this.id + "").equals("null"));
+			System.out.println("This.id is " + this.id);
+		}
 		params.add(pair("numberOfBeds", this.numberOfBeds));
 		params.add(pair("roomType", this.roomType));
 		params.add(pair("extraBed", this.extraBed));

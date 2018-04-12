@@ -1,6 +1,7 @@
 package search.generator.user;
 
 import search.generator.Entity;
+import search.generator.booking.Booking;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -28,6 +29,20 @@ public class UserEntity extends Entity {
 		this.email = email;
 	}
 
+	public boolean hasBooking(Booking b) {
+		if(b.getId() == null) throw new IllegalArgumentException("Booking doesn't have an ID");
+		Map<Integer, Long> bookings = getBookings();
+		System.out.println("DEBUGGING HASBOOKING");
+		System.out.println(b.getId());
+		System.out.println(bookings.size());
+		for(int i = 0; i < bookings.size(); i++) {
+			System.out.println(bookings.get(i).toString());
+			if(b.getId().equals(bookings.get(i)))
+				return true;
+		}
+		return false;
+	}
+
 	public UserEntity extractEntity() {
 		return new UserEntity(id, name, email, bookings);
 	}
@@ -42,11 +57,14 @@ public class UserEntity extends Entity {
 	@Override
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
-		params.add(new Pair<>("id", "" + this.id));
+		if(this.id != null)
+			params.add(new Pair<>("id", "" + this.id));
 		params.add(new Pair<>("name", "" + this.name));
 		params.add(new Pair<>("email", "" + this.email));
-		if(bookings != null)
-			params.addAll(mapToListOfPairs("bookings", bookings));
+		if(bookings.size() != 0) {
+			System.out.println("Size is not 0");
+			params.addAll(mapToListOfPairs("bookingIds", bookings));
+		}
 		return params;
 	}
 
@@ -67,7 +85,7 @@ public class UserEntity extends Entity {
 	public Map<Integer, Long> getBookings() {
 		return bookings;
 	}
-	
+
 	public void addBookingId(Long bookingId) {
 		int bookingNumber = bookings.size();
 		this.bookings.put(bookingNumber, bookingId);

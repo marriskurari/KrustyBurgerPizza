@@ -4,9 +4,12 @@ import search.generator.Entity;
 import search.generator.Factory;
 import search.generator.hotel.HotelEntity;
 import org.json.JSONObject;
+import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.io.IOException;
 
 /**
  * Author: Olafur Palsson
@@ -19,6 +22,13 @@ public class UserFactory<Ent extends UserEntity> extends Factory {
 	public UserFactory() {
 		this.updateURL = "addUser";
 		this.getAllURL = "allUsers";
+		this.getOneURL = "oneUser";
+		this.removeURL = "removeUser";
+	}
+
+	public Ent getOneUser(Long id) throws IOException {
+		List<Ent> listOfOne = super.getOne(id);
+		return listOfOne.get(0);
 	}
 
 	public User generate() {
@@ -35,8 +45,13 @@ public class UserFactory<Ent extends UserEntity> extends Factory {
 		Long id = Long.parseLong(json.get("id").toString());
 		String name = (String) json.get("name");
 		String email = (String) json.get("email");
+		System.out.println(json.toString());
 		Map<Integer, Long> map = new HashMap<>();
-		map.put(0, (long) 0);
+		System.out.println(json.toString());
+		try {
+			JSONObject bookingJSON = (JSONObject) json.get("bookingIds");
+			map = getLongMapFromJSON(bookingJSON);
+		} catch(JSONException e) {}
 		return new UserEntity(id, name, email, map);
 	}
 

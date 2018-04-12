@@ -82,17 +82,39 @@ public abstract class Factory<Ent extends Entity> {
 	public Long save(Ent ent) throws IOException {
 		JSONObject o = new JSONObject();
 		List<Pair<String, String>> params = ent.getParameters();
-		Pair<String, String> remove = null;
-		for(Pair<String, String> p : params) {
-			if(p.getKey().equals("id") && p.getValue().equals("null"))
-				remove = p;
-		}
-		if(remove != null)
-			params.remove(remove);
 		Request r = new Request(updateURL, ent.getParameters());
 		JSONArray a = r.resolve();
 		Long l = Long.parseLong(a.get(0).toString());
 		return l;
+	}
+
+	public Long getAsLong(String key, JSONObject o) {
+		Long l;
+		try{ l = Long.parseLong((String) o.get(key)); }
+		catch(ClassCastException e) {
+			try { l = new Long((Integer) o.get(key)); }
+			catch(ClassCastException f) {
+				l = (Long) o.get(key);
+			}
+		}
+		return l;
+	}
+
+	public Map<Integer, String> getStringMapFromJSON(JSONObject o) {
+		Map<Integer, String> map = new HashMap<>();
+		Integer i = 0;
+		while(true) {
+			try { map.put(i, (String) o.get(i.toString()).toString()); i++; }
+			catch(JSONException e) { return map; }
+		}
+	}
+
+	public Map<Integer, Long> getLongMapFromJSON(JSONObject o) {
+		Map<Integer, String> stringMap = getStringMapFromJSON(o);
+		Map<Integer, Long> longMap = new HashMap<>();
+		for(Map.Entry<Integer, String> e : stringMap.entrySet())
+			longMap.put(e.getKey(), Long.parseLong(e.getValue()));
+		return longMap;
 	}
 
 	public List getOne(Long id) throws IOException {

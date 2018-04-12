@@ -51,7 +51,8 @@ public class API {
 
 	public Long makeBooking(
 		Long   hotelId,
-		String roomType,
+		Long roomId,
+		Long userId,
 		String dateFrom,
 		String dateTo,
 		Boolean isPaid,
@@ -59,7 +60,7 @@ public class API {
 	) throws IOException {
 		long from = ToolBox.formatStringDateToLong(dateFrom);
 		long to   = ToolBox.formatStringDateToLong(dateTo);
-		Booking booking = new Booking(hotelId, roomType, from, to, isPaid, cc);
+		Booking booking = new Booking(hotelId, roomId, userId, from, to, isPaid, cc);
 		Long id = bf.save(booking);
 		return id;
 	}
@@ -71,7 +72,8 @@ public class API {
 		Room r = new Room(
 			Factory.getRandom( Factory.roomType),
 			1 + Factory.randomInt(3),
-			Factory.randomBoolean()
+			Factory.randomBoolean(),
+			aId
 		);
 		return r;
 	}

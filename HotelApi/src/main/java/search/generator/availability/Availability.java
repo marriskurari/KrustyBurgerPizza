@@ -47,6 +47,8 @@ public class Availability extends Entity {
 	@Override
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
+		if(this.id != null)
+			params.add(new Pair<>("id", "" + this.id));
 		for(Map.Entry<Long, Integer> d : days.entrySet())
 			params.add(new Pair<>("" + d.getKey(), "" + d.getValue()));
 		return params;

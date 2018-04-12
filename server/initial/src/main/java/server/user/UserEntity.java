@@ -15,6 +15,8 @@ public class UserEntity {
 	@ElementCollection
 	private Map<Integer, Long> bookings = new HashMap<>();
 
+	public UserEntity() {}
+
 	public UserEntity(Long id, String name, String email, Map<Integer, Long> bookings) {
 		this.id = id;
 		this.name = name;
@@ -52,7 +54,10 @@ public class UserEntity {
 		this.email = email;
 	}
 
-	public void addBooking(Long bookingId) {
+	public Map<Integer, Long> getBookingIds() { return bookings; }
+	public void setBookingIds(Map<Integer, Long> bookings) {this.bookings = bookings; }
+
+	public void addBookingId(Long bookingId) {
 		int bookingNumber = bookings.size();
 		this.bookings.put(bookingNumber, bookingId);
 	}

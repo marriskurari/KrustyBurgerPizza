@@ -22,7 +22,7 @@ public class Booking {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private Integer id;
+	private Long id;
 	private Long hotelId;
 	private Long userId;
 	private Long roomId;
@@ -31,18 +31,22 @@ public class Booking {
 	private Long dateTo;
 	private String cc;
 
-	public Booking(Long hotelId, Long roomId, Long from, Long to, Long aLong, String cc) {
+	public Booking() {}
+
+	public Booking(Long hotelId, Long roomId, Long userId, Long from, Long to, Boolean isPaid, String cc) {
 		this.hotelId = hotelId;
 		this.roomId = roomId;
+		this.userId = userId;
 		this.dateFrom = from;
 		this.dateTo = to;
+		this.isPaid = isPaid;
 		this.cc = cc;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -54,36 +58,36 @@ public class Booking {
 		this.hotelId = hotelId;
 	}
 
-	public Long getRoomType() {
+	public Long getRoomId() {
 		return roomId;
 	}
 
-	public void setRoomType(Long roomId) {
+	public void setRoomId(Long roomId) {
 		this.roomId = roomId;
 	}
 
-	public boolean isPaid() {
+	public boolean getIsPaid() {
 		return isPaid;
 	}
 
-	public void setPaid(boolean paid) {
+	public void setIsPaid(boolean paid) {
 		isPaid = paid;
 	}
 
-	public Long getFrom() {
+	public Long getDateFrom() {
 		return dateFrom;
 	}
 
-	public void setFrom(Date from) {
+	public void setDateFrom(Date from) {
 		assert from.getTime() / 86400000 == 0;
 		this.dateFrom = from.getTime();
 	}
 
-	public Long getTo() {
+	public Long getDateTo() {
 		return dateTo;
 	}
 
-	public void setTo(Date to) {
+	public void setDateTo(Date to) {
 		assert to.getTime() / 86400000 == 0;
 		this.dateTo = to.getTime();
 	}

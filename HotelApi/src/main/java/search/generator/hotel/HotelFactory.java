@@ -72,23 +72,6 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 		return listOfOne.get(0);
 	}
 
-	public Map<Integer, String> getStringMapFromJSON(JSONObject o) {
-		Map<Integer, String> map = new HashMap<>();
-		Integer i = 0;
-		while(true) {
-			try { map.put(i, (String) o.get(i.toString()).toString()); i++; }
-			catch(JSONException e) { return map; }
-		}
-	}
-
-	public Map<Integer, Long> getLongMapFromJSON(JSONObject o) {
-		Map<Integer, String> stringMap = getStringMapFromJSON(o);
-		Map<Integer, Long> longMap = new HashMap<>();
-		for(Map.Entry<Integer, String> e : stringMap.entrySet())
-			longMap.put(e.getKey(), Long.parseLong(e.getValue()));
-		return longMap;
-	}
-
 	public Ent jsonToEntity(JSONObject json) {
 		Ent ent = (Ent) new HotelEntity();
 		ent.setId(Long.parseLong(json.get("id").toString()));

@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.io.IOException;
 
 /**
  * Author: Olafur Palsson
@@ -17,7 +19,7 @@ import java.util.Map;
  * Heiti verkefnis: PACKAGE_NAME
  */
 
-public class BookingFactory<Ent extends Entity> extends Factory {
+public class BookingFactory<Ent extends Booking> extends Factory {
 	public BookingFactory() {
 		this.updateURL = "addBooking";
 		this.getAllURL = "allBookings";
@@ -38,18 +40,29 @@ public class BookingFactory<Ent extends Entity> extends Factory {
 			 (long) randomInt(100),
 			 randomDates.getKey(),
 			 randomDates.getValue(),
+			 randomBoolean(),
 			 randomCC()
 		);
 		return booking;
 	}
 
+	public Ent getOneBooking(long id) throws IOException {
+		List<Ent> listOfOne = getOne(id);
+		return listOfOne.get(0);
+	}
+
 	public Booking jsonToEntity(JSONObject json) {
-		Long id = (Long) json.get("id");
-		Long hotelId = (Long) json.get("hotelId");
-		String roomType = (String) json.get("roomType");
-		Long dateFrom = (Long) json.get("dateFrom");
-		Long dateTo = (Long) json.get("dateTo");
+		System.out.println(json.toString());
+		Long id = getAsLong("id", json);
+		Long hotelId = getAsLong("hotelId", json);
+		Long roomId = getAsLong("roomId", json);
+		Long userId = getAsLong("userId", json);
+		Long dateFrom = getAsLong("dateFrom", json);
+		Long dateTo = getAsLong("dateTo", json);
+		Boolean isPaid = (Boolean) json.get("isPaid");
 		String cc = (String) json.get("cc");
-		return new Booking(id, hotelId, roomType, dateFrom, dateTo, cc);
+		System.out.println("BOOKING ID");
+		System.out.println(id);
+		return new Booking(id, hotelId, roomId, userId, dateFrom, dateTo, isPaid, cc);
 	}
 }

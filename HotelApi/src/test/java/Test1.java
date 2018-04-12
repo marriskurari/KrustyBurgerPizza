@@ -1,6 +1,8 @@
 
 import search.API;
 import search.generator.Factory;
+import search.generator.ToolBox;
+
 import search.generator.hotel.Hotel;
 import search.generator.hotel.HotelEntity;
 import search.generator.hotel.HotelFactory;
@@ -72,12 +74,17 @@ public class Test1 {
 
 		User u = new User("olafur_palsson", "olp6@hi.is");
 		//swagline, a little server back and forth to get an ID
-		u = uf.getOne(uf.save(u));
-
-		Booking b = new Booking(hid, rid, u.getId(), 25000000, 28000000, Factory.randomCC());
+		uid = uf.save(u);
+		UserEntity ue = uf.getOneUser(uid);
+		Assert.assertEquals(ue.getId(), uid);
+		String cc = Factory.randomCC();
+		ToolBox.formatLongDateToString(new Long(25000000));
+		Booking b = new Booking(hid, rid, ue.getId(), new Long(25000000), new Long(28000000), true, cc);
 		bid = bf.save(b);
-		u.addBookingId(bid);
-		uf.save(u);
+		System.out.println("BOOKNIG ID IN TEST " + bid);
+		ue.addBookingId(bid);
+		Long userTestId = uf.save(ue);
+		Assert.assertEquals(uid, userTestId);
 	}
 	/**
 
@@ -88,10 +95,6 @@ public class Test1 {
 	3. Bookings i DB
 
 	*/
-
-	private boolean userHasBooking(User u, Booking b) {
-
-	}
 
 	@Test
 	public void test() throws IOException {
@@ -111,8 +114,8 @@ public class Test1 {
 		Assert.assertEquals((Long) aid, (Long) r.getAvailabilityId());
 
 		Booking b = bf.getOneBooking(bid);
-		User u = uf.getOneUser(uid);
-		Assert.assertTrue(u.hasBooking(b));
+		UserEntity ue =  uf.getOneUser(uid);
+		Assert.assertTrue(ue.hasBooking(b));
 		Assert.assertEquals(b.getHotelId(), hid);
 		Assert.assertEquals(b.getRoomId(), rid);
 		Assert.assertEquals(b.getUserId(), uid);

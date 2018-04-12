@@ -44,6 +44,8 @@ public class HotelEntity extends Entity {
 	@Override
 	public List<Pair<String, String>> getParameters() {
 		List<Pair<String, String>> params = new ArrayList<>();
+		if(this.id != null)
+			params.add(new Pair<>("id", "" + this.id));
 		params.add(pair("latitude", this.latitude));
 		params.add(pair("longitude", this.longitude));
 		params.add(pair("name", this.name));

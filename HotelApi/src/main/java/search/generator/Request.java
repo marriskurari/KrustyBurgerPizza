@@ -38,6 +38,8 @@ public class Request {
 		s = s.substring(0, s.length() - 1);
 
 		requestString += s;
+		// HERE WE DEBUG!!
+		System.out.println(requestString);
 	}
 
 	private String extractJSONstringFromRequest() throws IOException {

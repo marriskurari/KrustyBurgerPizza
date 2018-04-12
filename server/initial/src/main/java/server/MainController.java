@@ -17,6 +17,7 @@ import server.hotel.HotelEntity;
 import server.hotel.HotelRepository;
 import server.room.RoomEntity;
 import server.room.RoomRepository;
+import server.user.User;
 import server.user.UserEntity;
 import server.user.UserRepository;
 
@@ -45,12 +46,18 @@ public class MainController {
 	@GetMapping(path = "/addUser") // Map ONLY GET Requests
 	public @ResponseBody
 	String addNewUser(
+		 @RequestParam(required = false) Long id,
 		 @RequestParam String name,
-		 @RequestParam String email
+		 @RequestParam String email,
+		 @RequestParam(required = false) ArrayList<Long> bookingIds
 	) {
-		UserEntity n = new UserEntity(name, email);
-		userRepository.save(n);
-		return "Saved";
+		UserEntity u = new UserEntity(name, email);
+		if(id != null) u.setId(id);
+		if(bookingIds != null)
+			for(Long bid : bookingIds)
+				u.addBookingId(bid);
+		u = userRepository.save(u);
+		return u.getId().toString();
 	}
 
 	@CrossOrigin
@@ -78,7 +85,7 @@ public class MainController {
 		 @RequestParam Long bookingId
 	) {
 		UserEntity user = userRepository.findOne(userId);
-		user.addBooking(bookingId);
+		user.addBookingId(bookingId);
 		return "Done";
 	}
 
@@ -89,6 +96,7 @@ public class MainController {
 	@GetMapping(path = "/addHotel")
 	public @ResponseBody
 	Long addNewHotel(
+		 @RequestParam(required = false) Long id,
 		 @RequestParam String name,
 		 @RequestParam String email,
 		 @RequestParam double latitude,
@@ -102,6 +110,7 @@ public class MainController {
 		Map<Integer, Long> roomIdMap = (Map<Integer, Long>) Converter.arrayListToMap(roomIds);
 
 		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap, roomIdMap);
+		if(id != null) h.setId(id);
 		h = hotelRepository.save(h);
 		hotelsHaveBeenUpdated = true;
 		return h.getId();
@@ -113,7 +122,7 @@ public class MainController {
 	HotelEntity getOneHotel(
 		 @RequestParam Long id
 	)
-	 {
+	{
 		return hotelRepository.findOne(id);
 	}
 
@@ -160,12 +169,14 @@ public class MainController {
 	@GetMapping(path = "/addRoom")
 	public @ResponseBody
 	String addNewRoom(
+		 @RequestParam(required = false) Long id,
 		 @RequestParam String roomType,
 		 @RequestParam Integer numberOfBeds,
 		 @RequestParam Boolean extraBed,
 		 @RequestParam Long availabilityId
 	) {
 		RoomEntity re = new RoomEntity(roomType, numberOfBeds, extraBed);
+		if(id != null) re.setId(id);
 		re.setAvailabilityId(availabilityId);
 		re = roomRepository.save(re);
 		return "" + re.getId();
@@ -193,10 +204,10 @@ public class MainController {
 	 *   BOOKING METHODS
 	 ********************************/
 	//all dateString: yyyy-mm-dd
-	private Booking makeBasicBooking(Long hotelId, Long roomId, Long userId, String dateFrom, String dateTo, String cc) {
+	private Booking makeBasicBooking(Long hotelId, Long roomId, Long userId, String dateFrom, String dateTo, Boolean isPaid, String cc) {
 		Long from = Converter.yyyymmdd_toLong(dateFrom);
 		Long to = Converter.yyyymmdd_toLong(dateTo);
-		return new Booking(hotelId, roomId, userId, from, to, cc);
+		return new Booking(hotelId, roomId, userId, from, to, isPaid, cc);
 	}
 
 	@CrossOrigin
@@ -212,14 +223,17 @@ public class MainController {
 	@CrossOrigin
 	@GetMapping(path = "/addBooking")
 	public @ResponseBody String addBooking(
+		 @RequestParam(required = false) Long id,
 		 @RequestParam Long hotelId,
 		 @RequestParam Long roomId,
 		 @RequestParam Long userId,
 		 @RequestParam String dateFrom, //yyyy-mm-dd
 		 @RequestParam String dateTo,    //yyyy-mm-dd
+		 @RequestParam Boolean isPaid,
 		 @RequestParam String cc
 	) {
-		Booking booking = makeBasicBooking(hotelId, roomId, userId, dateFrom, dateTo, cc);
+		Booking booking = makeBasicBooking(hotelId, roomId, userId, dateFrom, dateTo, isPaid, cc);
+		if(id != null) booking.setId(id);
 		booking = bookingRepository.save(booking);
 		return booking.getId().toString();
 	}
@@ -243,12 +257,15 @@ public class MainController {
 	Long addAvailability(
 		 @RequestParam Map<String, String> allParams
 	) {
+		Availability availability = new Availability();
 		Map<Long, Integer> days = new HashMap<>();
 		for(Map.Entry<String, String> e : allParams.entrySet()) {
+			if(e.getKey().equals("id")) {
+				availability.setId(Long.parseLong(e.getValue()));
+				continue;
+			}
 			days.put(Long.parseLong(e.getKey()), Integer.parseInt(e.getValue()));
 		}
-
-		Availability availability = new Availability();
 		availability.setDays(days);
 		Availability a =  availabilityRepository.save(availability);
 		System.out.println(a.getId());
