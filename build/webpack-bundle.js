@@ -2064,7 +2064,7 @@ exports = module.exports = __webpack_require__(31)(false);
 
 
 // module
-exports.push([module.i, ".cardHolder__card__cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n\n#googlemap {\n  height: 100px;\n  width: 100px; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  margin-left: 10vw;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 20px; }\n\nbody {\n  background: linear-gradient(#66ff99, #e6e6e6);\n  background-size: cover;\n  margin: 5%; }\n\n.cardImage {\n  height: 150px;\n  width: 350px; }\n", ""]);
+exports.push([module.i, ".cardHolder__card__cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n\n#googlemap {\n  height: 300px;\n  width: 400px; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  margin-left: 10vw;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 20px; }\n\nbody {\n  background: linear-gradient(#66ff99, #e6e6e6);\n  background-size: cover;\n  margin: 5%; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
 
 // exports
 
