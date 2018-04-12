@@ -14,6 +14,7 @@ import DCtrl from "./DataController"
 import Layout from "./Search/Layout"
 import Jumbotron from "./Search/Jumbotron"
 import CardHolder from "./Search/CardHolder/CardHolder"
+import SelectedHotel from "./Search/CardHolder/SelectedHotel"
 import SearchForm from "./Search/SearchForm"
 
 const history = createBrowserHistory()
@@ -27,7 +28,7 @@ export default class Body extends React.Component {
     this.state = {
       showResults: false,
       hotels: [],
-      cardHolder: null,
+      cardHolder: this.makeCardHolder,
       selectedHotel: null
     }
   }
@@ -52,37 +53,44 @@ export default class Body extends React.Component {
     console.log("blabla")
     const data = await DCtrl.hotel.getHotelsByLocation(lat, lng)
     this.setHotels(data)
+    return data
   }
 
-  makeLayout() {
-    return(
-      <div>
-        <Jumbotron
-          className="jumbotron"
-          getHotels={this.getHotelsByLocation}
-          getAll={this.getAllAndPushToCardHolder}
-        />
-        {this.props.children}
-      </div>
-    )
+  selectHotel(hotel) {
+    this.setState(state => {
+      state.selectedHotel = hotel
+    })
   }
 
   makeCardHolder() {
-    this.setState( this.state.cardHolder = (<CardHolder className="cardHolder" hotels={this.state.hotels} />))
-  }
-
-  makeHotelBookingCard() {
-    this.setState( this.state.selectedHotel = (<SelectedHotel className="hotelHolder" />))
+    return(
+      <CardHolder
+        className="cardHolder"
+        hotels={this.state.hotels}
+        selectHotel={this.selectHotel.bind(this)}
+      />
+    )
   }
 
   render() {
+    console.log(this.state.cardHolder)
+    console.log(Jumbotron)
     return(
 			<Router history={ history }>
-
-        <Route path="/" component={<Jumbotron />}>
-          <IndexRoute component={this.state.cardHolder} />
-          <Route path="hotel" component={this.state.selectedHotel} />
-        </Route>
+        <div>
+          <Jumbotron
+            getHotels={this.getHotelsByLocation.bind(this)}
+            selectHotel={this.selectHotel.bind(this)}
+          />
+          <Route path="/"
+            component={CardHolder}
+            hotels={this.state.hotels}
+          />
+          <Route path="hotel"
+            component={SelectedHotel}
+            selectedHotel={this.state.selectedHotel}
+          />
+        </div>
 			</Router>
     )
 	}

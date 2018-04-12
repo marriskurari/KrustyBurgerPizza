@@ -30,6 +30,7 @@ export default class CardHolder extends React.Component {
   }
 
   renderHotelList() {
+    if(this.props.hotels == undefined) return (<React.Fragment/>)
     return this.props.hotels.map(hotel => this.makeCard(hotel))
   }
 
