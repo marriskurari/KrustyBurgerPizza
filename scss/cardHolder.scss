@@ -1,19 +1,64 @@
 .cardHolder {
-  display: flex;
-  flex-wrap: wrap;
 
 
   &__card {
     display: flex;
     flex-direction: column;
+    margin: 1rem;
     padding: 1rem;
     width: 15rem;
     height: 15rem;
+    background-color: #BAD5DE;
+    transition: background-color 0.3s ease-in-out;
+
+    &Container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #EEE;
+    }
 
     &__cardImage {
       height: 100%;
       width: 100%;
       background-size: cover;
+      background-position: center;
+    }
+  }
+
+  &__selectedHotel {
+    max-width: 80vw;
+    min-width: 60vw;
+    height: 100vh;
+    background-color: #BAD5DE;
+    margin: 1rem;
+    float: right;
+
+    &__card {
+      padding: 1rem;
+
+
+      &__cardImage {
+        width: 100%;
+        height: 80vh;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+
+    &__form {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__input {
+        margin: 0.5rem;
+      }
     }
   }
 }

@@ -800,8 +800,8 @@ module.exports = warning;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createLocation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(8);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -1308,6 +1308,49 @@ var matchPath = function matchPath(pathname) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Card extends _react2.default.Component {
+
+	render() {
+		const urlString = `url(${this.props.imageUrl})`;
+		return _react2.default.createElement(
+			"div",
+			{
+				className: "cardHolder__card",
+				onClick: () => this.props.selectHotel(this.props.hotel)
+			},
+			_react2.default.createElement("div", { className: "cardHolder__card__cardImage", style: { backgroundImage: urlString } }),
+			_react2.default.createElement(
+				"h3",
+				null,
+				this.props.name
+			),
+			_react2.default.createElement(
+				"a",
+				{ href: `mailto:${this.props.email}` },
+				this.props.email
+			)
+		);
+	}
+}
+exports.default = Card;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1343,7 +1386,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1424,7 +1467,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1466,7 +1509,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1537,7 +1580,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1580,7 +1623,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1610,7 +1653,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1687,7 +1730,7 @@ function resolvePathname(to) {
 /* harmony default export */ __webpack_exports__["default"] = (resolvePathname);
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1732,7 +1775,7 @@ function valueEqual(a, b) {
 /* harmony default export */ __webpack_exports__["default"] = (valueEqual);
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1760,7 +1803,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1826,7 +1869,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1975,46 +2018,6 @@ Route.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Route);
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class Card extends _react2.default.Component {
-
-	render() {
-		const urlString = `url(${this.props.imageUrl})`;
-		return _react2.default.createElement(
-			"div",
-			{ className: "cardHolder__card" },
-			_react2.default.createElement(
-				"h3",
-				null,
-				this.props.name
-			),
-			_react2.default.createElement(
-				"a",
-				{ href: `mailto:${this.props.email}` },
-				this.props.email
-			),
-			_react2.default.createElement("div", { className: "cardHolder__card__cardImage", style: { backgroundImage: urlString } })
-		);
-	}
-}
-exports.default = Card;
-
-/***/ }),
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2107,7 +2110,7 @@ exports = module.exports = __webpack_require__(34)(false);
 
 
 // module
-exports.push([module.i, ".jumbotron {\n  width: 100vw;\n  height: 100vh;\n  border: 1px solid black;\n  background-image: url(" + escape(__webpack_require__(35)) + ");\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  background-attachment: fixed;\n  align-items: center; }\n  .jumbotron__form {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .jumbotron__form__input {\n      padding: 1rem; }\n    .jumbotron__form__indicator {\n      background-image: url(" + escape(__webpack_require__(36)) + ");\n      height: 50px;\n      width: 50px; }\n\n.cardHolder {\n  display: flex;\n  flex-wrap: wrap; }\n  .cardHolder__card {\n    display: flex;\n    flex-direction: column;\n    padding: 1rem;\n    width: 15rem;\n    height: 15rem; }\n    .cardHolder__card__cardImage {\n      height: 100%;\n      width: 100%;\n      background-size: cover; }\n\n#googlemap {\n  height: 300px;\n  width: 400px; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 12px;\n  margin: 0px;\n  background-color: #90C3D4; }\n\n.displaynone {\n  display: none; }\n\n.displayhidden {\n  display: hidden; }\n\nbody {\n  background-size: cover;\n  margin: 0px; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
+exports.push([module.i, ".jumbotron {\n  width: 100vw;\n  height: 100vh;\n  border: 1px solid black;\n  background-image: url(" + escape(__webpack_require__(35)) + ");\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  background-attachment: fixed;\n  align-items: center; }\n  .jumbotron__form {\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .jumbotron__form__input {\n      padding: 1rem; }\n    .jumbotron__form__indicator {\n      background-image: url(" + escape(__webpack_require__(36)) + ");\n      height: 50px;\n      width: 50px; }\n\n.cardHolder__card {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem;\n  padding: 1rem;\n  width: 15rem;\n  height: 15rem;\n  background-color: #BAD5DE;\n  transition: background-color 0.3s ease-in-out; }\n  .cardHolder__cardContainer {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center; }\n  .cardHolder__card:hover {\n    cursor: pointer;\n    background-color: #EEE; }\n  .cardHolder__card__cardImage {\n    height: 100%;\n    width: 100%;\n    background-size: cover;\n    background-position: center; }\n\n.cardHolder__selectedHotel {\n  max-width: 80vw;\n  min-width: 60vw;\n  height: 100vh;\n  background-color: #BAD5DE;\n  margin: 1rem;\n  float: right; }\n  .cardHolder__selectedHotel__card {\n    padding: 1rem; }\n    .cardHolder__selectedHotel__card__cardImage {\n      width: 100%;\n      height: 80vh;\n      background-position: center;\n      background-size: cover; }\n  .cardHolder__selectedHotel__form {\n    padding: 1rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center; }\n    .cardHolder__selectedHotel__form__input {\n      margin: 0.5rem; }\n\n#googlemap {\n  height: 300px;\n  width: 400px; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 12px;\n  margin: 0px;\n  background-color: #90C3D4; }\n\n.displaynone {\n  display: none; }\n\n.displayhidden {\n  display: hidden; }\n\nbody {\n  background-size: cover;\n  margin: 0px; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
 
 // exports
 
@@ -2768,7 +2771,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),l=__webpack_require__(18),B=__webpack_require__(6),C=__webpack_require__(3),ba=__webpack_require__(19),da=__webpack_require__(20),ea=__webpack_require__(21),fa=__webpack_require__(22),ia=__webpack_require__(23),D=__webpack_require__(9);
+var aa=__webpack_require__(0),l=__webpack_require__(19),B=__webpack_require__(6),C=__webpack_require__(3),ba=__webpack_require__(20),da=__webpack_require__(21),ea=__webpack_require__(22),fa=__webpack_require__(23),ia=__webpack_require__(24),D=__webpack_require__(9);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -4461,14 +4464,14 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(0);
 var invariant = __webpack_require__(7);
 var warning = __webpack_require__(10);
-var ExecutionEnvironment = __webpack_require__(18);
+var ExecutionEnvironment = __webpack_require__(19);
 var _assign = __webpack_require__(6);
 var emptyFunction = __webpack_require__(3);
-var EventListener = __webpack_require__(19);
-var getActiveElement = __webpack_require__(20);
-var shallowEqual = __webpack_require__(21);
-var containsNode = __webpack_require__(22);
-var focusNode = __webpack_require__(23);
+var EventListener = __webpack_require__(20);
+var getActiveElement = __webpack_require__(21);
+var shallowEqual = __webpack_require__(22);
+var containsNode = __webpack_require__(23);
+var focusNode = __webpack_require__(24);
 var emptyObject = __webpack_require__(9);
 var checkPropTypes = __webpack_require__(12);
 var hyphenateStyleName = __webpack_require__(46);
@@ -20011,21 +20014,21 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = __webpack_require__(51);
 
-var _history = __webpack_require__(26);
+var _history = __webpack_require__(27);
 
 var _Search = __webpack_require__(69);
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Contact = __webpack_require__(75);
+var _Contact = __webpack_require__(76);
 
 var _Contact2 = _interopRequireDefault(_Contact);
 
-var _About = __webpack_require__(76);
+var _About = __webpack_require__(77);
 
 var _About2 = _interopRequireDefault(_About);
 
-var _Header = __webpack_require__(77);
+var _Header = __webpack_require__(78);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -20070,7 +20073,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_1__Prompt__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Redirect__ = __webpack_require__(59);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_2__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(29);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_3__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(15);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_4__Router__["a"]; });
@@ -20971,11 +20974,11 @@ exports.locationsAreEqual = exports.createLocation = undefined;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _resolvePathname = __webpack_require__(24);
+var _resolvePathname = __webpack_require__(25);
 
 var _resolvePathname2 = _interopRequireDefault(_resolvePathname);
 
-var _valueEqual = __webpack_require__(25);
+var _valueEqual = __webpack_require__(26);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
@@ -21238,7 +21241,7 @@ Prompt.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history__ = __webpack_require__(27);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -21345,7 +21348,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(28);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -21649,7 +21652,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(28);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -22855,7 +22858,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(29);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -22990,11 +22993,11 @@ var _CardHolder = __webpack_require__(72);
 
 var _CardHolder2 = _interopRequireDefault(_CardHolder);
 
-var _Card = __webpack_require__(29);
+var _Card = __webpack_require__(18);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _DataController = __webpack_require__(73);
+var _DataController = __webpack_require__(74);
 
 var _DataController2 = _interopRequireDefault(_DataController);
 
@@ -23197,9 +23200,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Card = __webpack_require__(29);
+var _Card = __webpack_require__(18);
 
 var _Card2 = _interopRequireDefault(_Card);
+
+var _SelectedHotel = __webpack_require__(73);
+
+var _SelectedHotel2 = _interopRequireDefault(_SelectedHotel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23208,14 +23215,22 @@ class CardHolder extends _react2.default.Component {
     super();
     this.renderHotelList = this.renderHotelList.bind(this);
     this.findAndReplace = this.findAndReplace.bind(this);
+    this.state = { selectedHotel: null };
   }
 
   findAndReplace(string, replaceThis, withThis) {
     return string.split(replaceThis).join(withThis);
   }
 
+  selectHotel(hotel) {
+    console.log(hotel);
+    this.setState({ selectedHotel: hotel });
+  }
+
   makeCard(hotelObject) {
     return _react2.default.createElement(_Card2.default, {
+      hotel: hotelObject,
+      selectHotel: this.selectHotel.bind(this),
       key: hotelObject.id,
       name: this.findAndReplace(hotelObject.name, "_", " "),
       email: hotelObject.email,
@@ -23233,10 +23248,18 @@ class CardHolder extends _react2.default.Component {
   }
 
   render() {
+    console.log(this.state.selectedHotel);
     return _react2.default.createElement(
       'div',
       { className: 'cardHolder' },
-      this.renderHotelList()
+      _react2.default.createElement(_SelectedHotel2.default, {
+        hotel: this.state.selectedHotel
+      }),
+      _react2.default.createElement(
+        'div',
+        { className: 'cardHolder__cardContainer' },
+        this.renderHotelList()
+      )
     );
   }
 }
@@ -23250,10 +23273,93 @@ exports.default = CardHolder;
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Card = __webpack_require__(18);
+
+var _Card2 = _interopRequireDefault(_Card);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class SelectedHotel extends _Card2.default {
+  constructor(props) {
+    super(props);
+  }
+
+  //not sure if works
+  display() {
+    return this.props.selectHotel == null ? "displaynone" : "cardHolder__selectedHotel";
+  }
+
+  findAndReplace(string, replaceThis, withThis) {
+    return string.split(replaceThis).join(withThis);
+  }
+
+  render() {
+    console.log(this.props);
+    console.log(this.props.hotel);
+    if (this.props.hotel == null) return null;
+    const urlString = `url(${this.props.hotel.imageUrl})`;
+    const name = this.findAndReplace(this.props.hotel.name, "_", " ");
+    return _react2.default.createElement(
+      'div',
+      {
+        className: this.props.hotel == null ? "displaynone" : "cardHolder__selectedHotel",
+        name: 'selected'
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'cardHolder__selectedHotel__card' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          name
+        ),
+        _react2.default.createElement('div', { className: 'cardHolder__selectedHotel__card__cardImage', style: { backgroundImage: urlString } }),
+        _react2.default.createElement(
+          'a',
+          { href: `mailto:${this.props.hotel.email}` },
+          this.props.hotel.email
+        )
+      ),
+      _react2.default.createElement(
+        'form',
+        { className: 'cardHolder__selectedHotel__form', onSubmit: console.log("submitted") },
+        _react2.default.createElement(
+          'h3',
+          null,
+          ' Book your room Now!! '
+        ),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', type: 'text', placeholder: 'First Name' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', type: 'text', placeholder: 'Last Name' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', type: 'number', placeholder: 'Credit Card Number' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', type: 'number', placeholder: 'MM' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', type: 'number', placeholder: 'YY' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', type: 'text', placeholder: 'Email' }),
+        _react2.default.createElement('input', { type: 'submit' })
+      )
+    );
+  }
+}
+exports.default = SelectedHotel;
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _Request = __webpack_require__(74);
+var _Request = __webpack_require__(75);
 
 var _Request2 = _interopRequireDefault(_Request);
 
@@ -23337,7 +23443,7 @@ const DCtrl = {
 exports.default = DCtrl;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23365,7 +23471,7 @@ const requestPromise = requestString => {
 exports.default = requestPromise;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23393,7 +23499,7 @@ class Contact extends _react2.default.Component {
 exports.default = Contact;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23421,7 +23527,7 @@ class About extends _react2.default.Component {
 exports.default = About;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
