@@ -24,24 +24,17 @@ module: {
     },
     {
       test: /\.(png|jpg|gif)$/,
-      use: [{
-          loader: "url-loader",
-          options: {
-            publicPath: "./",
-            limit: 8192,
-          }
-        }]
+      loader: "url-loader",
+      options: {
+        limit: 16000
+      }
     }
   ]
 },
-plugins: [
-  new ExtractTextPlugin("styles.css")
-],
-
 entry: "./app/index.js",
 output: {
   filename: "webpack-bundle.js",
   path: path.resolve(__dirname, "build"),
-  publicPath: "./build"
+  publicPath: "./build/"
 }
 }

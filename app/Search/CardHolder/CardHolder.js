@@ -15,7 +15,6 @@ export default class CardHolder extends React.Component {
   makeCard(hotelObject) {
       return (
         <Card
-          className="cardHolder__card"
           key={hotelObject.id}
           name={this.findAndReplace(hotelObject.name, "_", " ")}
           email={hotelObject.email}
@@ -33,12 +32,10 @@ export default class CardHolder extends React.Component {
   }
 
   render() {
-    console.log(this)
     return(
-      <React.Fragment>
-        <p>{"not shocking bro"}</p>
+      <div className="cardHolder">
         {this.renderHotelList()}
-      </React.Fragment>
+      </div>
     )
   }
 }

@@ -25,9 +25,6 @@ export default class Search extends React.Component {
     this.makeCardHolder()
   }
 
-  findAndReplace(string, replaceThis, withThis) {
-    return string.split(replaceThis).join(withThis)
-  }
 
   async getAllAndPushToCardHolder() {
     console.log("the correct one :)")
@@ -54,8 +51,8 @@ export default class Search extends React.Component {
 
   makeCard(hotelObject) {
       console.log("MAking dem cards bro")
-      return (
-        <Card
+      return
+        (<Card
           className="cardHolder__card"
           key={hotelObject.id}
           name={this.findAndReplace(hotelObject.name, "_", " ")}
@@ -64,18 +61,21 @@ export default class Search extends React.Component {
           longitude={hotelObject.longitude}
           imageUrl={hotelObject.imageUrl}
           numRooms={hotelObject.numRooms}
-        />
-      )
+        />)
   }
 
   render() {
     return(
       <React.Fragment>
-        <Jumbotron
-          getHotels={this.getHotelsByLocation.bind(this)}
-          selectHotel={this.selectHotel}
-        />
-        {this.state.cardHolder}
+        <div className="jumbotron">
+          <Jumbotron
+            getHotels={this.getHotelsByLocation.bind(this)}
+            selectHotel={this.selectHotel}
+          />
+        </div>
+        <div className="cardholder">
+          {this.state.cardHolder}
+        </div>
       </React.Fragment>
     )
   }

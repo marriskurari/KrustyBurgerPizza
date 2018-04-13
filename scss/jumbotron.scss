@@ -1,3 +1,27 @@
 .jumbotron {
-  
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid black;
+  background-image: url("./img/beach.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  background-attachment: fixed;
+  align-items: center;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__input {
+      padding: 1rem;
+    }
+
+    &__indicator {
+      background-image: url("./img/down.png");
+      height: 50px;
+      width: 50px;
+    }
+  }
 }

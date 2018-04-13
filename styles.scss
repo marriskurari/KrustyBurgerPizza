@@ -9,16 +9,24 @@
 html {
   display: flex;
   flex-direction: column;
-  margin-left: 10vw;
   font-family: $fonts;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 12px;
+  margin: 0px;
+  background-color: #90C3D4;
+}
+
+.displaynone {
+  display: none;
+}
+
+.displayhidden {
+  display: hidden;
 }
 
 body {
-  background: linear-gradient(lighten($green, 40%), lighten(gray, 40%));
   background-size: cover;
-  margin: 5%;
+  margin: 0px;
 }
 
 

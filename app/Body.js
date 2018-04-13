@@ -6,7 +6,7 @@ import {createBrowserHistory} from "history"
 import Search from "./Search/Search"
 import Contact from "./Contact/Contact"
 import About from "./About/About"
-import Header from "./Components/Header"
+import Header from "./Header/Header"
 
 //module for getting the data
 
