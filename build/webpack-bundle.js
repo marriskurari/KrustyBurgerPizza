@@ -24524,15 +24524,19 @@ class CardHolder extends _react2.default.Component {
   //eitt iterable thannig
   async getRooms(hotel) {
     if (hotel == null) return null;
-    let rooms = {};
+    let rooms = [];
     const ids = hotel.roomIds;
     console.log("SOme ids n shit");
-    console.log(ids);
-    Object.keys(ids).map(async key => {
-      const a = await _DataController2.default.room.getOne(ids[key]);
-      rooms[key] = a;
-    });
-    console.log(rooms);
+    console.log(JSON.stringify(ids));
+
+    for (let key in ids) {
+      const id = ids[key];
+      console.log(id);
+      const a = await _DataController2.default.room.getOne(id);
+      console.log(JSON.stringify(a));
+      rooms.push(a);
+    }
+    console.log(JSON.stringify(rooms));
     this.setState({
       rooms: rooms,
       selectedHotel: hotel
@@ -24691,7 +24695,7 @@ class SelectedHotel extends _Card2.default {
         ),
         _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'first', type: 'text', placeholder: 'First Name' }),
         _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'last', type: 'text', placeholder: 'Last Name' }),
-        _react2.default.createElement(_RoomTypesDropdown2.default, { demRooms: this.props.rooms }),
+        _react2.default.createElement(_RoomTypesDropdown2.default, { rooms: this.props.rooms }),
         _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'email', type: 'text', placeholder: 'Email' }),
         _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'cc', type: 'number', placeholder: 'Credit Card Number' }),
         _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'exmm', type: 'number', placeholder: 'MM' }),
@@ -24755,16 +24759,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 class RoomTypesDropdown extends _react2.default.Component {
 
   getOptions() {
-    let i = 0;
-    console.log("Getting close to the money");
-    console.log(JSON.stringify(this.props.demRooms));
-    return null;
+    return this.props.rooms.map(room => _react2.default.createElement(_RoomOption2.default, { key: room.id, room: room }));
   }
 
   render() {
     console.log("Rendering the dropdown");
-    console.log(this.props.demRooms);
-    if (this.props.demRooms == null) return null;
+    console.log(this.props.rooms);
+    if (this.props.rooms == null) return null;
     return _react2.default.createElement(
       'select',
       { name: 'roomType' },
@@ -24793,11 +24794,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 class RoomOption extends _react2.default.Component {
   render() {
-    console.log("Nuna er thetta ordid sma retarted lol");
     return _react2.default.createElement(
-      "option",
-      { value: this.props.value },
-      this.props.roomType
+      'option',
+      { value: this.props.room.id },
+      this.props.room.roomType
     );
   }
 }

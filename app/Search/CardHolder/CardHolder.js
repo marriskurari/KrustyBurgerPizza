@@ -22,15 +22,19 @@ export default class CardHolder extends React.Component {
   //eitt iterable thannig
   async getRooms(hotel) {
     if(hotel == null) return null
-    let rooms = {}
+    let rooms = []
     const ids = hotel.roomIds
     console.log("SOme ids n shit")
-    console.log(ids)
-    Object.keys(ids).map(async key => {
-      const a = await DCtrl.room.getOne(ids[key])
-      rooms[key] = a
-    })
-    console.log(rooms)
+    console.log(JSON.stringify(ids))
+
+    for(let key in ids) {
+      const id = ids[key]
+      console.log(id)
+      const a = await DCtrl.room.getOne(id)
+      console.log(JSON.stringify(a))
+      rooms.push(a)
+    }
+    console.log(JSON.stringify(rooms))
     this.setState({
       rooms: rooms,
       selectedHotel: hotel

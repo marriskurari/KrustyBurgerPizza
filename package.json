@@ -6,7 +6,7 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "serve": "webpack-dev-server.js --open --watch",
-    "browser-sync": "browser-sync start -wsf *.html *.css *.scss *.js",
+    "browser-sync": "browser-sync start --reload-delay 1 -wsf *.html *.css *.scss *.js",
     "dev": "npm-run-all --parallel watch browser-sync"
   },
   "author": "",

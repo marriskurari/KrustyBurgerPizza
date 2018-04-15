@@ -71,7 +71,7 @@ export default class SelectedHotel extends Card {
         <h3> Book your room Now!! </h3>
         <input className="cardHolder__selectedHotel__form__input" name="first" type="text" placeholder="First Name" />
         <input className="cardHolder__selectedHotel__form__input" name="last"type="text" placeholder="Last Name" />
-        <RoomTypesDropdown demRooms={this.props.rooms} />
+        <RoomTypesDropdown rooms={this.props.rooms} />
         <input className="cardHolder__selectedHotel__form__input" name="email"type="text" placeholder="Email" />
         <input className="cardHolder__selectedHotel__form__input" name="cc"type="number" placeholder="Credit Card Number" />
         <input className="cardHolder__selectedHotel__form__input" name="exmm"type="number" placeholder="MM" />
