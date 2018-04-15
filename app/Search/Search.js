@@ -10,7 +10,7 @@ export default class Search extends React.Component {
   constructor() {
     super()
     this.state = { show : null }
-    this.state.cardHolder = (<p>Cards go here</p>)
+    this.state.cardHolder = (<h3 className="displayhidden"> HOW DID YOU FIND ME?!? </h3>) //just for a little space
   }
 
   makeCards(hotels) {
@@ -23,6 +23,7 @@ export default class Search extends React.Component {
     })
     console.log(this.state.hotels)
     this.makeCardHolder()
+    this.scrollToNode("cardHolder")
   }
 
 
@@ -39,6 +40,18 @@ export default class Search extends React.Component {
     return data
   }
 
+  scrollToNode(id) {
+    console.log("Scrolling to " + id)
+    const node = document.querySelector("#" + id)
+    const y = node.getBoundingClientRect().top + window.scrollY - 150
+    console.log(window.scrollY)
+    console.log(y)
+    window.scroll({
+      top: y,
+      behavior: 'smooth'
+    })
+  }
+
   selectHotel(hotel) {
     this.setState({
       selectedHotel: hotel
@@ -46,22 +59,10 @@ export default class Search extends React.Component {
   }
 
   makeCardHolder(){
-    this.setState({ cardHolder: (<CardHolder hotels={this.state.hotels} />)})
-  }
-
-  makeCard(hotelObject) {
-      console.log("MAking dem cards bro")
-      return
-        (<Card
-          className="cardHolder__card"
-          key={hotelObject.id}
-          name={this.findAndReplace(hotelObject.name, "_", " ")}
-          email={hotelObject.email}
-          latitude={hotelObject.latitude}
-          longitude={hotelObject.longitude}
-          imageUrl={hotelObject.imageUrl}
-          numRooms={hotelObject.numRooms}
-        />)
+    this.setState({ cardHolder: (<CardHolder
+      scrollToNode={this.scrollToNode}
+      hotels={this.state.hotels}
+    />)})
   }
 
   render() {

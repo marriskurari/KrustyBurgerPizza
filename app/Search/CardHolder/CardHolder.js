@@ -70,9 +70,13 @@ export default class CardHolder extends React.Component {
   render() {
     console.log(this.state.selectedHotel)
     return(
-      <div className="cardHolder">
-        <div className="selected__selectedContainer">
-          <SelectedHotel rooms={this.state.rooms} hotel={this.state.selectedHotel} />
+      <div className="cardHolder" id="cardHolder">
+        <div className="selected__selectedContainer" id="selected">
+          <SelectedHotel
+            rooms={this.state.rooms}
+            hotel={this.state.selectedHotel}
+            scrollToNode={this.props.scrollToNode}
+          />
         </div>
         <div className="cardHolder__cardContainer"> {this.renderHotelList()} </div>
       </div>

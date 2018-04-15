@@ -12,7 +12,7 @@ export default class RoomTypesDropdown extends React.Component {
     console.log(this.props.rooms)
     if(this.props.rooms == null) return null
     return(
-      <select name="roomType">
+      <select id="roomType">
         {this.getOptions()}
     </select>
     )

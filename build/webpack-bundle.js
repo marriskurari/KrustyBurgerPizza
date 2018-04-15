@@ -1379,9 +1379,10 @@ const createBooking = (hotelId, roomId, userId, dateFrom, dateTo, cc) => {
 	let requestString = `${baseString}addBooking?`;
 	requestString += "hotelId=" + hotelId + "&";
 	requestString += "roomId=" + roomId + "&";
-	requestString += "userId=" + roomType + "&";
+	requestString += "userId=" + userId + "&";
+	requestString += "isPaid=" + false + "&";
 	requestString += "dateFrom=" + dateFrom + "&";
-	requestString += "dateTo=" + dateTo;
+	requestString += "dateTo=" + dateTo + "&";
 	requestString += "cc=" + cc;
 	return (0, _Request2.default)(requestString);
 };
@@ -1408,7 +1409,9 @@ const getHotelsByLocation = (lat, lng) => {
 };
 
 const newUserBooking = async (name, email, hotelId, roomId, dateFrom, dateTo, cc) => {
+	console.log(name);
 	const userId = await createUser(name, email);
+	console.log(userId);
 	return createBooking(hotelId, roomId, userId, dateFrom, dateTo, cc);
 };
 
@@ -2103,7 +2106,7 @@ exports = module.exports = __webpack_require__(33)(false);
 
 
 // module
-exports.push([module.i, "#googlemap {\n  height: 300px;\n  width: 400px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.jumbotron {\n  width: 100vw;\n  height: 100vh;\n  border-bottom: 2px solid black;\n  background-image: url(" + escape(__webpack_require__(34)) + ");\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  background-attachment: fixed;\n  align-items: center;\n  box-sizing: border-box; }\n  .jumbotron__form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 2rem; }\n    .jumbotron__form__input {\n      padding: 1rem; }\n    .jumbotron__form__indicator {\n      background-image: url(" + escape(__webpack_require__(35)) + ");\n      height: 50px;\n      width: 50px; }\n\n.cardHolder__card {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem;\n  padding: 1rem;\n  width: 15rem;\n  height: 15rem;\n  background-color: #969696;\n  transition: background-color 0.3s ease-in-out;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  border-radius: 3px; }\n  .cardHolder__cardContainer {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center; }\n  .cardHolder__card:hover {\n    cursor: pointer;\n    background-color: white; }\n  .cardHolder__card__cardImage {\n    height: 100%;\n    width: 100%;\n    background-size: cover;\n    background-position: center; }\n\n.cardHolder__selectedHotel {\n  max-width: 80vw;\n  min-width: 60vw;\n  height: 100vh;\n  background-color: #969696;\n  margin: 1rem;\n  float: right;\n  border-radius: 15px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n  .cardHolder__selectedHotel__card {\n    padding: 1rem; }\n    .cardHolder__selectedHotel__card__cardImage {\n      width: 100%;\n      height: 80vh;\n      background-position: center;\n      background-size: cover; }\n  .cardHolder__selectedHotel__form {\n    padding: 1rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: #DB7A35;\n    border-bottom-right-radius: 15px;\n    border-bottom-left-radius: 15px;\n    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n    .cardHolder__selectedHotel__form__input {\n      margin: 0.5rem; }\n\n.header {\n  height: 10vh;\n  width: 100%;\n  position: fixed;\n  z-index: 1;\n  background: #33ff77;\n  display: flex;\n  align-items: center;\n  border-bottom: 2px solid black;\n  padding: 0px; }\n  .header__link {\n    padding: 0.85rem;\n    margin: 0.35rem;\n    border-radius: 3px;\n    background-color: #969696;\n    transition: background-color 0.5s;\n    border: 1px solid black;\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3), 0 0 2px 2px rgba(0, 0, 0, 0.19); }\n    .header__link:hover {\n      background-color: white; }\n  .header__heading {\n    display: flex;\n    align-items: center; }\n    .header__heading__container {\n      margin-right: 1rem;\n      display: flex;\n      align-items: center;\n      background-color: #DB7A35;\n      height: 100%;\n      padding-left: 1rem;\n      padding-right: 1rem; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 12px;\n  margin: 0px;\n  background-color: #33ff77;\n  padding: 0px; }\n\na {\n  color: black;\n  text-decoration: none; }\n\n.displaynone {\n  display: none; }\n\n.displayhidden {\n  display: hidden; }\n\nbody {\n  background-size: cover;\n  margin: 0px; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
+exports.push([module.i, "#googlemap {\n  height: 300px;\n  width: 400px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.jumbotron {\n  max-width: 100%;\n  width: 100%;\n  height: 100vh;\n  border-bottom: 2px solid black;\n  background-image: url(" + escape(__webpack_require__(34)) + ");\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  background-attachment: fixed;\n  align-items: center;\n  box-sizing: border-box; }\n  .jumbotron__form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 2rem; }\n    .jumbotron__form__input {\n      padding: 1rem; }\n    .jumbotron__form__indicator {\n      background-image: url(" + escape(__webpack_require__(35)) + ");\n      height: 50px;\n      width: 50px; }\n\n.cardHolder__card {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem;\n  padding: 1rem;\n  width: 15rem;\n  height: 15rem;\n  background-color: #969696;\n  transition: background-color 0.3s ease-in-out;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  border-radius: 3px; }\n  .cardHolder__cardContainer {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center; }\n  .cardHolder__card:hover {\n    cursor: pointer;\n    background-color: white; }\n  .cardHolder__card__cardImage {\n    height: 100%;\n    width: 100%;\n    background-size: cover;\n    background-position: center; }\n\n.cardHolder__selectedHotel {\n  max-width: 80vw;\n  min-width: 60vw;\n  height: 100vh;\n  background-color: #969696;\n  margin: 1rem;\n  float: right;\n  border-radius: 15px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n  .cardHolder__selectedHotel__card {\n    padding: 1rem; }\n    .cardHolder__selectedHotel__card__cardImage {\n      width: 100%;\n      height: 80vh;\n      background-position: center;\n      background-size: cover; }\n  .cardHolder__selectedHotel__form {\n    padding: 1rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: #DB7A35;\n    border-bottom-right-radius: 15px;\n    border-bottom-left-radius: 15px;\n    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n    .cardHolder__selectedHotel__form__input {\n      margin: 0.5rem; }\n\n.footer {\n  color: white;\n  font-weight: 400;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #303030; }\n  .footer__copyright {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #4a4a4a;\n    height: 3rem;\n    width: 100%; }\n  .footer__info {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #303030;\n    height: 8rem;\n    width: 100%; }\n\n.header {\n  height: 10vh;\n  width: 100%;\n  position: fixed;\n  z-index: 1;\n  background: #33ff77;\n  display: flex;\n  align-items: center;\n  border-bottom: 2px solid black;\n  padding: 0px; }\n  .header__link {\n    padding: 0.85rem;\n    margin: 0.35rem;\n    border-radius: 3px;\n    background-color: #969696;\n    transition: background-color 0.5s;\n    border: 1px solid black;\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3), 0 0 2px 2px rgba(0, 0, 0, 0.19); }\n    .header__link:hover {\n      background-color: white; }\n  .header__heading {\n    display: flex;\n    align-items: center; }\n    .header__heading__container {\n      margin-right: 1rem;\n      display: flex;\n      align-items: center;\n      background-color: #DB7A35;\n      height: 100%;\n      padding-left: 1rem;\n      padding-right: 1rem; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 12px;\n  margin: 0px;\n  background-color: #33ff77;\n  padding: 0px; }\n\na {\n  color: black;\n  text-decoration: none; }\n\n.displaynone {\n  display: none; }\n\n.displayhidden {\n  visibility: hidden; }\n\nbody {\n  background-size: cover;\n  margin: 0px; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
 
 // exports
 
@@ -24299,10 +24302,10 @@ class Search extends _react2.default.Component {
     super();
     this.state = { show: null };
     this.state.cardHolder = _react2.default.createElement(
-      'p',
-      null,
-      'Cards go here'
-    );
+      'h3',
+      { className: 'displayhidden' },
+      ' HOW DID YOU FIND ME?!? '
+    ); //just for a little space
   }
 
   makeCards(hotels) {
@@ -24315,6 +24318,7 @@ class Search extends _react2.default.Component {
     });
     console.log(this.state.hotels);
     this.makeCardHolder();
+    this.scrollToNode("cardHolder");
   }
 
   async getAllAndPushToCardHolder() {
@@ -24330,6 +24334,18 @@ class Search extends _react2.default.Component {
     return data;
   }
 
+  scrollToNode(id) {
+    console.log("Scrolling to " + id);
+    const node = document.querySelector("#" + id);
+    const y = node.getBoundingClientRect().top + window.scrollY - 150;
+    console.log(window.scrollY);
+    console.log(y);
+    window.scroll({
+      top: y,
+      behavior: 'smooth'
+    });
+  }
+
   selectHotel(hotel) {
     this.setState({
       selectedHotel: hotel
@@ -24337,22 +24353,10 @@ class Search extends _react2.default.Component {
   }
 
   makeCardHolder() {
-    this.setState({ cardHolder: _react2.default.createElement(_CardHolder2.default, { hotels: this.state.hotels }) });
-  }
-
-  makeCard(hotelObject) {
-    console.log("MAking dem cards bro");
-    return;
-    _react2.default.createElement(_Card2.default, {
-      className: 'cardHolder__card',
-      key: hotelObject.id,
-      name: this.findAndReplace(hotelObject.name, "_", " "),
-      email: hotelObject.email,
-      latitude: hotelObject.latitude,
-      longitude: hotelObject.longitude,
-      imageUrl: hotelObject.imageUrl,
-      numRooms: hotelObject.numRooms
-    });
+    this.setState({ cardHolder: _react2.default.createElement(_CardHolder2.default, {
+        scrollToNode: this.scrollToNode,
+        hotels: this.state.hotels
+      }) });
   }
 
   render() {
@@ -24572,11 +24576,15 @@ class CardHolder extends _react2.default.Component {
     console.log(this.state.selectedHotel);
     return _react2.default.createElement(
       'div',
-      { className: 'cardHolder' },
+      { className: 'cardHolder', id: 'cardHolder' },
       _react2.default.createElement(
         'div',
-        { className: 'selected__selectedContainer' },
-        _react2.default.createElement(_SelectedHotel2.default, { rooms: this.state.rooms, hotel: this.state.selectedHotel })
+        { className: 'selected__selectedContainer', id: 'selected' },
+        _react2.default.createElement(_SelectedHotel2.default, {
+          rooms: this.state.rooms,
+          hotel: this.state.selectedHotel,
+          scrollToNode: this.props.scrollToNode
+        })
       ),
       _react2.default.createElement(
         'div',
@@ -24623,6 +24631,7 @@ class SelectedHotel extends _Card2.default {
   constructor() {
     super();
     this.state = { rooms: null };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   //not sure if works
@@ -24634,36 +24643,36 @@ class SelectedHotel extends _Card2.default {
     return string.split(replaceThis).join(withThis);
   }
 
-  handleSubmit(e) {
+  componentWillReceiveProps() {
+    setTimeout(this.props.scrollToNode("cardHolder"), 300);
+  }
+
+  async handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
 
-    const first = form.getElementsByName("first").value;
-    const last = form.getElementsByName("last").value;
-    const email = form.getElementsByName("email").value;
+    const first = form.querySelector("#first").value;
+    const last = form.querySelector("#last").value;
+    const name = `${first}_${last}`;
+    const email = form.querySelector("#email").value;
     const hotelId = this.props.hotel.id;
-    const roomId = form.getElementsByName("roomType").value;
-    const dateFrom = form.getElementsByName("dateFrom").value;
-    const dateTo = form.getElementsByName("dateTo").value;
-    const cc = form.getElementsByName("cc").value;
-    _DataController2.default.user.newUserBooking();
-  }
+    const roomId = form.querySelector("#roomType").value;
+    const from = form.querySelector("#from").value;
+    const to = form.querySelector("#to").value;
 
-  logit() {
-    console.log(this.props.rooms);
-    if (this.props.rooms == undefined) return;
-    console.log(Object.keys(this.props.rooms));
+    const dateFrom = from;
+    const dateTo = to;
+
+    const cc = form.querySelector("#cc").value;
+    const bookingIdPromise = await _DataController2.default.user.newUserBooking(name, email, hotelId, roomId, dateFrom, dateTo, cc);
+    //swagmode activated
   }
 
   render() {
-    console.log("Stage 1");
     if (this.props.hotel == null) return null;
-    console.log(this.props.rooms);
     const url = `url(${this.props.hotel.imageUrl})`;
     const name = this.findAndReplace(this.props.hotel.name, "_", " ");
-    console.log("Stage 2");
-    console.log("Stage 3");
-    this.logit();
+    console.log(this.handleSubmit);
     return _react2.default.createElement(
       'div',
       {
@@ -24672,7 +24681,7 @@ class SelectedHotel extends _Card2.default {
       },
       _react2.default.createElement(
         'div',
-        { className: 'cardHolder__selectedHotel__card' },
+        { className: 'cardHolder__selectedHotel__card', id: 'selected' },
         _react2.default.createElement(
           'h1',
           null,
@@ -24687,19 +24696,21 @@ class SelectedHotel extends _Card2.default {
       ),
       _react2.default.createElement(
         'form',
-        { className: 'cardHolder__selectedHotel__form', onSubmit: e => this.handleSubmit(e).bind(this) },
+        { className: 'cardHolder__selectedHotel__form', onSubmit: e => this.handleSubmit(e) },
         _react2.default.createElement(
           'h3',
           null,
           ' Book your room Now!! '
         ),
-        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'first', type: 'text', placeholder: 'First Name' }),
-        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'last', type: 'text', placeholder: 'Last Name' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'first', type: 'text', placeholder: 'First Name' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'last', type: 'text', placeholder: 'Last Name' }),
         _react2.default.createElement(_RoomTypesDropdown2.default, { rooms: this.props.rooms }),
-        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'email', type: 'text', placeholder: 'Email' }),
-        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'cc', type: 'number', placeholder: 'Credit Card Number' }),
-        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'exmm', type: 'number', placeholder: 'MM' }),
-        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', name: 'exyy', type: 'number', placeholder: 'YY' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'from', type: 'date', placeholder: 'from' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'to', type: 'date', placeholder: 'until' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'email', type: 'text', placeholder: 'Email' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'cc', type: 'number', placeholder: 'Credit Card Number' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'exmm', type: 'number', placeholder: 'MM' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'exyy', type: 'number', placeholder: 'YY' }),
         _react2.default.createElement('input', { type: 'submit' })
       )
     );
@@ -24768,7 +24779,7 @@ class RoomTypesDropdown extends _react2.default.Component {
     if (this.props.rooms == null) return null;
     return _react2.default.createElement(
       'select',
-      { name: 'roomType' },
+      { id: 'roomType' },
       this.getOptions()
     );
   }

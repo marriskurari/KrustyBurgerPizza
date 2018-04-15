@@ -16,9 +16,10 @@ const createBooking = (hotelId, roomId, userId, dateFrom, dateTo, cc) => {
 	let requestString = `${baseString}addBooking?`
 	requestString += "hotelId=" + hotelId + "&"
 	requestString += "roomId=" + roomId + "&"
-	requestString += "userId=" + roomType + "&"
+	requestString += "userId=" + userId + "&"
+	requestString += "isPaid=" + false + "&"
 	requestString += "dateFrom=" + dateFrom + "&"
-	requestString += "dateTo=" + dateTo
+	requestString += "dateTo=" + dateTo + "&"
 	requestString += "cc=" + cc
 	return Request(requestString)
 }
@@ -45,7 +46,9 @@ const getHotelsByLocation = (lat, lng) => {
 }
 
 const newUserBooking = async (name, email, hotelId, roomId, dateFrom, dateTo, cc) => {
-	const userId = await createUser(name, email)
+	console.log(name)
+	const userId = 	await createUser(name, email)
+	console.log(userId)
 	return createBooking(hotelId, roomId, userId, dateFrom, dateTo, cc)
 }
 
