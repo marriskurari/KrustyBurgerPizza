@@ -73,6 +73,7 @@ export default class CardHolder extends React.Component {
       <div className="cardHolder" id="cardHolder">
         <div className="selected__selectedContainer" id="selected">
           <SelectedHotel
+            bookingCompleted={this.props.bookingCompleted}
             rooms={this.state.rooms}
             hotel={this.state.selectedHotel}
             scrollToNode={this.props.scrollToNode}

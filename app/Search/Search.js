@@ -3,6 +3,7 @@ import React from 'react'
 import Jumbotron from './Jumbotron'
 import CardHolder from './CardHolder/CardHolder'
 import Card from './CardHolder/Card'
+import BookingCompleted from './CardHolder/BookingCompleted'
 
 import DCtrl from './DataController'
 
@@ -62,7 +63,19 @@ export default class Search extends React.Component {
     this.setState({ cardHolder: (<CardHolder
       scrollToNode={this.scrollToNode}
       hotels={this.state.hotels}
+      bookingCompleted={this.bookingCompleted.bind(this)}
     />)})
+  }
+
+  bookingCompleted(hotelName, hotelImageUrl, bookingId) {
+    this.setState({
+      cardHolder : (<BookingCompleted
+        hotelName={hotelName}
+        imageUrl={hotelImageUrl}
+        bookingId={bookingId}
+      />)
+    })
+    setTimeout(this.scrollToNode("completed"), 300)
   }
 
   render() {

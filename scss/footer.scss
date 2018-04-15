@@ -7,7 +7,6 @@
   align-items: center;
   background-color: darken($gray, 40%);
 
-
   &__copyright {
     display: flex;
     align-items: center;
@@ -15,11 +14,11 @@
     background-color: darken($gray, 30%);
     height: 3rem;
     width: 100%;
-
   }
 
   &__info {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: darken($gray, 40%);

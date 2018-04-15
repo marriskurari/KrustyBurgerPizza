@@ -1,0 +1,12 @@
+.contact {
+  background-image: url("https://wallpapersultra.net/wp-content/uploads/3D-Beach-Wallpaper-HD-Download.jpg");
+  padding-top: 10vh;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+  &__namebox {
+    margin: 2rem;
+    padding: 2rem;
+  }
+}

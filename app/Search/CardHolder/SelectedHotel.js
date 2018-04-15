@@ -44,9 +44,10 @@ export default class SelectedHotel extends Card {
     const dateTo = to
 
     const cc = form.querySelector("#cc").value
-    const bookingIdPromise = await DCtrl.user.newUserBooking(name, email, hotelId, roomId, dateFrom, dateTo, cc)
+    const bookingId= await DCtrl.user.newUserBooking(name, email, hotelId, roomId, dateFrom, dateTo, cc)
     //swagmode activated
-
+    const hotelName = this.findAndReplace(this.props.hotel.name, "_", " ")
+    this.props.bookingCompleted(hotelName, this.props.hotel.imageUrl, bookingId)
   }
 
   render() {

@@ -4,9 +4,6 @@ import {createBrowserHistory} from "history"
 
 //mainRoutes
 import Search from "./Search/Search"
-import Contact from "./Contact/Contact"
-import About from "./About/About"
-import Header from "./Header/Header"
 
 //module for getting the data
 
@@ -19,8 +16,6 @@ export default class Body extends React.Component {
 			  <Router history={ history }>
           <div>
             <Route path="/" component={Search} />
-            <Route path="about" component={About} />
-            <Route path="contact" component={Contact} />
           </div>
 			  </Router>
       </React.Fragment>
