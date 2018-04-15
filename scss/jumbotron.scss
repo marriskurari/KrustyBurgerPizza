@@ -1,18 +1,25 @@
+
+#googlemap {
+  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .jumbotron {
   width: 100vw;
   height: 100vh;
-  border: 1px solid black;
+  border-bottom: 2px solid black;
   background-image: url("./img/beach.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
   background-attachment: fixed;
   align-items: center;
+  box-sizing: border-box;
 
   &__form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
 
     &__input {
       padding: 1rem;

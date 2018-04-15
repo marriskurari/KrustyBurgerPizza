@@ -12,12 +12,14 @@ const getAllByType = (pluralEntityName) => {
 	return Request(requestString)
 }
 
-const createBooking = (hotelId, roomType, dateFrom, dateTo) => {
+const createBooking = (hotelId, roomId, userId, dateFrom, dateTo, cc) => {
 	let requestString = `${baseString}addBooking?`
 	requestString += "hotelId=" + hotelId + "&"
-	requestString += "roomType=" + roomType + "&"
+	requestString += "roomId=" + roomId + "&"
+	requestString += "userId=" + roomType + "&"
 	requestString += "dateFrom=" + dateFrom + "&"
 	requestString += "dateTo=" + dateTo
+	requestString += "cc=" + cc
 	return Request(requestString)
 }
 
@@ -42,6 +44,11 @@ const getHotelsByLocation = (lat, lng) => {
 	return Request(requestString)
 }
 
+const newUserBooking = async (name, email, hotelId, roomId, dateFrom, dateTo, cc) => {
+	const userId = await createUser(name, email)
+	return createBooking(hotelId, roomId, userId, dateFrom, dateTo, cc)
+}
+
 const hotel = {
 	getOne: (id) => getById("Hotel", id),
 	getAll: () => getAllByType("Hotels"),
@@ -50,7 +57,7 @@ const hotel = {
 
 const booking = {
 	getOne: (id) => getById("Hotel", id),
-	getAll: () => getAllByType("Hotels"),
+	getAll: () => getAllByType("Bookings"),
 	create: createBooking
 }
 const room = {
@@ -60,7 +67,8 @@ const room = {
 const user = {
 	getOne: (id) => getById("User", id),
 	getAll: () => getAllByType("Users"),
-	create: createUser
+	create: createUser,
+	newUserBooking: newUserBooking
 }
 
 const availability = {

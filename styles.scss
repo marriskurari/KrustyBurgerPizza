@@ -3,6 +3,7 @@
 @import "./scss/jumbotron.scss";
 @import "./scss/cardHolder.scss";
 @import "./scss/footer.scss";
+@import "./scss/header.scss";
 @import "./scss/navbar.scss";
 @import "./scss/map.scss";
 
@@ -13,7 +14,13 @@ html {
   font-weight: 600;
   font-size: 12px;
   margin: 0px;
-  background-color: #90C3D4;
+  background-color: $mainBackground;
+  padding: 0px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
 
 .displaynone {

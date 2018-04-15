@@ -1,3 +1,13 @@
 $fonts : 'Josefin Sans', sans-serif;
 $green : #009933;
 $brown : #DB7A35;
+$gray  : #969696;
+
+$mainBackground : lighten($green, 30%);
+$card : $gray;
+$cardHover : white;
+$selected: $gray;
+$button : $gray;
+$buttonhover : white;
+$formbackground : $brown;
+$header : $brown;

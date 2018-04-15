@@ -8,7 +8,8 @@ module.exports = {
 module: {
   rules: [
     {
-      test: /\.scss$/, use: [{
+      test: /\.scss$/,
+      use: [{
         loader: "style-loader" // creates style nodes from JS strings
       }, {
         loader: "css-loader" // translates CSS into CommonJS
@@ -31,6 +32,9 @@ module: {
     }
   ]
 },
+plugins: [
+  new ExtractTextPlugin('css/app.css')
+],
 entry: "./app/index.js",
 output: {
   filename: "webpack-bundle.js",

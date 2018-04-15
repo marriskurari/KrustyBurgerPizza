@@ -16,12 +16,11 @@ export default class Body extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <Header />
 			  <Router history={ history }>
           <div>
             <Route path="/" component={Search} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
+            <Route path="about" component={About} />
+            <Route path="contact" component={Contact} />
           </div>
 			  </Router>
       </React.Fragment>
