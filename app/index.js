@@ -12,3 +12,7 @@ class Application extends React.Component {
 const location = document.querySelector("#app")
 const app = <Application />
 ReactDOM.render(app, location)
+
+
+
+document.querySelector('body').style.removeProperty("display")

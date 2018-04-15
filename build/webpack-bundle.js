@@ -2041,6 +2041,8 @@ const location = document.querySelector("#app");
 const app = _react2.default.createElement(Application, null);
 _reactDom2.default.render(app, location);
 
+document.querySelector('body').style.removeProperty("display");
+
 /***/ }),
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
