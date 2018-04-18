@@ -24,11 +24,11 @@ import java.util.Map;
 
 public class API {
 
-	private static HotelFactory<HotelEntity> hf = new HotelFactory<>();
-	private static UserFactory<UserEntity> uf = new UserFactory<>();
-	private static RoomFactory<RoomEntity> rf = new RoomFactory<>();
-	private static BookingFactory<Booking> bf = new BookingFactory<>();
-	private static AvailabilityFactory<Availability> af = new AvailabilityFactory<>();
+	public final HotelFactory<HotelEntity> hotel = new HotelFactory<>();
+	public final UserFactory<UserEntity> user = new UserFactory<>();
+	public final RoomFactory<RoomEntity> room = new RoomFactory<>();
+	public final BookingFactory<Booking> booking = new BookingFactory<>();
+	public final AvailabilityFactory<Availability> availability = new AvailabilityFactory<>();
 
 	private static List<Hotel> allHotels = new ArrayList<>();
 	private static boolean hotelListNeedsToBeUpdated = false;
@@ -39,13 +39,13 @@ public class API {
 
 	public List getAllHotels() throws IOException {
 		if(!hotelListNeedsToBeUpdated) return allHotels;
-		allHotels = hf.getAll();
+		allHotels = hotel.getAll();
 		hotelListNeedsToBeUpdated = false;
 		return allHotels;
 	}
 
 	public HotelEntity getOneHotel(Long id) throws IOException {
-		List<HotelEntity> listWithOnlyOneItem = hf.getOne(id);
+		List<HotelEntity> listWithOnlyOneItem = hotel.getOne(id);
 		return listWithOnlyOneItem.get(0);
 	}
 
@@ -60,15 +60,15 @@ public class API {
 	) throws IOException {
 		long from = ToolBox.formatStringDateToLong(dateFrom);
 		long to   = ToolBox.formatStringDateToLong(dateTo);
-		Booking booking = new Booking(hotelId, roomId, userId, from, to, isPaid, cc);
-		Long id = bf.save(booking);
+		Booking b = new Booking(hotelId, roomId, userId, from, to, isPaid, cc);
+		Long id = booking.save(b);
 		return id;
 	}
 
 	public Room generateRoomWithAvailability() throws IOException {
 		//availability is in DB but not room
 		Availability a = new Availability(Factory.getRandomAvailability());
-		Long aId = af.save(a);
+		Long aId = availability.save(a);
 		Room r = new Room(
 			Factory.getRandom( Factory.roomType),
 			1 + Factory.randomInt(3),
@@ -83,7 +83,7 @@ public class API {
 		//vegna thess ad generatorinn er grimmt lengi ad thessu
 		int n = Factory.randomInt(3) + 1;
 		for(int i = 0; i < n; i++)
-			hotel.addRoomId(rf.save(generateRoomWithAvailability()));
+			hotel.addRoomId(room.save(generateRoomWithAvailability()));
 		System.out.print("Gave " + n + " rooms to hotel ");
 	}
 
@@ -91,39 +91,39 @@ public class API {
 		int numberOfHotelsEachCountry = numberOfHotels / 3;
 		List<Hotel> hotels = new ArrayList<>();
 		for(int i = 0; i < numberOfHotelsEachCountry; i++) {
-			hotels.add(hf.generateIcelandic());
+			hotels.add(hotel.generateIcelandic());
 			System.out.println("Generating Icelandic hotel... " + i);
 		}
 		for(int i = 0; i < numberOfHotelsEachCountry; i++) {
-			hotels.add(hf.generateUK());
+			hotels.add(hotel.generateUK());
 			System.out.println("Generating UK hotel... " + i);
 		}
 		for(int i = 0; i < numberOfHotelsEachCountry; i++) {
-			hotels.add(hf.generateFrench());
+			hotels.add(hotel.generateFrench());
 			System.out.println("Generating French hotel... " + i);
 		}
 		int i = 0;
-		for(Hotel hotel : hotels) {
-			giveHotelRandomRooms(hotel);
+		for(Hotel h : hotels) {
+			giveHotelRandomRooms(h);
 			System.out.println(i++);
-			hf.save(hotel);
+			hotel.save(h);
 		}
 	}
 
 	public void giveUserRandomBookings(User user) throws IOException {
 		int n = Factory.randomInt(8) + 1;
 		for(int i = 0; i < n; i++) {
-			user.addBookingId(bf.save(bf.generate()));
+			user.addBookingId(booking.save(booking.generate()));
 			System.out.println("Creating Booking... " + i);
 		}
 	}
 
 	public void generateUsers(int numberOfUsers) throws IOException {
 		for(int i = 0; i < numberOfUsers; i++) {
-			User user = uf.generate();
-			giveUserRandomBookings(user);
+			User u = user.generate();
+			giveUserRandomBookings(u);
 			System.out.println("Creating User... " + i);
-			uf.save(user);
+			user.save(u);
 		}
 	}
 
@@ -131,5 +131,16 @@ public class API {
 		API api = new API();
 		api.generateHotels(1500);
 		api.generateUsers(500);
+
+
+		//daemi hvernig madur notar
+		API api2 = new API();
+		HotelEntity h = api.hotel.generate();
+		Long hotelId = api.hotel.save(h);
+		HotelEntity hotelWithId = api.hotel.getOne(hotelId);
+		Hotel h2 = (Hotel) h;
+		Availability a = api.availability.generate();
+		// ... so on
+		//
 	}
 }
