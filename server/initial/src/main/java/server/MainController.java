@@ -310,6 +310,13 @@ public class MainController {
 	private ReviewRepository reviewRepository;
 
 	@CrossOrigin
+	@GetMapping(path = "/allReview")
+	public @ResponseBody
+	Iterable<ReviewEntity> getAllReviews() {
+		return reviewRepository.findAll();
+	}
+
+	@CrossOrigin
 	@GetMapping(path = "/oneReview")
 	public @ResponseBody
 	ReviewEntity getOneReview(

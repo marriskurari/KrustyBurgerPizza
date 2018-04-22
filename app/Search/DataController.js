@@ -78,12 +78,20 @@ const availability = {
 	getOne: (id) => getById("Availability", id)
 }
 
+const review = {
+	getAll: () => getAllByType("Review"),
+	getFiltered: (hotelId) => {
+		getAllByType("Review").filter((review) => review.hotelId == hotelId)
+	}
+}
+
 const DCtrl = {
 	hotel,
 	booking,
 	room,
 	user,
-	availability
+	availability,
+	review
 }
 
 export default DCtrl

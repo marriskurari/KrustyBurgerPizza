@@ -874,6 +874,119 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _Request = __webpack_require__(73);
+
+var _Request2 = _interopRequireDefault(_Request);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const baseString = "http://165.227.41.109:8080/database/";
+
+const getById = (entityName, id) => {
+	const requestString = `${baseString}one${entityName}?id=${id}`;
+	return (0, _Request2.default)(requestString);
+};
+
+const getAllByType = pluralEntityName => {
+	let requestString = `${baseString}all${pluralEntityName}`;
+	return (0, _Request2.default)(requestString);
+};
+
+const createBooking = (hotelId, roomId, userId, dateFrom, dateTo, cc) => {
+	let requestString = `${baseString}addBooking?`;
+	requestString += "hotelId=" + hotelId + "&";
+	requestString += "roomId=" + roomId + "&";
+	requestString += "userId=" + userId + "&";
+	requestString += "isPaid=" + false + "&";
+	requestString += "dateFrom=" + dateFrom + "&";
+	requestString += "dateTo=" + dateTo + "&";
+	requestString += "cc=" + cc;
+	return (0, _Request2.default)(requestString);
+};
+
+const addToUser = (userId, bookingId) => {
+	let requestString = `${baseString}addBookingToUser?`;
+	requestString += "userId=" + userId + "&";
+	requestString += "bookingId=" + bookingId + "&";
+	return (0, _Request2.default)(requestString);
+};
+
+const createUser = (name, email) => {
+	let requestString = `${baseString}addUser?`;
+	requestString += "name=" + name + "&";
+	requestString += "email=" + email;
+	return (0, _Request2.default)(requestString);
+};
+
+const getHotelsByLocation = (lat, lng) => {
+	let requestString = `${baseString}getHotelsByLocation?`;
+	requestString += `latitude=${lat}&`;
+	requestString += `longitude=${lng}`;
+	return (0, _Request2.default)(requestString);
+};
+
+const newUserBooking = async (name, email, hotelId, roomId, dateFrom, dateTo, cc) => {
+	console.log(name);
+	const userId = await createUser(name, email);
+	console.log(userId);
+	return createBooking(hotelId, roomId, userId, dateFrom, dateTo, cc);
+};
+
+const hotel = {
+	getOne: id => getById("Hotel", id),
+	getAll: () => getAllByType("Hotels"),
+	getHotelsByLocation
+};
+
+const booking = {
+	getOne: id => getById("Hotel", id),
+	getAll: () => getAllByType("Bookings"),
+	create: createBooking
+};
+const room = {
+	getOne: id => getById("Room", id)
+};
+
+const user = {
+	getOne: id => getById("User", id),
+	getAll: () => getAllByType("Users"),
+	create: createUser,
+	newUserBooking: newUserBooking
+};
+
+const availability = {
+	getOne: id => getById("Availability", id)
+};
+
+const review = {
+	getAll: () => getAllByType("Review"),
+	getFiltered: hotelId => {
+		getAllByType("Review").filter(review => review.hotelId == hotelId);
+	}
+};
+
+const DCtrl = {
+	hotel,
+	booking,
+	room,
+	user,
+	availability,
+	review
+};
+
+exports.default = DCtrl;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -886,7 +999,7 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(7);
   var warning = __webpack_require__(10);
-  var ReactPropTypesSecret = __webpack_require__(13);
+  var ReactPropTypesSecret = __webpack_require__(14);
   var loggedTypeFailures = {};
 }
 
@@ -937,7 +1050,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -956,7 +1069,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1023,7 +1136,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1142,7 +1255,7 @@ Router.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Router);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1227,7 +1340,7 @@ var createTransitionManager = function createTransitionManager() {
 /* harmony default export */ __webpack_exports__["a"] = (createTransitionManager);
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1304,7 +1417,7 @@ var matchPath = function matchPath(pathname) {
 /* harmony default export */ __webpack_exports__["a"] = (matchPath);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1318,138 +1431,63 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Review = __webpack_require__(72);
+
+var _Review2 = _interopRequireDefault(_Review);
+
+var _DataController = __webpack_require__(12);
+
+var _DataController2 = _interopRequireDefault(_DataController);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class Card extends _react2.default.Component {
 
+	async getReviews() {
+		const reviews = await _DataController2.default.review.getFiltered(this.props.id);
+		for (let review in reviwes) {
+			review.username = await _DataController2.default.user.getOne(review.userId);
+		}
+		this.setState({
+			reviews: reviews
+		});
+	}
+
 	render() {
 		const urlString = `url(${this.props.imageUrl})`;
 		return _react2.default.createElement(
-			"div",
+			'div',
 			{
-				className: "cardHolder__card",
+				className: 'cardHolder__card',
 				onClick: () => this.props.selectHotel(this.props.hotel)
 			},
-			_react2.default.createElement("div", { className: "cardHolder__card__cardImage", style: { backgroundImage: urlString } }),
+			_react2.default.createElement('div', { className: 'cardHolder__card__cardImage', style: { backgroundImage: urlString } }),
 			_react2.default.createElement(
-				"h3",
+				'h3',
 				null,
 				this.props.name
 			),
 			_react2.default.createElement(
-				"a",
+				'a',
 				{ href: `mailto:${this.props.email}` },
 				this.props.email
-			)
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				'Stars: ',
+				this.props.stars
+			),
+			_react2.default.createElement(
+				'button',
+				{ onClick: this.getReviews() },
+				'Show Reviews'
+			),
+			this.state.reviews.map(review => _react2.default.createElement(_Review2.default, { data: review }))
 		);
 	}
 }
 exports.default = Card;
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _Request = __webpack_require__(73);
-
-var _Request2 = _interopRequireDefault(_Request);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const baseString = "http://165.227.41.109:8080/database/";
-
-const getById = (entityName, id) => {
-	const requestString = `${baseString}one${entityName}?id=${id}`;
-	return (0, _Request2.default)(requestString);
-};
-
-const getAllByType = pluralEntityName => {
-	let requestString = `${baseString}all${pluralEntityName}`;
-	return (0, _Request2.default)(requestString);
-};
-
-const createBooking = (hotelId, roomId, userId, dateFrom, dateTo, cc) => {
-	let requestString = `${baseString}addBooking?`;
-	requestString += "hotelId=" + hotelId + "&";
-	requestString += "roomId=" + roomId + "&";
-	requestString += "userId=" + userId + "&";
-	requestString += "isPaid=" + false + "&";
-	requestString += "dateFrom=" + dateFrom + "&";
-	requestString += "dateTo=" + dateTo + "&";
-	requestString += "cc=" + cc;
-	return (0, _Request2.default)(requestString);
-};
-
-const addToUser = (userId, bookingId) => {
-	let requestString = `${baseString}addBookingToUser?`;
-	requestString += "userId=" + userId + "&";
-	requestString += "bookingId=" + bookingId + "&";
-	return (0, _Request2.default)(requestString);
-};
-
-const createUser = (name, email) => {
-	let requestString = `${baseString}addUser?`;
-	requestString += "name=" + name + "&";
-	requestString += "email=" + email;
-	return (0, _Request2.default)(requestString);
-};
-
-const getHotelsByLocation = (lat, lng) => {
-	let requestString = `${baseString}getHotelsByLocation?`;
-	requestString += `latitude=${lat}&`;
-	requestString += `longitude=${lng}`;
-	return (0, _Request2.default)(requestString);
-};
-
-const newUserBooking = async (name, email, hotelId, roomId, dateFrom, dateTo, cc) => {
-	console.log(name);
-	const userId = await createUser(name, email);
-	console.log(userId);
-	return createBooking(hotelId, roomId, userId, dateFrom, dateTo, cc);
-};
-
-const hotel = {
-	getOne: id => getById("Hotel", id),
-	getAll: () => getAllByType("Hotels"),
-	getHotelsByLocation
-};
-
-const booking = {
-	getOne: id => getById("Hotel", id),
-	getAll: () => getAllByType("Bookings"),
-	create: createBooking
-};
-const room = {
-	getOne: id => getById("Room", id)
-};
-
-const user = {
-	getOne: id => getById("User", id),
-	getAll: () => getAllByType("Users"),
-	create: createUser,
-	newUserBooking: newUserBooking
-};
-
-const availability = {
-	getOne: id => getById("Availability", id)
-};
-
-const DCtrl = {
-	hotel,
-	booking,
-	room,
-	user,
-	availability
-};
-
-exports.default = DCtrl;
 
 /***/ }),
 /* 20 */
@@ -1875,7 +1913,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(18);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3058,7 +3096,7 @@ var emptyObject = __webpack_require__(9);
 var invariant = __webpack_require__(7);
 var warning = __webpack_require__(10);
 var emptyFunction = __webpack_require__(5);
-var checkPropTypes = __webpack_require__(12);
+var checkPropTypes = __webpack_require__(13);
 
 // TODO: this is special because it gets imported during build.
 
@@ -4532,7 +4570,7 @@ var warning = __webpack_require__(10);
 var ExecutionEnvironment = __webpack_require__(20);
 var _assign = __webpack_require__(6);
 var emptyFunction = __webpack_require__(5);
-var checkPropTypes = __webpack_require__(12);
+var checkPropTypes = __webpack_require__(13);
 var getActiveElement = __webpack_require__(21);
 var shallowEqual = __webpack_require__(22);
 var containsNode = __webpack_require__(23);
@@ -21355,13 +21393,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_2__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(28);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_3__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(16);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_4__Router__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__StaticRouter__ = __webpack_require__(64);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_5__StaticRouter__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Switch__ = __webpack_require__(65);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_6__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(18);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_7__matchPath__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__withRouter__ = __webpack_require__(66);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_8__withRouter__["a"]; });
@@ -21397,7 +21435,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(16);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -21470,8 +21508,8 @@ var invariant = __webpack_require__(7);
 var warning = __webpack_require__(10);
 var assign = __webpack_require__(6);
 
-var ReactPropTypesSecret = __webpack_require__(13);
-var checkPropTypes = __webpack_require__(12);
+var ReactPropTypesSecret = __webpack_require__(14);
+var checkPropTypes = __webpack_require__(13);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -22017,7 +22055,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 var emptyFunction = __webpack_require__(5);
 var invariant = __webpack_require__(7);
-var ReactPropTypesSecret = __webpack_require__(13);
+var ReactPropTypesSecret = __webpack_require__(14);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -22083,7 +22121,7 @@ var _warning = __webpack_require__(2);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(14);
+var _PathUtils = __webpack_require__(15);
 
 var _LocationUtils = __webpack_require__(55);
 
@@ -22262,7 +22300,7 @@ var _valueEqual = __webpack_require__(25);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(14);
+var _PathUtils = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22627,7 +22665,7 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(27);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -22931,7 +22969,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(27);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -23250,7 +23288,7 @@ var createHashHistory = function createHashHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(17);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -23863,9 +23901,9 @@ module.exports = Array.isArray || function (arr) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(16);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -24046,7 +24084,7 @@ StaticRouter.childContextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__matchPath__ = __webpack_require__(18);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -24273,15 +24311,15 @@ var _CardHolder = __webpack_require__(71);
 
 var _CardHolder2 = _interopRequireDefault(_CardHolder);
 
-var _Card = __webpack_require__(18);
+var _Card = __webpack_require__(19);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _BookingCompleted = __webpack_require__(76);
+var _BookingCompleted = __webpack_require__(77);
 
 var _BookingCompleted2 = _interopRequireDefault(_BookingCompleted);
 
-var _DataController = __webpack_require__(19);
+var _DataController = __webpack_require__(12);
 
 var _DataController2 = _interopRequireDefault(_DataController);
 
@@ -24497,15 +24535,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Card = __webpack_require__(18);
+var _Card = __webpack_require__(19);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _SelectedHotel = __webpack_require__(72);
+var _SelectedHotel = __webpack_require__(74);
 
 var _SelectedHotel2 = _interopRequireDefault(_SelectedHotel);
 
-var _DataController = __webpack_require__(19);
+var _DataController = __webpack_require__(12);
 
 var _DataController2 = _interopRequireDefault(_DataController);
 
@@ -24616,15 +24654,94 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Card = __webpack_require__(18);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Review extends _react2.default.Component {
+
+  getReviewText() {}
+
+  render() {
+    console.log(this.props.data);
+    return _react2.default.createElement(
+      "div",
+      { className: "review" },
+      _react2.default.createElement(
+        "h3",
+        { className: "review__subject" },
+        this.props.data.subject
+      ),
+      _react2.default.createElement(
+        "p",
+        { className: "review__username" },
+        this.props.data.userName
+      ),
+      _react2.default.createElement(
+        "p",
+        { className: "rating" },
+        (this.props.data.rating + "").substring(0, 3)
+      ),
+      _react2.default.createElement(
+        "p",
+        { className: "review__text" },
+        this.props.data.reviewText
+      )
+    );
+  }
+}
+exports.default = Review;
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+const requestPromise = requestString => {
+	console.log("REQUEST only works for JSON");
+	console.log(requestString);
+	const req = new XMLHttpRequest();
+	req.open("GET", requestString, true);
+	req.send();
+	return new Promise((resolve, reject) => {
+		req.ontimeout = () => {
+			reject("Request timed out");
+		};
+		req.onload = () => resolve(JSON.parse(req.responseText));
+		req.onerror = () => reject(req.statusText);
+	});
+};
+
+exports.default = requestPromise;
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Card = __webpack_require__(19);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _DataController = __webpack_require__(19);
+var _DataController = __webpack_require__(12);
 
 var _DataController2 = _interopRequireDefault(_DataController);
 
-var _RoomTypesDropdown = __webpack_require__(74);
+var _RoomTypesDropdown = __webpack_require__(75);
 
 var _RoomTypesDropdown2 = _interopRequireDefault(_RoomTypesDropdown);
 
@@ -24724,35 +24841,7 @@ class SelectedHotel extends _Card2.default {
 exports.default = SelectedHotel;
 
 /***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-const requestPromise = requestString => {
-	console.log("REQUEST only works for JSON");
-	console.log(requestString);
-	const req = new XMLHttpRequest();
-	req.open("GET", requestString, true);
-	req.send();
-	return new Promise((resolve, reject) => {
-		req.ontimeout = () => {
-			reject("Request timed out");
-		};
-		req.onload = () => resolve(JSON.parse(req.responseText));
-		req.onerror = () => reject(req.statusText);
-	});
-};
-
-exports.default = requestPromise;
-
-/***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24766,7 +24855,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _RoomOption = __webpack_require__(75);
+var _RoomOption = __webpack_require__(76);
 
 var _RoomOption2 = _interopRequireDefault(_RoomOption);
 
@@ -24792,7 +24881,7 @@ class RoomTypesDropdown extends _react2.default.Component {
 exports.default = RoomTypesDropdown;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24820,7 +24909,7 @@ class RoomOption extends _react2.default.Component {
 exports.default = RoomOption;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
