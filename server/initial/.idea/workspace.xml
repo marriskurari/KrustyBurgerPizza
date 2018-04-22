@@ -28,14 +28,13 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/server/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="304">
-                  <caret line="315" column="39" lean-forward="false" selection-start-line="315" selection-start-column="39" selection-end-line="315" selection-end-column="39" />
+                <state relative-caret-position="323">
+                  <caret line="316" column="3" lean-forward="false" selection-start-line="316" selection-start-column="3" selection-end-line="316" selection-end-column="3" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#4497#4498#0" expanded="true" />
                     <element signature="e#4536#4537#0" expanded="true" />
                     <element signature="e#8604#8605#0" expanded="true" />
-                    <element signature="e#8644#8645#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -917,12 +916,12 @@
       <workItem from="1523890492999" duration="18000" />
       <workItem from="1524324593716" duration="7245000" />
       <workItem from="1524396762543" duration="2000" />
-      <workItem from="1524402770667" duration="8082000" />
+      <workItem from="1524402770667" duration="8610000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126477000" />
+    <option name="totallyTimeSpent" value="127005000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1043,7 +1042,6 @@
             <element signature="e#4497#4498#0" expanded="true" />
             <element signature="e#4536#4537#0" expanded="true" />
             <element signature="e#8604#8605#0" expanded="true" />
-            <element signature="e#8644#8645#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1264,14 +1262,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/server/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="315" column="39" lean-forward="false" selection-start-line="315" selection-start-column="39" selection-end-line="315" selection-end-column="39" />
+        <state relative-caret-position="323">
+          <caret line="316" column="3" lean-forward="false" selection-start-line="316" selection-start-column="3" selection-end-line="316" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4497#4498#0" expanded="true" />
             <element signature="e#4536#4537#0" expanded="true" />
             <element signature="e#8604#8605#0" expanded="true" />
-            <element signature="e#8644#8645#0" expanded="true" />
           </folding>
         </state>
       </provider>

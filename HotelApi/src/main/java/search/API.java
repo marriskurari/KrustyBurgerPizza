@@ -141,9 +141,9 @@ public class API {
 
 	public static void main(String [] args) throws IOException {
 		API api = new API();
-		api.generateReviews(1500);
-		api.generateHotels(1500);
-		api.generateUsers(500);
+		api.generateReviews(150);
+		api.generateHotels(150);
+		api.generateUsers(50);
 
 
 		//daemi hvernig madur notar
