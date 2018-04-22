@@ -104,7 +104,7 @@ export default class SelectedHotel extends Card {
         <h1>{name}</h1>
         <div className="cardHolder__selectedHotel__card__cardImage" style={{backgroundImage: url}}/>
 				<a href={`mailto:${this.props.hotel.email}`}>{this.props.hotel.email}</a>
-        <p className"cardHolder__selectedHotel__form__description">{this.getDescriptionText()}</p>
+        <p className="cardHolder__selectedHotel__form__description">{this.getDescriptionText()}</p>
         <div className="cardHolder__selectedHotel__card__icons__container">{this.renderAmenities()}</div>
 			  <button onClick={() => this.getReviews()}>Show Reviews</button>
       </div>

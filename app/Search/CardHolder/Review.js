@@ -16,7 +16,7 @@ export default class Review extends React.Component {
       <div className="review">
         <h3 className="review__subject">{this.props.data.subject}</h3>
         <p className="review__username">{this.props.data.username}</p>
-        <p className="rating">{ (this.props.data.rating + "").substring(0, 3) }</p>
+        <p className="rating">Rating: { (this.props.data.rating + "").substring(0, 3) }</p>
         <p className="review__text">{this.getReviewText()}</p>
       </div>
     )

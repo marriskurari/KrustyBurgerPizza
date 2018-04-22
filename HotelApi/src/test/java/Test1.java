@@ -144,5 +144,6 @@ public class Test1 {
 		System.out.println("----------------Taking the thing out");
 		rf.remove(rid);
 		af.remove(aid);
+		hf.remove(hid);
 	}
 }

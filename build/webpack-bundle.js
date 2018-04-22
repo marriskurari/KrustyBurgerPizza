@@ -2102,6 +2102,7 @@ class Review extends _react2.default.Component {
       _react2.default.createElement(
         'p',
         { className: 'rating' },
+        'Rating: ',
         (this.props.data.rating + "").substring(0, 3)
       ),
       _react2.default.createElement(
@@ -24735,14 +24736,283 @@ exports.default = requestPromise;
 
 /***/ }),
 /* 74 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (107:20)\n\n\u001b[0m \u001b[90m 105 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"cardHolder__selectedHotel__card__cardImage\"\u001b[39m style\u001b[33m=\u001b[39m{{backgroundImage\u001b[33m:\u001b[39m url}}\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 106 | \u001b[39m\t\t\t\t\u001b[33m<\u001b[39m\u001b[33ma\u001b[39m href\u001b[33m=\u001b[39m{\u001b[32m`mailto:${this.props.hotel.email}`\u001b[39m}\u001b[33m>\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mprops\u001b[33m.\u001b[39mhotel\u001b[33m.\u001b[39memail}\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33ma\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 107 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33mp\u001b[39m className\u001b[32m\"cardHolder__selectedHotel__form__description\"\u001b[39m\u001b[33m>\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetDescriptionText()}\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mp\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m     | \u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 108 | \u001b[39m        \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"cardHolder__selectedHotel__card__icons__container\"\u001b[39m\u001b[33m>\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mrenderAmenities()}\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 109 | \u001b[39m\t\t\t  \u001b[33m<\u001b[39m\u001b[33mbutton\u001b[39m onClick\u001b[33m=\u001b[39m{() \u001b[33m=>\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mgetReviews()}\u001b[33m>\u001b[39m\u001b[33mShow\u001b[39m \u001b[33mReviews\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mbutton\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 110 | \u001b[39m      \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Card = __webpack_require__(19);
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _Reviews = __webpack_require__(75);
+
+var _Reviews2 = _interopRequireDefault(_Reviews);
+
+var _DataController = __webpack_require__(12);
+
+var _DataController2 = _interopRequireDefault(_DataController);
+
+var _RoomTypesDropdown = __webpack_require__(76);
+
+var _RoomTypesDropdown2 = _interopRequireDefault(_RoomTypesDropdown);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class SelectedHotel extends _Card2.default {
+  constructor() {
+    super();
+    this.state = {
+      rooms: null,
+      reviews: [] };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  //not sure if works
+  display() {
+    return this.props.selectHotel == null ? "displaynone" : "cardHolder__selectedHotel";
+  }
+
+  findAndReplace(string, replaceThis, withThis) {
+    return string.split(replaceThis).join(withThis);
+  }
+
+  componentWillReceiveProps() {
+    setTimeout(this.props.scrollToNode("cardHolder"), 300);
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    const first = form.querySelector("#first").value;
+    const last = form.querySelector("#last").value;
+    const name = `${first}_${last}`;
+    const email = form.querySelector("#email").value;
+    const hotelId = this.props.hotel.id;
+    const roomId = form.querySelector("#roomType").value;
+    const from = form.querySelector("#from").value;
+    const to = form.querySelector("#to").value;
+
+    const dateFrom = from;
+    const dateTo = to;
+
+    const cc = form.querySelector("#cc").value;
+    const bookingId = await _DataController2.default.user.newUserBooking(name, email, hotelId, roomId, dateFrom, dateTo, cc);
+    //swagmode activated
+    const hotelName = this.findAndReplace(this.props.hotel.name, "_", " ");
+    this.props.bookingCompleted(hotelName, this.props.hotel.imageUrl, bookingId);
+  }
+
+  async getReviews() {
+    let reviews = await _DataController2.default.review.getFiltered(this.props.hotel.id);
+    for (let key in reviews) {
+      let user = await _DataController2.default.user.getOne(reviews[key].userId);
+      reviews[key].username = this.findAndReplace(user.name, "_", " ");
+    }
+    console.log(reviews);
+    this.setState({
+      reviews: reviews
+    });
+    console.log("REviews are set");
+  }
+
+  getDescriptionText() {
+    const textAsObject = this.props.hotel.description;
+    let string = '';
+    for (let key in textAsObject) string += textAsObject[key];
+    return string;
+  }
+
+  renderAmenities() {
+    const am = this.props.hotel.amenities;
+    console.log(am);
+    let array = [];
+    console.log(_DataController2.default.iconURL["wifi"]);
+    for (let key in am) array.push(_react2.default.createElement('div', { className: 'cardHolder__selectedHotel__card__icons', key: key, style: { backgroundImage: `url(${_DataController2.default.iconURL[am[key]]})` } }));
+    console.log(array);
+    return array;
+  }
+
+  render() {
+    if (this.props.hotel == null) return null;
+    const url = `url(${this.props.hotel.imageUrl})`;
+    const name = this.findAndReplace(this.props.hotel.name, "_", " ");
+    console.log(this.props.hotel);
+    return _react2.default.createElement(
+      'div',
+      {
+        className: this.props.hotel == null ? "displaynone" : "cardHolder__selectedHotel",
+        name: 'selected'
+      },
+      _react2.default.createElement(
+        'div',
+        { className: 'cardHolder__selectedHotel__card', id: 'selected' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          name
+        ),
+        _react2.default.createElement('div', { className: 'cardHolder__selectedHotel__card__cardImage', style: { backgroundImage: url } }),
+        _react2.default.createElement(
+          'a',
+          { href: `mailto:${this.props.hotel.email}` },
+          this.props.hotel.email
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'cardHolder__selectedHotel__form__description' },
+          this.getDescriptionText()
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'cardHolder__selectedHotel__card__icons__container' },
+          this.renderAmenities()
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: () => this.getReviews() },
+          'Show Reviews'
+        )
+      ),
+      this.state.reviews ? _react2.default.createElement(_Reviews2.default, { reviews: this.state.reviews }) : null,
+      _react2.default.createElement(
+        'form',
+        { className: 'cardHolder__selectedHotel__form', onSubmit: e => this.handleSubmit(e) },
+        _react2.default.createElement(
+          'h3',
+          null,
+          ' Book your room Now!! '
+        ),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'first', type: 'text', placeholder: 'First Name' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'last', type: 'text', placeholder: 'Last Name' }),
+        _react2.default.createElement(_RoomTypesDropdown2.default, { rooms: this.props.rooms }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'from', type: 'date', placeholder: 'from' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'to', type: 'date', placeholder: 'until' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'email', type: 'text', placeholder: 'Email' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'cc', type: 'number', placeholder: 'Credit Card Number' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'exmm', type: 'number', placeholder: 'MM' }),
+        _react2.default.createElement('input', { className: 'cardHolder__selectedHotel__form__input', id: 'exyy', type: 'number', placeholder: 'YY' }),
+        _react2.default.createElement('input', { type: 'submit' })
+      )
+    );
+  }
+}
+exports.default = SelectedHotel;
 
 /***/ }),
-/* 75 */,
-/* 76 */,
-/* 77 */,
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Review = __webpack_require__(29);
+
+var _Review2 = _interopRequireDefault(_Review);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//todo bua til nytt component til ad rendera reviews
+
+class Reviews extends _react2.default.Component {
+
+  render() {
+    console.log(this.props);
+    return _react2.default.createElement(
+      'div',
+      { className: 'review__container' },
+      this.props.reviews.map(review => _react2.default.createElement(_Review2.default, { key: review.id, data: review }))
+    );
+  }
+}
+exports.default = Reviews;
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _RoomOption = __webpack_require__(77);
+
+var _RoomOption2 = _interopRequireDefault(_RoomOption);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class RoomTypesDropdown extends _react2.default.Component {
+
+  getOptions() {
+    return this.props.rooms.map(room => _react2.default.createElement(_RoomOption2.default, { key: room.id, room: room }));
+  }
+
+  render() {
+    console.log("Rendering the dropdown");
+    console.log(this.props.rooms);
+    if (this.props.rooms == null) return null;
+    return _react2.default.createElement(
+      'select',
+      { id: 'roomType' },
+      this.getOptions()
+    );
+  }
+}
+exports.default = RoomTypesDropdown;
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class RoomOption extends _react2.default.Component {
+  render() {
+    return _react2.default.createElement(
+      'option',
+      { value: this.props.room.id },
+      this.props.room.roomType
+    );
+  }
+}
+exports.default = RoomOption;
+
+/***/ }),
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
