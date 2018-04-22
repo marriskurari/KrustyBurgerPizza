@@ -2,6 +2,7 @@
 package search.generator.hotel;
 
 import search.generator.Entity;
+import search.generator.Factory;
 import javafx.util.Pair;
 
 import java.util.*;
@@ -16,12 +17,13 @@ public class HotelEntity extends Entity {
 	private Map<Integer, Long> roomIds = new HashMap<>();
 	private Map<Integer, String> amenities = new HashMap<>();
 	private String imageUrl = "https://via.placeholder.com/350x150";
+	private String description;
 
 	public HotelEntity() {
 		super();
 	}
 
-	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, String imageUrl, Integer stars, Map<Integer, String> amenities) {
+	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, String imageUrl, Integer stars, Map<Integer, String> amenities, String description) {
 		this.setNumRooms(numRooms);
 		this.setName(name);
 		this.setEmail(email);
@@ -30,15 +32,16 @@ public class HotelEntity extends Entity {
 		this.setAmenities(amenities);
 		this.setImageUrl(imageUrl);
 		this.setStars(stars);
+		this.setDescription(description);
 	}
 
-	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Integer stars, Map<Integer, String> amenities) {
-		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, stars, amenities);
+	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Integer stars, Map<Integer, String> amenities, String description) {
+		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, stars, amenities, description);
 		hotel.setId(id);
 	}
 
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, stars, amenities);
+		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, stars, amenities, description);
 	}
 
 	@Override
@@ -53,6 +56,9 @@ public class HotelEntity extends Entity {
 		params.add(pair("numRooms", this.numRooms));
 		params.add(pair("imageUrl", this.imageUrl));
 		params.add(pair("stars", "" + this.stars));
+		List<String> textFragments = Factory.splitStringToArrayList(description);
+		for(String fragment : textFragments)
+			params.add(pair("description", fragment));
 		if(!amenities.isEmpty())
 			params.addAll(mapToListOfPairs("amenities", amenities));
 		if(!roomIds.isEmpty())
@@ -86,8 +92,10 @@ public class HotelEntity extends Entity {
 	}
 
 	public Map<Integer, Long> getRoomIds() { return roomIds; }
-
 	public void setRoomIds(HashMap<Integer, Long> rooms) { this.roomIds = rooms; }
+
+	public String getDescription() { return description; }
+	public void setDescription(String description) { this.description = description; }
 
 	public void addRoomId(Long roomEntityId) {
 		roomIds.put(roomIds.size(), roomEntityId);

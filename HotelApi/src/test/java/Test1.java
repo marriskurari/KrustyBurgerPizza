@@ -52,6 +52,8 @@ public class Test1 {
 	private Long uid;
 	private Long rvid;
 
+	private String description = "This is long heotuaheotunhteoabs ueoa oe aueboa bkabo kebakb eoa keoabkbeoakbeoab koea eoa ueonauheoanuhoaebu kboeabkodagkp,d;keoa";
+
 	@Before
 	public void setUp() throws IOException {
 		System.out.println("----------------Setting up");
@@ -68,7 +70,7 @@ public class Test1 {
 		rid = rf.save(r);
 		Assert.assertNotNull(rid);
 
-		Hotel h = new Hotel(47, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", 5, amenMap);
+		Hotel h = new Hotel(47, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", 5, amenMap, description);
 		h.addRoomId(rid);
 		hid = hf.save(h);
 		Assert.assertNotNull(hid);
@@ -115,7 +117,7 @@ public class Test1 {
 		Assert.assertEquals(3.15, h.getLongitude(), 0.01);
 		Assert.assertEquals(4.5, h.getLatitude(), 0.01);
 		Assert.assertEquals(rid, new Long(h.getRoomIds().get(0)));
-
+		Assert.assertEquals(description, h.getDescription());
 		RoomEntity r = rf.getOneRoom(rid);
 		Assert.assertEquals(false, r.isExtraBed());
 		Assert.assertEquals(2, r.getNumberOfBeds());
@@ -140,7 +142,6 @@ public class Test1 {
 	@After
 	public void tearDown() throws IOException {
 		System.out.println("----------------Taking the thing out");
-		hf.remove(hid);
 		rf.remove(rid);
 		af.remove(aid);
 	}

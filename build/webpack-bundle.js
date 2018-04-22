@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "./build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,9 +71,9 @@
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(40);
-} else {
   module.exports = __webpack_require__(41);
+} else {
+  module.exports = __webpack_require__(42);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -362,11 +362,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(52)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(53)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(53)();
+  module.exports = __webpack_require__(54)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -964,11 +964,35 @@ const availability = {
 	getOne: id => getById("Availability", id)
 };
 
+const filter = (obj, hotelId) => {
+	let array = [];
+	for (let key in obj) {
+		const review = obj[key];
+		if (review.hotelId == hotelId) array.push(review);
+	}
+	console.log(array);
+	return array;
+};
+
 const review = {
 	getAll: () => getAllByType("Review"),
-	getFiltered: hotelId => {
-		getAllByType("Review").filter(review => review.hotelId == hotelId);
+	getFiltered: async hotelId => {
+		const reviews = await getAllByType("Review");
+		console.log(reviews);
+		return filter(reviews, hotelId);
 	}
+};
+
+const iconURL = {
+	wifi: "https://i.imgur.com/QOLIhxO.png",
+	shower: "https://i.imgur.com/y1x2e1b.png",
+	breakfast: "https://i.imgur.com/PzrJ9Aw.png",
+	private_bathroom: "https://i.imgur.com/SGeRQXq.jpg",
+	tea: "https://i.imgur.com/nvKGfIv.png",
+	coffee: "https://i.imgur.com/4edoUkq.png",
+	swimming_pool: "https://i.imgur.com/9N2dMZv.png",
+	accessible: "https://i.imgur.com/ax7VzhD.png",
+	linen: "https://i.imgur.com/7tC9XYv.png"
 };
 
 const DCtrl = {
@@ -977,7 +1001,8 @@ const DCtrl = {
 	room,
 	user,
 	availability,
-	review
+	review,
+	iconURL
 };
 
 exports.default = DCtrl;
@@ -1344,7 +1369,7 @@ var createTransitionManager = function createTransitionManager() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_path_to_regexp__);
 
 
@@ -1431,7 +1456,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Review = __webpack_require__(72);
+var _Review = __webpack_require__(29);
 
 var _Review2 = _interopRequireDefault(_Review);
 
@@ -1442,16 +1467,6 @@ var _DataController2 = _interopRequireDefault(_DataController);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class Card extends _react2.default.Component {
-
-	async getReviews() {
-		const reviews = await _DataController2.default.review.getFiltered(this.props.id);
-		for (let review in reviwes) {
-			review.username = await _DataController2.default.user.getOne(review.userId);
-		}
-		this.setState({
-			reviews: reviews
-		});
-	}
 
 	render() {
 		const urlString = `url(${this.props.imageUrl})`;
@@ -1477,13 +1492,7 @@ class Card extends _react2.default.Component {
 				null,
 				'Stars: ',
 				this.props.stars
-			),
-			_react2.default.createElement(
-				'button',
-				{ onClick: this.getReviews() },
-				'Show Reviews'
-			),
-			this.state.reviews.map(review => _react2.default.createElement(_Review2.default, { data: review }))
+			)
 		);
 	}
 }
@@ -1657,7 +1666,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(42);
+var isTextNode = __webpack_require__(43);
 
 /*eslint-disable no-bitwise */
 
@@ -1812,11 +1821,11 @@ function valueEqual(a, b) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__ = __webpack_require__(60);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createBrowserHistory", function() { return __WEBPACK_IMPORTED_MODULE_0__createBrowserHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__createHashHistory__ = __webpack_require__(61);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createHashHistory", function() { return __WEBPACK_IMPORTED_MODULE_1__createHashHistory__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(62);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createMemoryHistory", function() { return __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(11);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createLocation", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
@@ -2056,9 +2065,65 @@ Route.childContextTypes = {
 "use strict";
 
 
-__webpack_require__(30);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var _reactDom = __webpack_require__(38);
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class Review extends _react2.default.Component {
+
+  getReviewText() {
+    const textAsObject = this.props.data.reviewText;
+    let string = '';
+    for (let key in textAsObject) string += textAsObject[key];
+    return string;
+  }
+
+  render() {
+    console.log(this.props.data);
+    return _react2.default.createElement(
+      'div',
+      { className: 'review' },
+      _react2.default.createElement(
+        'h3',
+        { className: 'review__subject' },
+        this.props.data.subject
+      ),
+      _react2.default.createElement(
+        'p',
+        { className: 'review__username' },
+        this.props.data.username
+      ),
+      _react2.default.createElement(
+        'p',
+        { className: 'rating' },
+        (this.props.data.rating + "").substring(0, 3)
+      ),
+      _react2.default.createElement(
+        'p',
+        { className: 'review__text' },
+        this.getReviewText()
+      )
+    );
+  }
+}
+exports.default = Review;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(31);
+
+var _reactDom = __webpack_require__(39);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2066,7 +2131,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Body = __webpack_require__(49);
+var _Body = __webpack_require__(50);
 
 var _Body2 = _interopRequireDefault(_Body);
 
@@ -2085,11 +2150,11 @@ _reactDom2.default.render(app, location);
 document.querySelector('body').style.removeProperty("display");
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(31);
+var content = __webpack_require__(32);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -2103,7 +2168,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(36)(content, options);
+var update = __webpack_require__(37)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -2135,22 +2200,22 @@ if(false) {
 }
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(32);
-exports = module.exports = __webpack_require__(33)(false);
+var escape = __webpack_require__(33);
+exports = module.exports = __webpack_require__(34)(false);
 // imports
 
 
 // module
-exports.push([module.i, "#googlemap {\n  height: 300px;\n  width: 400px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.jumbotron {\n  max-width: 100%;\n  width: 100%;\n  height: 100vh;\n  border-bottom: 2px solid black;\n  background-image: url(" + escape(__webpack_require__(34)) + ");\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  background-attachment: fixed;\n  align-items: center;\n  box-sizing: border-box; }\n  .jumbotron__form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 2rem; }\n    .jumbotron__form__input {\n      padding: 1rem; }\n    .jumbotron__form__indicator {\n      background-image: url(" + escape(__webpack_require__(35)) + ");\n      height: 50px;\n      width: 50px; }\n\n.cardHolder__card {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem;\n  padding: 1rem;\n  width: 15rem;\n  height: 15rem;\n  background-color: #969696;\n  transition: background-color 0.3s ease-in-out;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  border-radius: 3px; }\n  .cardHolder__cardContainer {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center; }\n  .cardHolder__card:hover {\n    cursor: pointer;\n    background-color: white; }\n  .cardHolder__card__cardImage {\n    height: 100%;\n    width: 100%;\n    background-size: cover;\n    background-position: center; }\n\n.cardHolder__selectedHotel {\n  max-width: 80vw;\n  min-width: 60vw;\n  height: 100vh;\n  background-color: #969696;\n  margin: 1rem;\n  float: right;\n  border-radius: 15px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n  .cardHolder__selectedHotel__card {\n    padding: 1rem; }\n    .cardHolder__selectedHotel__card__cardImage {\n      width: 100%;\n      height: 80vh;\n      background-position: center;\n      background-size: cover; }\n  .cardHolder__selectedHotel__form {\n    padding: 1rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: #DB7A35;\n    border-bottom-right-radius: 15px;\n    border-bottom-left-radius: 15px;\n    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n    .cardHolder__selectedHotel__form__input {\n      margin: 0.5rem; }\n\n.footer {\n  color: white;\n  font-weight: 400;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #303030; }\n  .footer__copyright {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #4a4a4a;\n    height: 3rem;\n    width: 100%; }\n  .footer__info {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    background-color: #303030;\n    height: 8rem;\n    width: 100%; }\n\n.header {\n  height: 10vh;\n  width: 100%;\n  position: fixed;\n  z-index: 1;\n  background: #33ff77;\n  display: flex;\n  align-items: center;\n  border-bottom: 2px solid black;\n  padding: 0px; }\n  .header__link {\n    padding: 0.85rem;\n    margin: 0.35rem;\n    border-radius: 3px;\n    background-color: #969696;\n    transition: background-color 0.5s;\n    border: 1px solid black;\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3), 0 0 2px 2px rgba(0, 0, 0, 0.19); }\n    .header__link:hover {\n      background-color: white; }\n  .header__heading {\n    display: flex;\n    align-items: center; }\n    .header__heading__container {\n      margin-right: 1rem;\n      display: flex;\n      align-items: center;\n      background-color: #DB7A35;\n      height: 100%;\n      padding-left: 1rem;\n      padding-right: 1rem; }\n\n.completed {\n  max-width: 1200px;\n  background-color: #969696;\n  margin: 2rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 2rem;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  border-radius: 15px;\n  background-position: center;\n  background-size: cover; }\n  .completed__image {\n    height: 80vh;\n    width: 100%; }\n\n.about {\n  padding-top: 12vh; }\n  .about__image {\n    height: 100vh;\n    margin: 2rem;\n    background-image: url(\"http://i0.kym-cdn.com/entries/icons/original/000/016/546/hidethepainharold.jpg\");\n    padding: 2rem;\n    background-position: center;\n    background-size: cover; }\n\n.contact {\n  background-image: url(\"https://wallpapersultra.net/wp-content/uploads/3D-Beach-Wallpaper-HD-Download.jpg\");\n  padding-top: 10vh;\n  height: 100vh;\n  background-size: cover;\n  background-position: center; }\n  .contact__namebox {\n    margin: 2rem;\n    padding: 2rem; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 12px;\n  margin: 0px;\n  background-color: #33ff77;\n  padding: 0px; }\n\na {\n  color: black;\n  text-decoration: none; }\n\n.displaynone {\n  display: none; }\n\n.displayhidden {\n  visibility: hidden; }\n\nbody {\n  background-size: cover;\n  margin: 0px; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
+exports.push([module.i, "#googlemap {\n  height: 300px;\n  width: 400px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n\n.jumbotron {\n  max-width: 100%;\n  width: 100%;\n  height: 100vh;\n  border-bottom: 2px solid black;\n  background-image: url(" + escape(__webpack_require__(35)) + ");\n  background-size: cover;\n  display: flex;\n  justify-content: center;\n  background-attachment: fixed;\n  align-items: center;\n  box-sizing: border-box; }\n  .jumbotron__form {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 2rem; }\n    .jumbotron__form__input {\n      padding: 1rem; }\n    .jumbotron__form__indicator {\n      background-image: url(" + escape(__webpack_require__(36)) + ");\n      height: 50px;\n      width: 50px; }\n\n.cardHolder__card {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem;\n  padding: 1rem;\n  width: 15rem;\n  height: 15rem;\n  background-color: #969696;\n  transition: background-color 0.3s ease-in-out;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  border-radius: 3px; }\n  .cardHolder__cardContainer {\n    display: flex;\n    flex-wrap: wrap;\n    justify-content: center; }\n  .cardHolder__card:hover {\n    cursor: pointer;\n    background-color: white; }\n  .cardHolder__card__cardImage {\n    height: 100%;\n    width: 100%;\n    background-size: cover;\n    background-position: center; }\n\n.cardHolder__selectedHotel {\n  max-width: 60vw;\n  min-width: 60vw;\n  background-color: #969696;\n  margin: 1rem;\n  float: right;\n  border-radius: 15px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n  .cardHolder__selectedHotel__card {\n    padding: 1rem; }\n    .cardHolder__selectedHotel__card__icons {\n      width: 50px;\n      height: 50px;\n      z-index: 20;\n      background: none;\n      background-position: center;\n      background-size: cover; }\n      .cardHolder__selectedHotel__card__icons__container {\n        width: 100%;\n        height: 70px;\n        display: flex;\n        justify-content: space-around;\n        flex-direction: row; }\n    .cardHolder__selectedHotel__card__cardImage {\n      width: 100%;\n      height: 80vh;\n      background-position: center;\n      background-size: cover; }\n  .cardHolder__selectedHotel__form {\n    padding: 1rem;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: #DB7A35;\n    border-bottom-right-radius: 15px;\n    border-bottom-left-radius: 15px;\n    box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }\n    .cardHolder__selectedHotel__form__input {\n      margin: 0.5rem; }\n\n.footer {\n  color: white;\n  font-weight: 400;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  background-color: #303030;\n  clear: both; }\n  .footer__copyright {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #4a4a4a;\n    height: 3rem;\n    width: 100%; }\n  .footer__info {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    background-color: #303030;\n    height: 8rem;\n    width: 100%; }\n\n.header {\n  height: 10vh;\n  width: 100%;\n  position: fixed;\n  z-index: 1;\n  background: #33ff77;\n  display: flex;\n  align-items: center;\n  border-bottom: 2px solid black;\n  padding: 0px; }\n  .header__link {\n    padding: 0.85rem;\n    margin: 0.35rem;\n    border-radius: 3px;\n    background-color: #969696;\n    transition: background-color 0.5s;\n    border: 1px solid black;\n    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3), 0 0 2px 2px rgba(0, 0, 0, 0.19); }\n    .header__link:hover {\n      background-color: white; }\n  .header__heading {\n    display: flex;\n    align-items: center; }\n    .header__heading__container {\n      margin-right: 1rem;\n      display: flex;\n      align-items: center;\n      background-color: #DB7A35;\n      height: 100%;\n      padding-left: 1rem;\n      padding-right: 1rem; }\n\n.completed {\n  max-width: 1200px;\n  background-color: #969696;\n  margin: 2rem;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 2rem;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  border-radius: 15px;\n  background-position: center;\n  background-size: cover; }\n  .completed__image {\n    height: 80vh;\n    width: 100%; }\n\n.about {\n  padding-top: 12vh; }\n  .about__image {\n    height: 100vh;\n    margin: 2rem;\n    background-image: url(\"http://i0.kym-cdn.com/entries/icons/original/000/016/546/hidethepainharold.jpg\");\n    padding: 2rem;\n    background-position: center;\n    background-size: cover; }\n\n.contact {\n  background-image: url(\"https://wallpapersultra.net/wp-content/uploads/3D-Beach-Wallpaper-HD-Download.jpg\");\n  padding-top: 10vh;\n  height: 100vh;\n  background-size: cover;\n  background-position: center; }\n  .contact__namebox {\n    margin: 2rem;\n    padding: 2rem; }\n\n.review {\n  background-color: white;\n  float: right;\n  border-radius: 15px;\n  box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.52), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  margin-top: 0.5rem;\n  padding: 1rem; }\n\nhtml {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Josefin Sans\", sans-serif;\n  font-weight: 600;\n  font-size: 12px;\n  margin: 0px;\n  background-color: #33ff77;\n  padding: 0px; }\n\na {\n  color: black;\n  text-decoration: none; }\n\n.displaynone {\n  display: none; }\n\n.displayhidden {\n  visibility: hidden; }\n\nbody {\n  background-size: cover;\n  margin: 0px; }\n\n.cardImage {\n  height: 150px;\n  width: 350px;\n  width: 100%; }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = function escape(url) {
@@ -2172,7 +2237,7 @@ module.exports = function escape(url) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /*
@@ -2254,19 +2319,19 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "1b307cb9cfa69d664992a5b271a75d80.jpg";
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAA6JJREFUeJzt3TuLXVUYx+H/MAGFtEkqEW3UziIIiljaxMLLOOCl8zPY5DvYitj6BZR4Kay0sBCx8fIVnE6MVsYMx+I4MWImOZe993rX3s8DqzzwrrX4neZs9kkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBHB60HuIeDJC8kuZbkiSQPJfklyTdJPk5ys91oDOAgyfNJXkryZNb3e5J/7/e3dqPV90yS75Oszlk3k7yb5LDVgOzlapLvcv79/pHkepILrQas7DjJrZx/eHevT7L+5qEfR0n+zGb3+0WSh9uMWdNzSf7KZod3tj6PSHpxnOR2trvfj5pMWtBhkp+z3eGJpB+7xHG2XmwwbznXstvhiaS+feJYJfly+pHr+SD7BSKSmvaNY/XP5y9OPXg1X2X/QERSyxBxnK2nJ569nG8zzEGKpIYh41gleXba8eu5keEOUyRtDR3HKsnjk+6goOsZ9kBF0sbrGT6Ok9R82mNSjyU5jUh6NkYcqyTvTbmJyt7P8IcrkmmMFcevSa5MuI/SLub+z2CJpKax4rid9e9j3OVSkh8ikl6MFcdpkjcm3EdXRNIHcTQkktrEUcCYkXwWkezqKOIoQyS1iKMgkdQgjsJE0pY4OiCSNsTREZFMSxwdEsk0xNExkYzrKNu/QEMcxYhkHOKYEZEMSxwzJJJhiGPGRLIfcSzA5YhkF69lvDjenHAfbGDMSD7N/CIRxwKJZDPiWDCR3J84EMk5xMEdIvkvcfA/IlkTB+daeiSvRhw8wFIjEQcbW1ok4mBrS4lEHOxs7pGIg73NNRJxMJi5RSIOBjeXSMTBaC4n+THjRHIj40fySsaL462RZ6cTvUYiDibTWyTiYHK9RCIOmqkeiThormok4qCMapGIg3KqRPJyxEFRrSMRB+W1ikQcdGPqSMRBd6aKRBx0a+xIjiMOOjdmJGMscTC5XiIRB81cSe1ITpO8PdruYQNVIxEHZVSLRByUUyUScVBW60jEQXmtIhEH3Zg6EnHQnakiEQfdGjsScdC9sSIRB7MxdCTiYHaGikQczNa+kYiD2ds1EnGwGNtGIg4W51KSr/PgOH7P+u8NYHEOk7yT5KfcO4wPkzzSbDpy0HoA7ng0yVNZv7jhJOs/9rnVdCIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBu/A2UpVKazSRYbQAAAABJRU5ErkJggg=="
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -2332,7 +2397,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(37);
+var	fixUrls = __webpack_require__(38);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -2648,7 +2713,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 
@@ -2743,7 +2808,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2781,15 +2846,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(39);
+  module.exports = __webpack_require__(40);
 } else {
-  module.exports = __webpack_require__(44);
+  module.exports = __webpack_require__(45);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3041,7 +3106,7 @@ ReactDOMEventListener:Zd},unstable_createRoot:function(a,b){return new sg(a,!0,n
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3070,7 +3135,7 @@ module.exports=X["default"]?X["default"]:X;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4487,7 +4552,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4502,7 +4567,7 @@ module.exports = react;
  * @typechecks
  */
 
-var isNode = __webpack_require__(43);
+var isNode = __webpack_require__(44);
 
 /**
  * @param {*} object The object to check.
@@ -4515,7 +4580,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4543,7 +4608,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4575,8 +4640,8 @@ var getActiveElement = __webpack_require__(21);
 var shallowEqual = __webpack_require__(22);
 var containsNode = __webpack_require__(23);
 var emptyObject = __webpack_require__(9);
-var hyphenateStyleName = __webpack_require__(45);
-var camelizeStyleName = __webpack_require__(47);
+var hyphenateStyleName = __webpack_require__(46);
+var camelizeStyleName = __webpack_require__(48);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -21175,7 +21240,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21190,7 +21255,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(46);
+var hyphenate = __webpack_require__(47);
 
 var msPattern = /^ms-/;
 
@@ -21217,7 +21282,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21253,7 +21318,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21268,7 +21333,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(48);
+var camelize = __webpack_require__(49);
 
 var msPattern = /^-ms-/;
 
@@ -21296,7 +21361,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21331,7 +21396,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21345,11 +21410,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(50);
+var _reactRouter = __webpack_require__(51);
 
 var _history = __webpack_require__(26);
 
-var _Search = __webpack_require__(68);
+var _Search = __webpack_require__(69);
 
 var _Search2 = _interopRequireDefault(_Search);
 
@@ -21380,28 +21445,28 @@ class Body extends _react2.default.Component {
 exports.default = Body;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MemoryRouter__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__MemoryRouter__ = __webpack_require__(52);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Prompt__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Prompt__ = __webpack_require__(58);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_1__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Redirect__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Redirect__ = __webpack_require__(59);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_2__Redirect__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(28);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_3__Route__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(16);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_4__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__StaticRouter__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__StaticRouter__ = __webpack_require__(65);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_5__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Switch__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Switch__ = __webpack_require__(66);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_6__Switch__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__matchPath__ = __webpack_require__(18);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_7__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__withRouter__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__withRouter__ = __webpack_require__(67);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_8__withRouter__["a"]; });
 
 
@@ -21423,7 +21488,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21433,7 +21498,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_history_createMemoryHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Router__ = __webpack_require__(16);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21490,7 +21555,7 @@ MemoryRouter.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (MemoryRouter);
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22040,7 +22105,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22105,7 +22170,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22123,9 +22188,9 @@ var _warning2 = _interopRequireDefault(_warning);
 
 var _PathUtils = __webpack_require__(15);
 
-var _LocationUtils = __webpack_require__(55);
+var _LocationUtils = __webpack_require__(56);
 
-var _createTransitionManager = __webpack_require__(56);
+var _createTransitionManager = __webpack_require__(57);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -22281,7 +22346,7 @@ var createMemoryHistory = function createMemoryHistory() {
 exports.default = createMemoryHistory;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22365,7 +22430,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 };
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22456,7 +22521,7 @@ var createTransitionManager = function createTransitionManager() {
 exports.default = createTransitionManager;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22547,7 +22612,7 @@ Prompt.contextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Prompt);
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22655,7 +22720,7 @@ Redirect.contextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Redirect);
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22959,7 +23024,7 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createBrowserHistory);
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23280,7 +23345,7 @@ var createHashHistory = function createHashHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createHashHistory);
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23448,10 +23513,10 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony default export */ __webpack_exports__["a"] = (createMemoryHistory);
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(63)
+var isarray = __webpack_require__(64)
 
 /**
  * Expose `pathToRegexp`.
@@ -23880,7 +23945,7 @@ function pathToRegexp (path, keys, options) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports) {
 
 module.exports = Array.isArray || function (arr) {
@@ -23889,7 +23954,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24072,7 +24137,7 @@ StaticRouter.childContextTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (StaticRouter);
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24166,7 +24231,7 @@ Switch.propTypes = {
 /* harmony default export */ __webpack_exports__["a"] = (Switch);
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24174,7 +24239,7 @@ Switch.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Route__ = __webpack_require__(28);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -24211,7 +24276,7 @@ var withRouter = function withRouter(Component) {
 /* harmony default export */ __webpack_exports__["a"] = (withRouter);
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -24289,7 +24354,7 @@ var withRouter = function withRouter(Component) {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24303,11 +24368,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Jumbotron = __webpack_require__(69);
+var _Jumbotron = __webpack_require__(70);
 
 var _Jumbotron2 = _interopRequireDefault(_Jumbotron);
 
-var _CardHolder = __webpack_require__(71);
+var _CardHolder = __webpack_require__(72);
 
 var _CardHolder2 = _interopRequireDefault(_CardHolder);
 
@@ -24315,7 +24380,7 @@ var _Card = __webpack_require__(19);
 
 var _Card2 = _interopRequireDefault(_Card);
 
-var _BookingCompleted = __webpack_require__(77);
+var _BookingCompleted = __webpack_require__(78);
 
 var _BookingCompleted2 = _interopRequireDefault(_BookingCompleted);
 
@@ -24422,7 +24487,7 @@ class Search extends _react2.default.Component {
 exports.default = Search;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24436,7 +24501,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SearchForm = __webpack_require__(70);
+var _SearchForm = __webpack_require__(71);
 
 var _SearchForm2 = _interopRequireDefault(_SearchForm);
 
@@ -24459,7 +24524,7 @@ class Jumbotron extends _react2.default.Component {
 exports.default = Jumbotron;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24521,7 +24586,7 @@ class SearchForm extends _react2.default.Component {
 exports.default = SearchForm;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24596,6 +24661,7 @@ class CardHolder extends _react2.default.Component {
     return _react2.default.createElement(_Card2.default, {
       hotel: hotelObject,
       selectHotel: this.selectHotel.bind(this),
+      stars: hotelObject.stars,
       key: hotelObject.id,
       name: this.findAndReplace(hotelObject.name, "_", " "),
       email: hotelObject.email,
@@ -24638,57 +24704,6 @@ class CardHolder extends _react2.default.Component {
   }
 }
 exports.default = CardHolder;
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-class Review extends _react2.default.Component {
-
-  getReviewText() {}
-
-  render() {
-    console.log(this.props.data);
-    return _react2.default.createElement(
-      "div",
-      { className: "review" },
-      _react2.default.createElement(
-        "h3",
-        { className: "review__subject" },
-        this.props.data.subject
-      ),
-      _react2.default.createElement(
-        "p",
-        { className: "review__username" },
-        this.props.data.userName
-      ),
-      _react2.default.createElement(
-        "p",
-        { className: "rating" },
-        (this.props.data.rating + "").substring(0, 3)
-      ),
-      _react2.default.createElement(
-        "p",
-        { className: "review__text" },
-        this.props.data.reviewText
-      )
-    );
-  }
-}
-exports.default = Review;
 
 /***/ }),
 /* 73 */
@@ -24737,11 +24752,15 @@ var _Card = __webpack_require__(19);
 
 var _Card2 = _interopRequireDefault(_Card);
 
+var _Reviews = __webpack_require__(75);
+
+var _Reviews2 = _interopRequireDefault(_Reviews);
+
 var _DataController = __webpack_require__(12);
 
 var _DataController2 = _interopRequireDefault(_DataController);
 
-var _RoomTypesDropdown = __webpack_require__(75);
+var _RoomTypesDropdown = __webpack_require__(76);
 
 var _RoomTypesDropdown2 = _interopRequireDefault(_RoomTypesDropdown);
 
@@ -24750,7 +24769,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 class SelectedHotel extends _Card2.default {
   constructor() {
     super();
-    this.state = { rooms: null };
+    this.state = {
+      rooms: null,
+      reviews: [] };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24790,11 +24811,34 @@ class SelectedHotel extends _Card2.default {
     this.props.bookingCompleted(hotelName, this.props.hotel.imageUrl, bookingId);
   }
 
+  async getReviews() {
+    let reviews = await _DataController2.default.review.getFiltered(this.props.hotel.id);
+    for (let key in reviews) {
+      let user = await _DataController2.default.user.getOne(reviews[key].userId);
+      reviews[key].username = this.findAndReplace(user.name, "_", " ");
+    }
+    console.log(reviews);
+    this.setState({
+      reviews: reviews
+    });
+    console.log("REviews are set");
+  }
+
+  renderAmenities() {
+    const am = this.props.hotel.amenities;
+    console.log(am);
+    let array = [];
+    console.log(_DataController2.default.iconURL["wifi"]);
+    for (let key in am) array.push(_react2.default.createElement('div', { className: 'cardHolder__selectedHotel__card__icons', key: key, style: { backgroundImage: `url(${_DataController2.default.iconURL[am[key]]})` } }));
+    console.log(array);
+    return array;
+  }
+
   render() {
     if (this.props.hotel == null) return null;
     const url = `url(${this.props.hotel.imageUrl})`;
     const name = this.findAndReplace(this.props.hotel.name, "_", " ");
-    console.log(this.handleSubmit);
+    console.log(this.props.hotel);
     return _react2.default.createElement(
       'div',
       {
@@ -24814,8 +24858,19 @@ class SelectedHotel extends _Card2.default {
           'a',
           { href: `mailto:${this.props.hotel.email}` },
           this.props.hotel.email
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'cardHolder__selectedHotel__card__icons__container' },
+          this.renderAmenities()
+        ),
+        _react2.default.createElement(
+          'button',
+          { onClick: () => this.getReviews() },
+          'Show Reviews'
         )
       ),
+      this.state.reviews ? _react2.default.createElement(_Reviews2.default, { reviews: this.state.reviews }) : null,
       _react2.default.createElement(
         'form',
         { className: 'cardHolder__selectedHotel__form', onSubmit: e => this.handleSubmit(e) },
@@ -24855,7 +24910,43 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _RoomOption = __webpack_require__(76);
+var _Review = __webpack_require__(29);
+
+var _Review2 = _interopRequireDefault(_Review);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//todo bua til nytt component til ad rendera reviews
+
+class Reviews extends _react2.default.Component {
+
+  render() {
+    console.log(this.props);
+    return _react2.default.createElement(
+      'div',
+      { className: 'review__container' },
+      this.props.reviews.map(review => _react2.default.createElement(_Review2.default, { key: review.id, data: review }))
+    );
+  }
+}
+exports.default = Reviews;
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _RoomOption = __webpack_require__(77);
 
 var _RoomOption2 = _interopRequireDefault(_RoomOption);
 
@@ -24881,7 +24972,7 @@ class RoomTypesDropdown extends _react2.default.Component {
 exports.default = RoomTypesDropdown;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24909,7 +25000,7 @@ class RoomOption extends _react2.default.Component {
 exports.default = RoomOption;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

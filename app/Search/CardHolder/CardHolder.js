@@ -51,6 +51,7 @@ export default class CardHolder extends React.Component {
         <Card
           hotel={hotelObject}
           selectHotel={this.selectHotel.bind(this)}
+          stars={hotelObject.stars}
           key={hotelObject.id}
           name={this.findAndReplace(hotelObject.name, "_", " ")}
           email={hotelObject.email}

@@ -41,7 +41,8 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 			 randomDouble(longitude, height),
 			 getRandom(imageUrl),
 			 randomInt(5),
-			 getRandomMap(amenities)
+			 getRandomMap(amenities),
+			 lorem
 		);
 	}
 
@@ -59,8 +60,8 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 
 	public Hotel generateFrench() {
 		return generate(
-			 42.6,  8.4,
-			  5.0, 12.4 );
+			  -3.0, 12.4,
+			 42.6,  8.4);
 	}
 
 	public Long save(Ent ent) throws IOException {
@@ -86,10 +87,17 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 		Map<Integer, Long> roomIds = new HashMap<>();
 		JSONObject amenitiesJSON = (JSONObject) json.get("amenities");
 		JSONObject roomIdsJSON = (JSONObject) json.get("roomIds");
+		JSONObject description = (JSONObject) json.get("description");
+		Map<Integer, String> textMap = getStringMapFromJSON(description);
+		String text = "";
+		for(Map.Entry<Integer, String> e : textMap.entrySet()) {
+			text += e.getValue();
+		}
 		amenities = getStringMapFromJSON(amenitiesJSON);
 		roomIds = getLongMapFromJSON(roomIdsJSON);
 		ent.setAmenities(amenities);
 		ent.setRoomIds(roomIds);
+		ent.setDescription(text);
 		return ent;
 	}
 }

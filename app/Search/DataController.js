@@ -78,11 +78,35 @@ const availability = {
 	getOne: (id) => getById("Availability", id)
 }
 
+const filter = (obj, hotelId) => {
+	let array = []
+	for(let key in obj) {
+		const review = obj[key]
+		if(review.hotelId == hotelId) array.push(review)
+	}
+	console.log(array)
+	return array
+}
+
 const review = {
 	getAll: () => getAllByType("Review"),
-	getFiltered: (hotelId) => {
-		getAllByType("Review").filter((review) => review.hotelId == hotelId)
+	getFiltered: async (hotelId) => {
+		const reviews = await getAllByType("Review")
+		console.log(reviews)
+		return filter(reviews, hotelId)
 	}
+}
+
+const iconURL ={
+		wifi: "https://i.imgur.com/QOLIhxO.png",
+		shower: "https://i.imgur.com/y1x2e1b.png",
+		breakfast: "https://i.imgur.com/PzrJ9Aw.png",
+		private_bathroom: "https://i.imgur.com/SGeRQXq.jpg",
+		tea: "https://i.imgur.com/nvKGfIv.png",
+		coffee: "https://i.imgur.com/4edoUkq.png",
+		swimming_pool: "https://i.imgur.com/9N2dMZv.png",
+		accessible: "https://i.imgur.com/ax7VzhD.png",
+		linen: "https://i.imgur.com/7tC9XYv.png"
 }
 
 const DCtrl = {
@@ -91,7 +115,8 @@ const DCtrl = {
 	room,
 	user,
 	availability,
-	review
+	review,
+	iconURL
 }
 
 export default DCtrl

@@ -19,7 +19,6 @@ public class HotelEntity {
 	private String  email;
 	private String imageUrl;
 	private Integer stars;
-	private String description;
 
 	//roomType, ID
 	@ElementCollection
@@ -29,7 +28,8 @@ public class HotelEntity {
 	@ElementCollection
 	private Map<Integer, Long> reviewIds;
 	//private Date[] closedDates;
-
+	@ElementCollection
+	private Map<Integer, String> description;
 
 
 
@@ -112,11 +112,11 @@ public class HotelEntity {
 		this.reviewIds = reviewIds;
 	}
 
-	public String getDescription() {
+	public Map<Integer, String> getDescription() {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(Map<Integer, String> description) {
 		this.description = description;
 	}
 }

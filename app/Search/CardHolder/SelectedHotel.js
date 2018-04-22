@@ -1,12 +1,16 @@
+
 import React from 'react'
 import Card from './Card'
+import Reviews from './Reviews'
 import DCtrl from '../DataController'
 import RoomTypesDropdown from './RoomTypesDropdown'
 
 export default class SelectedHotel extends Card {
   constructor() {
     super()
-    this.state = { rooms: null }
+    this.state = {
+      rooms: null,
+      reviews: [] }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -50,11 +54,35 @@ export default class SelectedHotel extends Card {
     this.props.bookingCompleted(hotelName, this.props.hotel.imageUrl, bookingId)
   }
 
+	async getReviews() {
+		let reviews = await DCtrl.review.getFiltered(this.props.hotel.id)
+		for(let key in reviews) {
+      let user = await DCtrl.user.getOne(reviews[key].userId)
+			reviews[key].username = this.findAndReplace(user.name, "_", " ")
+		}
+    console.log(reviews)
+		this.setState({
+			reviews: reviews
+		})
+    console.log("REviews are set")
+	}
+
+  renderAmenities() {
+    const am = this.props.hotel.amenities
+    console.log(am)
+    let array = []
+    console.log(DCtrl.iconURL["wifi"])
+    for(let key in am)
+      array.push(<div className="cardHolder__selectedHotel__card__icons" key={key} style={{backgroundImage: `url(${DCtrl.iconURL[am[key]]})`}} />)
+    console.log(array)
+    return array
+  }
+
   render() {
     if(this.props.hotel ==   null) return null
     const url = `url(${this.props.hotel.imageUrl})`
     const name = this.findAndReplace(this.props.hotel.name, "_", " ")
-    console.log(this.handleSubmit)
+    console.log(this.props.hotel)
     return(
       <div
         className={
@@ -64,12 +92,14 @@ export default class SelectedHotel extends Card {
         }
         name="selected"
       >
-
       <div className="cardHolder__selectedHotel__card" id="selected">
         <h1>{name}</h1>
         <div className="cardHolder__selectedHotel__card__cardImage" style={{backgroundImage: url}}/>
 				<a href={`mailto:${this.props.hotel.email}`}>{this.props.hotel.email}</a>
+        <div className="cardHolder__selectedHotel__card__icons__container">{this.renderAmenities()}</div>
+			  <button onClick={() => this.getReviews()}>Show Reviews</button>
       </div>
+      {this.state.reviews ? (<Reviews reviews={this.state.reviews} />) : null }
       <form className="cardHolder__selectedHotel__form" onSubmit={e => this.handleSubmit(e)}>
         <h3> Book your room Now!! </h3>
         <input className="cardHolder__selectedHotel__form__input" id="first" type="text" placeholder="First Name" />
@@ -81,7 +111,6 @@ export default class SelectedHotel extends Card {
         <input className="cardHolder__selectedHotel__form__input" id="cc"type="number" placeholder="Credit Card Number" />
         <input className="cardHolder__selectedHotel__form__input" id="exmm"type="number" placeholder="MM" />
         <input className="cardHolder__selectedHotel__form__input" id="exyy"type="number" placeholder="YY" />
-
         <input type="submit"/>
       </form>
     </div>)

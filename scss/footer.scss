@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   background-color: darken($gray, 40%);
+  clear:both;
 
   &__copyright {
     display: flex;
