@@ -4,6 +4,8 @@ package search;
 import search.generator.Factory;
 import search.generator.availability.Availability;
 import search.generator.availability.AvailabilityFactory;
+import search.generator.review.Review;
+import search.generator.review.ReviewFactory;
 import search.generator.booking.Booking;
 import search.generator.booking.BookingFactory;
 import search.generator.hotel.Hotel;
@@ -29,6 +31,7 @@ public class API {
 	public final RoomFactory<RoomEntity> room = new RoomFactory<>();
 	public final BookingFactory<Booking> booking = new BookingFactory<>();
 	public final AvailabilityFactory<Availability> availability = new AvailabilityFactory<>();
+	public final ReviewFactory<Review> review = new ReviewFactory<>();
 
 	private static List<Hotel> allHotels = new ArrayList<>();
 	private static boolean hotelListNeedsToBeUpdated = false;
@@ -56,11 +59,12 @@ public class API {
 		String dateFrom,
 		String dateTo,
 		Boolean isPaid,
+		Boolean isCancelled,
 		String cc
 	) throws IOException {
 		long from = ToolBox.formatStringDateToLong(dateFrom);
 		long to   = ToolBox.formatStringDateToLong(dateTo);
-		Booking b = new Booking(hotelId, roomId, userId, from, to, isPaid, cc);
+		Booking b = new Booking(hotelId, roomId, userId, from, to, isPaid, isCancelled, cc);
 		Long id = booking.save(b);
 		return id;
 	}
@@ -127,8 +131,17 @@ public class API {
 		}
 	}
 
+	public void generateReviews(int numberOfReviews) throws IOException {
+		for(int i = 0; i < numberOfReviews; i++) {
+			System.out.println("Generating review " + i);
+			Review r = review.generate();
+			review.save(r);
+		}
+	}
+
 	public static void main(String [] args) throws IOException {
 		API api = new API();
+		api.generateReviews(1500);
 		api.generateHotels(1500);
 		api.generateUsers(500);
 
@@ -137,7 +150,9 @@ public class API {
 		API api2 = new API();
 		HotelEntity h = api.hotel.generate();
 		Long hotelId = api.hotel.save(h);
-		HotelEntity hotelWithId = api.hotel.getOne(hotelId);
+		System.out.println(api.hotel.getOne(hotelId));
+		List<HotelEntity> list = api.hotel.getOne(hotelId);
+		h = list.get(0);
 		Hotel h2 = (Hotel) h;
 		Availability a = api.availability.generate();
 		// ... so on

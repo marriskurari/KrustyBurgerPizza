@@ -22,37 +22,19 @@ public class Booking extends Entity {
 	private String dateFrom;
 	private String dateTo;
 	private Boolean isPaid;
+	private Boolean isCancelled;
 	private String cc;
 
 	private Long dateFromLong;
 	private Long dateToLong;
 
 	public Booking(
-		Long id,
 		Long hotelId,
 		Long roomId,
 		Long userId,
 		Long from,
 		Long to,
-		Boolean isPaid,
-		String cc
-	) {
-		this.id = id;
-		this.hotelId = hotelId;
-		this.roomId = roomId;
-		this.userId = userId;
-		this.dateFrom = ToolBox.formatLongDateToString(from);
-		this.dateTo = ToolBox.formatLongDateToString(to);
-		this.isPaid = isPaid;
-		this.cc = cc;
-	}
-
-	public Booking(
-		Long hotelId,
-		Long roomId,
-		Long userId,
-		Long from,
-		Long to,
+		Boolean isCancelled,
 		Boolean isPaid,
 		String cc
 	) {
@@ -62,24 +44,7 @@ public class Booking extends Entity {
 		this.dateFrom = ToolBox.formatLongDateToString(from);
 		this.dateTo = ToolBox.formatLongDateToString(to);
 		this.isPaid = isPaid;
-		this.cc = cc;
-	}
-
-	public Booking(
-		Long hotelId,
-		Long roomId,
-		Long userId,
-		String from,
-		String to,
-		Boolean isPaid,
-		String cc
-	) {
-		this.hotelId = hotelId;
-		this.roomId = roomId;
-		this.userId = userId;
-		this.dateFrom = from;
-		this.dateTo = to;
-		this.isPaid = isPaid;
+		this.isCancelled = isCancelled;
 		this.cc = cc;
 	}
 
@@ -88,20 +53,18 @@ public class Booking extends Entity {
 		Long hotelId,
 		Long roomId,
 		Long userId,
-		String from,
-		String to,
+		Long from,
+		Long to,
+		Boolean isCancelled,
 		Boolean isPaid,
 		String cc
 	) {
+		this(hotelId, roomId, userId, from, to, isCancelled, isPaid, cc);
 		this.id = id;
-		this.hotelId = hotelId;
-		this.roomId = roomId;
-		this.userId = userId;
-		this.dateFrom = from;
-		this.dateTo = to;
-		this.isPaid = isPaid;
-		this.cc = cc;
 	}
+
+
+
 
 	@Override
 	public List<Pair<String, String>> getParameters() {
@@ -111,7 +74,9 @@ public class Booking extends Entity {
 		params.add(pair("hotelId", this.hotelId));
 		params.add(pair("userId", this.userId));
 		params.add(pair("roomId", this.roomId));
-		params.add(pair("isPaid", this.isPaid));
+		params.add(pair("isPaid", "" + this.isPaid));
+		params.add(pair("isCancelled", "" + this.isCancelled));
+
 		params.add(pair("dateFrom", this.dateFrom));
 		params.add(pair("dateTo", this.dateTo));
 		params.add(pair("cc", this.cc));
@@ -140,6 +105,14 @@ public class Booking extends Entity {
 
 	public void setRoomId(Long roomId) {
 		this.roomId = roomId;
+	}
+
+	public boolean isCancelled() {
+		return isCancelled;
+	}
+
+	public void setCancelled(boolean cancelled) {
+		isCancelled = cancelled;
 	}
 
 	public boolean isPaid() {

@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class HotelEntity {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -17,52 +18,37 @@ public class HotelEntity {
 	private String  name;
 	private String  email;
 	private String imageUrl;
+	private Integer stars;
+	private String description;
+
 	//roomType, ID
 	@ElementCollection
 	private Map<Integer, Long> roomIds;
 	@ElementCollection
 	private Map<Integer, String> amenities;
+	@ElementCollection
+	private Map<Integer, Long> reviewIds;
 	//private Date[] closedDates;
+
+
+
 
 	public HotelEntity() { }
 
-	public HotelEntity(
-		 Integer numRooms,
-		 String name,
-		 String email,
-		 Double longitude,
-		 double latitude,
-		 String imageUrl,
-		 Map<Integer, String> amenities,
-		 Map<Integer, Long> roomIds
-	) {
-		this.setNumRooms(numRooms);
-		this.setName(name);
-		this.setEmail(email);
-		this.setLongitude(longitude);
-		this.setLatitude(latitude);
-		this.setImageUrl(imageUrl);
-		this.setAmenities(amenities);
-		this.setRoomIds(roomIds);
-	}
-
-	public HotelEntity(
-		 long id,
-		 int numRooms,
-		 double latitude,
-		 double longitude,
-		 String name,
-		 String email,
-		 String imageUrl,
-		 Map<Integer, String> amenities,
-		 Map<Integer, Long> roomIds
-	) {
-		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenities, roomIds);
-		hotel.setId(id);
-	}
-
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, amenities, roomIds);
+		HotelEntity h = new HotelEntity();
+		h.setId(id);
+		h.setNumRooms(numRooms);
+		h.setLatitude(latitude);
+		h.setLongitude(longitude);
+		h.setName(name);
+		h.setStars(stars);
+		h.setImageUrl(imageUrl);
+		h.setDescription(description);
+		h.setRoomIds(roomIds);
+		h.setAmenities(amenities);
+		h.setReviewIds(reviewIds);
+		return h;
 	}
 
 	public Long getId()           { return id;     }
@@ -108,6 +94,30 @@ public class HotelEntity {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public Integer getStars() {
+		return stars;
+	}
+
+	public void setStars(Integer stars) {
+		this.stars = stars;
+	}
+
+	public Map<Integer, Long> getReviewIds() {
+		return reviewIds;
+	}
+
+	public void setReviewIds(Map<Integer, Long> reviewIds) {
+		this.reviewIds = reviewIds;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
 

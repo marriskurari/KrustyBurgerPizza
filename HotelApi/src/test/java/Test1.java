@@ -13,6 +13,9 @@ import search.generator.availability.AvailabilityFactory;
 import search.generator.booking.Booking;
 import search.generator.booking.BookingFactory;
 
+import search.generator.review.Review;
+import search.generator.review.ReviewFactory;
+
 import search.generator.room.Room;
 import search.generator.room.RoomEntity;
 import search.generator.room.RoomFactory;
@@ -35,17 +38,19 @@ import java.util.Map;
 //code for Hotels
 
 public class Test1 {
-	private HotelFactory hf = new HotelFactory();
-	private RoomFactory rf = new RoomFactory();
-	private AvailabilityFactory af = new AvailabilityFactory();
-	private BookingFactory bf = new BookingFactory();
-	private UserFactory uf = new UserFactory();
+	private HotelFactory<Hotel> hf = new HotelFactory();
+	private RoomFactory<Room> rf = new RoomFactory();
+	private AvailabilityFactory<Availability> af = new AvailabilityFactory();
+	private BookingFactory<Booking> bf = new BookingFactory();
+	private UserFactory<User> uf = new UserFactory();
+	private ReviewFactory<Review> rvf = new ReviewFactory();
 
 	private Long hid;
 	private Long aid;
 	private Long rid;
 	private Long bid;
 	private Long uid;
+	private Long rvid;
 
 	@Before
 	public void setUp() throws IOException {
@@ -63,7 +68,7 @@ public class Test1 {
 		rid = rf.save(r);
 		Assert.assertNotNull(rid);
 
-		Hotel h = new Hotel(47, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", amenMap);
+		Hotel h = new Hotel(47, "nammi", "nomail", 3.15, 4.5, "https://i.imgur.com/TJoqdrp.jpg", 5, amenMap);
 		h.addRoomId(rid);
 		hid = hf.save(h);
 		Assert.assertNotNull(hid);
@@ -75,12 +80,20 @@ public class Test1 {
 		Assert.assertEquals(ue.getId(), uid);
 		String cc = Factory.randomCC();
 		ToolBox.formatLongDateToString(new Long(25000000));
-		Booking b = new Booking(hid, rid, ue.getId(), new Long(25000000), new Long(28000000), true, cc);
+		Booking b = new Booking(hid, rid, ue.getId(), new Long(25000000), new Long(28000000), true, false, cc);
 		bid = bf.save(b);
 		System.out.println("BOOKNIG ID IN TEST " + bid);
 		ue.addBookingId(bid);
 		Long userTestId = uf.save(ue);
 		Assert.assertEquals(uid, userTestId);
+
+		Review review = new Review();
+		review.setUserId(uid);
+		review.setHotelId(hid);
+		review.setSubject("This is a subject");
+		review.setReviewText("This is my review");
+		review.setRating(8.9);
+		rvid = rvf.save(review);
 	}
 	/**
 
@@ -115,6 +128,13 @@ public class Test1 {
 		Assert.assertEquals(b.getHotelId(), hid);
 		Assert.assertEquals(b.getRoomId(), rid);
 		Assert.assertEquals(b.getUserId(), uid);
+
+		Review rv = rvf.getOneReview(rvid);
+		Assert.assertEquals(rvid, rv.getId());
+		Assert.assertEquals(uid, rv.getUserId());
+		Assert.assertEquals(hid, rv.getHotelId());
+		Assert.assertEquals("This is a subject", rv.getSubject());
+		Assert.assertEquals("This is my review", rv.getReviewText());
 	}
 
 	@After

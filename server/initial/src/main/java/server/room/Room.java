@@ -7,24 +7,20 @@
 
 package server.room;
 
-import server.availability.Availability;
-import server.availability.AvailabilityRepository;
-
-import java.util.ArrayList;
-import java.util.List;
+import server.availability.AvailabilityEntity;
 
 public class Room extends RoomEntity {
-	private Availability availability;
+	private AvailabilityEntity availability;
 
 	public Room(String roomType, int numberOfBeds, boolean extraBed, long availabilityId) {
 		super(roomType, numberOfBeds, extraBed, availabilityId);
 	}
 
-	public Availability getAvailability() {
+	public AvailabilityEntity getAvailability() {
 		return availability;
 	}
 
-	public void setAvailability(Availability availability) {
+	public void setAvailability(AvailabilityEntity availability) {
 		this.availability = availability;
 	}
 }

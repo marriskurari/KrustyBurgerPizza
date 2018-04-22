@@ -18,7 +18,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Booking {
+public class BookingEntity {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -30,18 +30,9 @@ public class Booking {
 	private Long dateFrom;
 	private Long dateTo;
 	private String cc;
+	private Boolean isCancelled;
 
-	public Booking() {}
-
-	public Booking(Long hotelId, Long roomId, Long userId, Long from, Long to, Boolean isPaid, String cc) {
-		this.hotelId = hotelId;
-		this.roomId = roomId;
-		this.userId = userId;
-		this.dateFrom = from;
-		this.dateTo = to;
-		this.isPaid = isPaid;
-		this.cc = cc;
-	}
+	public BookingEntity() {}
 
 	public Long getId() {
 		return id;
@@ -78,18 +69,18 @@ public class Booking {
 		return dateFrom;
 	}
 
-	public void setDateFrom(Date from) {
-		assert from.getTime() / 86400000 == 0;
-		this.dateFrom = from.getTime();
+	public void setDateFrom(Long from) {
+		assert from / 86400000 == 0;
+		this.dateFrom = from;
 	}
 
 	public Long getDateTo() {
 		return dateTo;
 	}
 
-	public void setDateTo(Date to) {
-		assert to.getTime() / 86400000 == 0;
-		this.dateTo = to.getTime();
+	public void setDateTo(Long to) {
+		assert to / 86400000 == 0;
+		this.dateTo = to;
 	}
 
 	public Long getUserId() {
@@ -106,6 +97,14 @@ public class Booking {
 
 	public void setCc(String cc) {
 		this.cc = cc;
+	}
+
+	public Boolean getIsCancelled() {
+		return isCancelled;
+	}
+
+	public void setIsCancelled(Boolean cancelled) {
+		isCancelled = cancelled;
 	}
 }
 

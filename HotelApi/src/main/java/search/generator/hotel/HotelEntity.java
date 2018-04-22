@@ -12,6 +12,7 @@ public class HotelEntity extends Entity {
 	private Double longitude;
 	private String  name;
 	private String  email;
+	private Integer stars;
 	private Map<Integer, Long> roomIds = new HashMap<>();
 	private Map<Integer, String> amenities = new HashMap<>();
 	private String imageUrl = "https://via.placeholder.com/350x150";
@@ -20,7 +21,7 @@ public class HotelEntity extends Entity {
 		super();
 	}
 
-	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, String imageUrl, Map<Integer, String> amenities) {
+	public HotelEntity(Integer numRooms, String name, String email, Double longitude, double latitude, String imageUrl, Integer stars, Map<Integer, String> amenities) {
 		this.setNumRooms(numRooms);
 		this.setName(name);
 		this.setEmail(email);
@@ -28,15 +29,16 @@ public class HotelEntity extends Entity {
 		this.setLatitude(latitude);
 		this.setAmenities(amenities);
 		this.setImageUrl(imageUrl);
+		this.setStars(stars);
 	}
 
-	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Map<Integer, String> amenities) {
-		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenities);
+	public HotelEntity(long id, int numRooms, double latitude, double longitude, String name, String email, String imageUrl, Integer stars, Map<Integer, String> amenities) {
+		HotelEntity hotel = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, stars, amenities);
 		hotel.setId(id);
 	}
 
 	public HotelEntity extractEntity() {
-		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, amenities);
+		return new HotelEntity(id, numRooms, latitude, longitude, name, email, imageUrl, stars, amenities);
 	}
 
 	@Override
@@ -50,6 +52,7 @@ public class HotelEntity extends Entity {
 		params.add(pair("email", this.email));
 		params.add(pair("numRooms", this.numRooms));
 		params.add(pair("imageUrl", this.imageUrl));
+		params.add(pair("stars", "" + this.stars));
 		if(!amenities.isEmpty())
 			params.addAll(mapToListOfPairs("amenities", amenities));
 		if(!roomIds.isEmpty())
@@ -74,6 +77,9 @@ public class HotelEntity extends Entity {
 
 	public String getEmail()             { return email;       }
 	public void   setEmail(String email) { this.email = email; }
+
+	public Integer getStars()             { return stars;       }
+	public void   setStars(Integer stars) { this.stars = stars; }
 
 	public void setAmenities(Map<Integer, String> amenities) {
 		this.amenities = amenities;

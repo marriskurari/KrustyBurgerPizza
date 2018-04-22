@@ -9,4 +9,4 @@ package server.availability;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface AvailabilityRepository extends CrudRepository<Availability, Long> { }
+public interface AvailabilityRepository extends CrudRepository<AvailabilityEntity, Long> { }

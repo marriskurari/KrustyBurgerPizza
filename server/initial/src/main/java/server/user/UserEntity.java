@@ -13,24 +13,20 @@ public class UserEntity {
 	private String name;
 	private String email;
 	@ElementCollection
-	private Map<Integer, Long> bookings = new HashMap<>();
+	private Map<Integer, Long> reviewIds = new HashMap<>();
+	@ElementCollection
+	private Map<Integer, Long> bookingIds = new HashMap<>();
 
 	public UserEntity() {}
 
-	public UserEntity(Long id, String name, String email, Map<Integer, Long> bookings) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.bookings = bookings;
-	}
-
-	public UserEntity(String name, String email) {
-		this.name = name;
-		this.email = email;
-	}
-
 	public UserEntity extractEntity() {
-		return new UserEntity(id, name, email, bookings);
+		UserEntity u = new UserEntity();
+		u.setId(id);
+		u.setName(name);
+		u.setEmail(email);
+		u.setReviewIds(reviewIds);
+		u.setBookingIds(bookingIds);
+		return u;
 	}
 
 	public Long getId() {
@@ -54,11 +50,19 @@ public class UserEntity {
 		this.email = email;
 	}
 
-	public Map<Integer, Long> getBookingIds() { return bookings; }
-	public void setBookingIds(Map<Integer, Long> bookings) {this.bookings = bookings; }
+	public Map<Integer, Long> getBookingIds() { return bookingIds; }
+	public void setBookingIds(Map<Integer, Long> bookings) {this.bookingIds = bookings; }
 
 	public void addBookingId(Long bookingId) {
-		int bookingNumber = bookings.size();
-		this.bookings.put(bookingNumber, bookingId);
+		int bookingNumber = bookingIds.size();
+		this.bookingIds.put(bookingNumber, bookingId);
+	}
+
+	public Map<Integer, Long> getReviewIds() {
+		return reviewIds;
+	}
+
+	public void setReviewIds(Map<Integer, Long> reviewIds) {
+		this.reviewIds = reviewIds;
 	}
 }

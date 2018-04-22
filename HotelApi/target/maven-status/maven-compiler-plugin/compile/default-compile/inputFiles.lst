@@ -13,6 +13,8 @@
 /home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/availability/AvailabilityFactory.java
 /home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/ToolBox.java
 /home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/user/User.java
+/home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/review/Review.java
+/home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/review/ReviewFactory.java
 /home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/room/RoomFactory.java
 /home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/API.java
 /home/pimp-of-pimps/projects/search/HotelApi/src/main/java/search/generator/Factory.java

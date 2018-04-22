@@ -41,6 +41,7 @@ public class BookingFactory<Ent extends Booking> extends Factory {
 			 randomDates.getKey(),
 			 randomDates.getValue(),
 			 randomBoolean(),
+			 randomBoolean(),
 			 randomCC()
 		);
 		return booking;
@@ -59,7 +60,9 @@ public class BookingFactory<Ent extends Booking> extends Factory {
 		Long dateFrom = getAsLong("dateFrom", json);
 		Long dateTo = getAsLong("dateTo", json);
 		Boolean isPaid = (Boolean) json.get("isPaid");
+		Boolean isCancelled = (Boolean) json.get("isCancelled");
+		
 		String cc = (String) json.get("cc");
-		return new Booking(id, hotelId, roomId, userId, dateFrom, dateTo, isPaid, cc);
+		return new Booking(id, hotelId, roomId, userId, dateFrom, dateTo, isPaid, isCancelled, cc);
 	}
 }

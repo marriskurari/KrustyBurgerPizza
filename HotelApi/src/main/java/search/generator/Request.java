@@ -8,38 +8,45 @@ import java.io.*;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Request {
 
-	private static final String dburl = "http://localhost:8080/database/";
 
-	private String requestString;
+	private URL url = new URL("http://localhost:8080/database/");
+	private String paramString;
 	private HttpURLConnection con;
 
 	private HttpURLConnection makeRequest() throws IOException {
-		URL url = new URL(requestString);
-		HttpURLConnection con = (HttpURLConnection) url.openConnection();
+		HttpURLConnection con;
+		if(paramString != null) url = new URL(url.toString() + paramString);
+		con = (HttpURLConnection) url.openConnection();
+		// HERE WE DEBUG!!
+		// System.out.println(url.toString());
 		con.setRequestMethod("GET");
 		return con;
 	}
 
+	public void convertToAsciiURL() {
+
+	}
+
 	public void addParameters(List<Pair<String, String>> parameters) throws IOException {
-	    String s = "?";
+	    paramString = "?";
 	    for(Pair<String, String> keyAndValue : parameters) {
-	    	s += keyAndValue.getKey();
-	    	s += "=";
-	    	s += keyAndValue.getValue();
-	    	s += "&";
+	    	paramString += keyAndValue.getKey();
+	    	paramString += "=";
+	    	paramString += URLEncoder.encode(keyAndValue.getValue());
+	    	paramString += "&";
 		}
 		//cut off last character
-		s = s.substring(0, s.length() - 1);
+		paramString = paramString.substring(0, paramString.length() - 1);
 
-		requestString += s;
-		// HERE WE DEBUG!!
-		//System.out.println(requestString);
 	}
 
 	private String extractJSONstringFromRequest() throws IOException {
@@ -66,12 +73,13 @@ public class Request {
 		return obj;
 	}
 
-	private void initRequest(String string) throws IOException {
-		this.requestString = dburl + string;
+	private void initRequest(String databaseMethod) throws IOException {
+		//paramString as null is allowed here
+		url = new URL(url, databaseMethod);
 	}
 
-	public Request(String string) throws IOException {
-		initRequest(string);
+	public Request(String databaseMethod) throws IOException {
+		initRequest(databaseMethod);
 		con = makeRequest();
 	}
 
@@ -81,12 +89,12 @@ public class Request {
 		return pairList;
 	}
 
-	public Request(String string, Pair<String, String> param) throws IOException {
-		this(string,  itemAsList(param));
+	public Request(String databaseMethod, Pair<String, String> param) throws IOException {
+		this(databaseMethod,  itemAsList(param));
 	}
 
-	public Request(String string, List<Pair<String, String>> params) throws IOException {
-		initRequest(string);
+	public Request(String databaseMethod, List<Pair<String, String>> params) throws IOException {
+		initRequest(databaseMethod);
 		addParameters(params);
 		con = makeRequest();
 	}

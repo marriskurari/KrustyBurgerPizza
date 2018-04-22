@@ -40,6 +40,7 @@ public class HotelFactory<Ent extends HotelEntity> extends Factory {
 			 randomDouble(latitude, width),
 			 randomDouble(longitude, height),
 			 getRandom(imageUrl),
+			 randomInt(5),
 			 getRandomMap(amenities)
 		);
 	}

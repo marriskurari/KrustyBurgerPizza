@@ -18,7 +18,7 @@ package server.availability;
 	 import java.util.Map;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Availability {
+public class AvailabilityEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

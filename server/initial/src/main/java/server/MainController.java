@@ -7,18 +7,18 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import server.availability.Availability;
+import server.availability.AvailabilityEntity;
 import server.availability.AvailabilityRepository;
-import server.booking.Booking;
+import server.booking.BookingEntity;
 import server.booking.BookingRepository;
 import server.hotel.HotelEntity;
 import server.hotel.HotelRepository;
+import server.review.ReviewEntity;
+import server.review.ReviewRepository;
 import server.room.RoomEntity;
 import server.room.RoomRepository;
-import server.user.User;
 import server.user.UserEntity;
 import server.user.UserRepository;
 
@@ -26,37 +26,29 @@ import server.user.UserRepository;
 @RequestMapping(path="/database") // This means URL's start with /demo (after Application path)
 public class MainController {
 
-	@Autowired
-	private UserRepository userRepository;
-	@Autowired
-	private HotelRepository hotelRepository;
-	@Autowired
-	private RoomRepository roomRepository;
-	@Autowired
-	private AvailabilityRepository availabilityRepository;
-	@Autowired
-	private BookingRepository bookingRepository;
-
-	private Iterable<HotelEntity> cachedHotels = new ArrayList<>();
-	private boolean hotelsHaveBeenUpdated = true;
 
 	/*********************************
 	 *   USER METHODS
 	 ********************************/
+	@Autowired
+	private UserRepository userRepository;
+
 	@CrossOrigin
 	@GetMapping(path = "/addUser") // Map ONLY GET Requests
 	public @ResponseBody
 	String addNewUser(
 		 @RequestParam(required = false) Long id,
+		 @RequestParam(required = false) ArrayList<Long> bookingIds,
+		 @RequestParam(required = false) ArrayList<Long> reviewIds,
 		 @RequestParam String name,
-		 @RequestParam String email,
-		 @RequestParam(required = false) ArrayList<Long> bookingIds
+		 @RequestParam String email
 	) {
-		UserEntity u = new UserEntity(name, email);
-		if(id != null) u.setId(id);
-		if(bookingIds != null)
-			for(Long bid : bookingIds)
-				u.addBookingId(bid);
+		UserEntity u = new UserEntity();
+		if(id != null) 		  u.setId(id);
+		if(bookingIds != null) u.setBookingIds((Map<Integer, Long>) Converter.arrayListToMap(bookingIds));
+		if(reviewIds != null) u.setReviewIds((Map<Integer, Long>) Converter.arrayListToMap(bookingIds));
+		u.setName(name);
+		u.setEmail(email);
 		u = userRepository.save(u);
 		return u.getId().toString();
 	}
@@ -93,29 +85,39 @@ public class MainController {
 	/*********************************
 	 *   HOTEL METHODS
 	 ********************************/
+	@Autowired
+	private HotelRepository hotelRepository;
+
 	@CrossOrigin
 	@GetMapping(path = "/addHotel")
 	public @ResponseBody
 	Long addNewHotel(
 		 @RequestParam(required = false) Long id,
+		 @RequestParam(required = false) ArrayList<String> amenities,
+		 @RequestParam(required = false) ArrayList<Long> roomIds,
+		 @RequestParam(required = false) ArrayList<Long> reviewIds,
+
 		 @RequestParam String name,
 		 @RequestParam String email,
 		 @RequestParam double latitude,
 		 @RequestParam Double longitude,
-		 @RequestParam ArrayList<String> amenities,
-		 @RequestParam(required = false) ArrayList<Long> roomIds,
 		 @RequestParam Integer numRooms,
-		 @RequestParam String imageUrl
+		 @RequestParam String imageUrl,
+		 @RequestParam Integer stars
 	) {
-		Map<Integer, String> amenityMap = (Map<Integer, String>) Converter.arrayListToMap(amenities);
-		Map<Integer, Long> roomIdMap = new HashMap<>();
-		if(roomIds != null)
-			 roomIdMap = (Map<Integer, Long>) Converter.arrayListToMap(roomIds);
-
-		HotelEntity h = new HotelEntity(numRooms, name, email, longitude, latitude, imageUrl, amenityMap, roomIdMap);
-		if(id != null) h.setId(id);
+		HotelEntity h = new HotelEntity();
+		h.setName(name);
+		h.setEmail(email);
+		h.setLatitude(latitude);
+		h.setLongitude(longitude);
+		h.setNumRooms(numRooms);
+		h.setImageUrl(imageUrl);
+		h.setStars(stars);
+		if(roomIds != null) 	 h.setRoomIds  ((Map<Integer, Long>)   Converter.arrayListToMap(roomIds));
+		if(reviewIds != null) 	 h.setReviewIds  ((Map<Integer, Long>)   Converter.arrayListToMap(reviewIds));
+		if(amenities != null) h.setAmenities((Map<Integer, String>) Converter.arrayListToMap(amenities));
+		if(id != null)        h.setId(id);
 		h = hotelRepository.save(h);
-		hotelsHaveBeenUpdated = true;
 		return h.getId();
 	}
 
@@ -165,6 +167,9 @@ public class MainController {
 	/*********************************
 	 *   ROOM METHODS
 	 ********************************/
+	@Autowired
+	private RoomRepository roomRepository;
+
 	@CrossOrigin
 	@GetMapping(path = "/addRoom")
 	public @ResponseBody
@@ -203,17 +208,13 @@ public class MainController {
 	/*********************************
 	 *   BOOKING METHODS
 	 ********************************/
-	//all dateString: yyyy-mm-dd
-	private Booking makeBasicBooking(Long hotelId, Long roomId, Long userId, String dateFrom, String dateTo, Boolean isPaid, String cc) {
-		Long from = Converter.yyyymmdd_toLong(dateFrom);
-		Long to = Converter.yyyymmdd_toLong(dateTo);
-		return new Booking(hotelId, roomId, userId, from, to, isPaid, cc);
-	}
+	@Autowired
+	private BookingRepository bookingRepository;
 
 	@CrossOrigin
 	@GetMapping(path = "/oneBooking")
 	public @ResponseBody
-	Booking getOneBooking(
+	BookingEntity getOneBooking(
 		 @RequestParam Long id
 	) {
 		return bookingRepository.findOne(id);
@@ -230,10 +231,22 @@ public class MainController {
 		 @RequestParam String dateFrom, //yyyy-mm-dd
 		 @RequestParam String dateTo,    //yyyy-mm-dd
 		 @RequestParam Boolean isPaid,
+		 @RequestParam Boolean isCancelled,
 		 @RequestParam String cc
 	) {
-		Booking booking = makeBasicBooking(hotelId, roomId, userId, dateFrom, dateTo, isPaid, cc);
+		BookingEntity booking = new BookingEntity();
+		Long from = Converter.yyyymmdd_toLong(dateFrom);
+		Long to = Converter.yyyymmdd_toLong(dateTo);
 		if(id != null) booking.setId(id);
+		booking.setHotelId(hotelId);
+		booking.setUserId(userId);
+		booking.setRoomId(roomId);
+		booking.setHotelId(hotelId);
+		booking.setDateFrom(from);
+		booking.setDateTo(to);
+		booking.setIsPaid(isPaid);
+		booking.setIsCancelled(isCancelled);
+		booking.setCc(cc);
 		booking = bookingRepository.save(booking);
 		return booking.getId().toString();
 	}
@@ -250,6 +263,8 @@ public class MainController {
 	/*********************************
 	 *   AVAILABILITY METHODS
 	 ********************************/
+	@Autowired
+	private AvailabilityRepository availabilityRepository;
 
 	@CrossOrigin
 	@GetMapping(path = "/addAvailability")
@@ -257,7 +272,7 @@ public class MainController {
 	Long addAvailability(
 		 @RequestParam Map<String, String> allParams
 	) {
-		Availability availability = new Availability();
+		AvailabilityEntity availability = new AvailabilityEntity();
 		Map<Long, Integer> days = new HashMap<>();
 		for(Map.Entry<String, String> e : allParams.entrySet()) {
 			if(e.getKey().equals("id")) {
@@ -267,8 +282,7 @@ public class MainController {
 			days.put(Long.parseLong(e.getKey()), Integer.parseInt(e.getValue()));
 		}
 		availability.setDays(days);
-		Availability a =  availabilityRepository.save(availability);
-		System.out.println(a.getId());
+		AvailabilityEntity a =  availabilityRepository.save(availability);
 		return a.getId();
 	}
 
@@ -284,9 +298,55 @@ public class MainController {
 	@CrossOrigin
 	@GetMapping(path = "/oneAvailability")
 	public @ResponseBody
-	Availability getOneAvailability(
+	AvailabilityEntity getOneAvailability(
 		 @RequestParam Long id
 	) {
 		return availabilityRepository.findOne(id);
+	}
+	/*********************************
+	 *   REVIEW METHODS
+	 ********************************/
+	@Autowired
+	private ReviewRepository reviewRepository;
+
+	@CrossOrigin
+	@GetMapping(path = "/oneReview")
+	public @ResponseBody
+	ReviewEntity getOneReview(
+		 @RequestParam Long id
+	) {
+		return reviewRepository.findOne(id);
+	}
+
+	@CrossOrigin
+	@GetMapping(path = "/removeReview")
+	public @ResponseBody String removeReview(
+		 @RequestParam Long id
+	) {
+		reviewRepository.delete(id);
+		return "Deleted";
+	}
+
+	@CrossOrigin
+	@GetMapping(path = "/addReview")
+	public @ResponseBody
+	Long addReview(
+		 @RequestParam (required = false) Long id,
+		 @RequestParam (required = false) ArrayList<String> reviewText,
+
+		 @RequestParam Long userId,
+		 @RequestParam Long hotelId,
+		 @RequestParam String subject,
+		 @RequestParam Double rating
+	) {
+		ReviewEntity review = new ReviewEntity();
+		if(id != null)         review.setId(id);
+		if(reviewText != null) review.setReviewText((Map<Integer, String>) Converter.arrayListToMap(reviewText));
+		review.setUserId(userId);
+		review.setHotelId(hotelId);
+		review.setSubject(subject);
+		review.setRating(rating);
+		review = reviewRepository.save(review);
+		return review.getId();
 	}
 }

@@ -8,9 +8,11 @@ search/generator/hotel/Hotel.class
 search/generator/availability/AvailabilityFactory.class
 search/generator/Request.class
 search/generator/room/RoomEntity.class
+search/generator/review/Review.class
 search/generator/booking/BookingFactory.class
 search/generator/ToolBox.class
 search/generator/booking/Booking.class
+search/generator/review/ReviewFactory.class
 search/App.class
 search/generator/user/UserEntity.class
 search/generator/user/UserFactory.class
